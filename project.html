@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal Room · Case Study</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="case-page">
+      <header class="case-header">
+        <a href="index.html" class="case-back">&larr; Back to all work</a>
+        <p class="eyebrow">XR / Immersive Installation</p>
+        <h1 class="case-title">Portal Room</h1>
+        <p class="case-subtitle">
+          A multi-sensory, room-scale installation that bends light, sound, and perception into a
+          single continuous gesture.
+        </p>
+        <div class="case-meta">
+          <div>
+            <p class="case-meta-label">Role</p>
+            <p class="case-meta-value">Concept, Direction, Technical Lead</p>
+          </div>
+          <div>
+            <p class="case-meta-label">Year</p>
+            <p class="case-meta-value">2026</p>
+          </div>
+          <div>
+            <p class="case-meta-label">Tools</p>
+            <p class="case-meta-value">Unity / Unreal, TouchDesigner, custom shaders</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="case-hero">
+        <div class="case-hero-main"></div>
+        <div class="case-hero-strip">
+          <div class="case-hero-thumb"></div>
+          <div class="case-hero-thumb"></div>
+          <div class="case-hero-thumb"></div>
+        </div>
+      </section>
+
+      <main class="case-layout">
+        <section class="case-column">
+          <h2>Overview</h2>
+          <p>
+            Portal Room is a spatial instrument: a dense, responsive field of light and sound that
+            visitors can lean into, push against, and get lost inside. It explores how XR tools can
+            be used to build presence without headsets—treating the room itself as the headset.
+          </p>
+          <p>
+            The installation was designed for slow attention: visitors are invited to linger, to
+            notice how small movements ripple through the system, and to feel the space gradually
+            re-tune itself around them.
+          </p>
+        </section>
+
+        <section class="case-column">
+          <h2>Context</h2>
+          <ul class="case-list">
+            <li>Exhibited as part of an immersive art festival.</li>
+            <li>Room-scale: ~6m x 6m, fully darkened, with a single entrance.</li>
+            <li>Built to run unattended for multi-week engagement.</li>
+          </ul>
+        </section>
+      </main>
+
+      <section class="case-layout case-layout--stack">
+        <section class="case-column">
+          <h2>Interaction & System</h2>
+          <p>
+            Visitors stand within a responsive volume of light. Depth cameras and spatial audio
+            capture movement, which is translated into a fluid, almost liquid response: light
+            fields bend, lines shear, and sound scatters and converges around them.
+          </p>
+          <p>
+            Instead of discrete “triggers”, the system is continuous—there is never a moment where
+            nothing is happening. The goal is to create a feeling of being inside a living,
+            breathing diagram.
+          </p>
+        </section>
+
+        <section class="case-column">
+          <h2>Process highlights</h2>
+          <ul class="case-list">
+            <li>Rapid prototyping with realtime engines and custom GLSL shaders.</li>
+            <li>Material studies exploring how haze, projection, and LED interact.</li>
+            <li>On-site tuning sessions to balance latency, brightness, and comfort.</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="case-gallery">
+        <div class="case-gallery-item case-gallery-item--tall"></div>
+        <div class="case-gallery-item"></div>
+        <div class="case-gallery-item"></div>
+      </section>
+
+      <section class="case-related">
+        <h2 class="case-related-title">More work</h2>
+        <div class="case-related-grid" id="case-related"></div>
+      </section>
+    </div>
+    <script>
+      (function () {
+        const container = document.getElementById("case-related");
+        if (!container) return;
+
+        const projects = [
+          {
+            id: "spectral-city",
+            title: "Spectral City",
+            blurb: "Augmented city walk overlaying ghosted architecture and hidden stories.",
+            tags: ["AR", "Site-specific"],
+            href: "index.html#spectral-city",
+          },
+          {
+            id: "echo-garden",
+            title: "Echo Garden",
+            blurb: "Interactive soundscape where plants respond to gesture and proximity.",
+            tags: ["Installation", "Sound"],
+            href: "index.html#echo-garden",
+          },
+          {
+            id: "neon-drift",
+            title: "Neon Drift",
+            blurb: "VR short exploring drifting identity across fragmented neon futures.",
+            tags: ["VR", "Narrative"],
+            href: "index.html#neon-drift",
+          },
+          {
+            id: "afterimage",
+            title: "Afterimage",
+            blurb: "Mixed-reality performance tracing bodies with generative light trails.",
+            tags: ["MR", "Performance"],
+            href: "index.html#afterimage",
+          },
+        ];
+
+        const shuffled = projects
+          .map((p) => ({ p, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ p }) => p)
+          .slice(0, 2);
+
+        shuffled.forEach((proj) => {
+          const card = document.createElement("a");
+          card.className = "case-related-card";
+          card.href = proj.href;
+
+          card.innerHTML = `
+            <div class="case-related-thumb"></div>
+            <div class="case-related-body">
+              <h3>${proj.title}</h3>
+              <p>${proj.blurb}</p>
+              <div class="pill-row">
+                ${proj.tags
+                  .map(
+                    (tag) =>
+                      `<span class="pill subtle">${tag.replace(/&/g, "&amp;")}</span>`
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      })();
+    </script>
+  </body>
+</html>
+
