@@ -424,6 +424,16 @@ body {
   );
 }
 
+.thumb-5 {
+  background-image: linear-gradient(135deg, #0d162e, #42e5ff, #8b5bff);
+}
+
+.thumb-large {
+  height: 140px;
+  flex: 0 0 140px;
+  border-radius: 18px;
+}
+
 .masonry {
   flex: 1.1;
   display: grid;
