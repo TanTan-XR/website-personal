@@ -2,9 +2,297 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=homepage.html" />
-    <title>Redirecting…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XR & Creative Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-text" id="hero-card">
+          <p class="eyebrow">XR / Creative Immersive Technology</p>
+          <h1>Hey, this is Tan</h1>
+          <p class="tagline">
+            Designing immersive, experimental worlds across extended reality and interactive media.
+          </p>
+        </div>
+        <div class="hero-visual" id="hero-visual">
+          <p class="hero-caption">Selected experiments & installations</p>
+        </div>
+      </header>
+
+      <main class="bento">
+        <!-- Tile 1: Flagship XXR project (2x2) -->
+        <a href="#" class="tile tile-xl gradient-xxr">
+          <div class="tile-header">
+            <span class="pill">Flagship</span>
+            <div class="pill-row">
+              <span class="pill subtle">XXR</span>
+              <span class="pill subtle">Immersive</span>
+              <span class="pill subtle">2026</span>
+            </div>
+          </div>
+          <h2>Mixed Reality App to Read Air Quality</h2>
+          <p class="tile-body">
+            A spatial companion that visualises invisible pollution levels around you in real time.
+          </p>
+          <span class="tile-cta">View case study →</span>
+        </a>
+
+        <!-- Tile 2: About / bio (1x1) -->
+        <a href="#" class="tile tile-sm about-tile">
+          <div class="avatar-orbit">
+            <div class="avatar-circle"></div>
+          </div>
+          <div>
+            <h3>About</h3>
+            <p>
+              XXR artist & creative technologist exploring presence, memory, and speculative futures.
+            </p>
+          </div>
+        </a>
+
+        <!-- Tile 3: Project -->
+        <a href="#" class="tile tile-sm">
+          <div class="thumb thumb-1"></div>
+          <h3>Interactive Timeline with AR features</h3>
+          <p>An AR-powered timeline that lets you scrub through stories anchored in real space.</p>
+          <span class="pill-row">
+            <span class="pill subtle">AR</span>
+            <span class="pill subtle">Site-specific</span>
+          </span>
+        </a>
+
+        <!-- Tile 4: Project -->
+        <a href="#" class="tile tile-sm">
+          <div class="thumb thumb-2"></div>
+          <h3>Insect library in VR/MR</h3>
+          <p>A living catalogue of insects you can inspect, scale, and study in mixed reality.</p>
+          <span class="pill-row">
+            <span class="pill subtle">Installation</span>
+            <span class="pill subtle">Sound</span>
+          </span>
+        </a>
+
+        <!-- Tile 5: Project -->
+        <a href="#" class="tile tile-sm">
+          <div class="thumb thumb-3"></div>
+          <h3>Learn about Mars in VR</h3>
+          <p>Guided journeys across Martian terrain, mixing scientific data with speculative futures.</p>
+          <span class="pill-row">
+            <span class="pill subtle">VR</span>
+            <span class="pill subtle">Narrative</span>
+          </span>
+        </a>
+
+        <!-- Tile 6: Process / experiments (2x1 wide) -->
+        <a href="#" class="tile tile-wide">
+          <div class="masonry">
+            <div class="masonry-cell"></div>
+            <div class="masonry-cell"></div>
+            <div class="masonry-cell"></div>
+            <div class="masonry-cell"></div>
+          </div>
+          <div class="tile-text">
+            <h3>An interactive archive for XR design patterns</h3>
+            <p>Reusable interaction patterns and spatial UI experiments, organised as a living library.</p>
+          </div>
+        </a>
+
+        <!-- Tile 7: Project -->
+        <a href="#" class="tile tile-sm">
+          <div class="thumb thumb-4"></div>
+          <h3>VR Chapel</h3>
+          <p>An intimate virtual space for reflection, ambient rituals, and quiet gatherings.</p>
+          <span class="pill-row">
+            <span class="pill subtle">MR</span>
+            <span class="pill subtle">Performance</span>
+          </span>
+        </a>
+
+        <!-- Tile 8: Workshop / Teaching -->
+        <a href="#" class="tile tile-sm">
+          <div class="thumb thumb-2"></div>
+          <h3>Workshops and Lectures</h3>
+          <p>Sharing XR practice through talks, studio visits, and hands-on sessions.</p>
+          <span class="pill-row">
+            <span class="pill subtle">Teaching</span>
+            <span class="pill subtle">XR</span>
+          </span>
+        </a>
+
+        <!-- Tile 9: Contact / CV -->
+        <a href="#" class="tile tile-sm contact-tile">
+          <h3>Contact & Info</h3>
+          <p>Available for collaborations, commissions, and residencies.</p>
+          <ul class="contact-list">
+            <li>Email · yourname@studio.xyz</li>
+            <li>CV / Resume</li>
+            <li>Instagram / X / Are.na</li>
+          </ul>
+        </a>
+
+        <!-- Tile 10: Sketchbook -->
+        <a href="#" class="tile tile-wide">
+          <div class="thumb thumb-5 thumb-large"></div>
+          <div class="tile-text">
+            <h3>Process and Insights</h3>
+            <p>
+              A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that
+              reveal how the work comes together.
+            </p>
+          </div>
+        </a>
+      </main>
+
+      <div class="social-modal-overlay" id="social-modal">
+        <div class="social-modal">
+          <button class="social-modal-close" type="button" aria-label="Close social links">
+            ✕
+          </button>
+          <p class="social-modal-eyebrow">Connect</p>
+          <h2 class="social-modal-title">Find Tan online</h2>
+          <ul class="social-modal-list">
+            <li>
+              <a href="https://instagram.com/" target="_blank" rel="noreferrer">
+                <span class="social-label">Instagram</span>
+                <span class="social-handle">@your.ig.handle</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/" target="_blank" rel="noreferrer">
+                <span class="social-label">X (Twitter)</span>
+                <span class="social-handle">@your_x_handle</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+                <span class="social-label">LinkedIn</span>
+                <span class="social-handle">/in/your-linkedin</span>
+              </a>
+            </li>
+          </ul>
+          <a class="social-modal-cv" href="Tan-CV.pdf" download>
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="eni-modal-overlay" id="eni-modal">
+        <div class="eni-modal">
+          <button class="eni-modal-close" type="button" aria-label="Close image gallery">
+            ✕
+          </button>
+          <p class="eni-modal-eyebrow">Image Library</p>
+          <h2 class="eni-modal-title">Project snapshots</h2>
+          <div class="eni-grid" id="eni-grid"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        const heroCard = document.getElementById("hero-card");
+        const socialModal = document.getElementById("social-modal");
+        const heroCircle = document.getElementById("hero-visual");
+        const eniModal = document.getElementById("eni-modal");
+        if (!heroCard || !socialModal || !heroCircle || !eniModal) return;
+
+        const socialCloseBtn = socialModal.querySelector(".social-modal-close");
+        const eniCloseBtn = eniModal.querySelector(".eni-modal-close");
+        const eniGrid = document.getElementById("eni-grid");
+        let eniLoaded = false;
+
+        function openSocialModal() {
+          socialModal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeSocialModal() {
+          socialModal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        function openEniModal() {
+          eniModal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+          if (!eniLoaded) {
+            loadEniImages();
+          }
+        }
+
+        function closeEniModal() {
+          eniModal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        heroCard.addEventListener("click", openSocialModal);
+        heroCircle.addEventListener("click", openEniModal);
+
+        socialModal.addEventListener("click", (event) => {
+          if (event.target === socialModal) {
+            closeSocialModal();
+          }
+        });
+
+        eniModal.addEventListener("click", (event) => {
+          if (event.target === eniModal) {
+            closeEniModal();
+          }
+        });
+
+        if (socialCloseBtn) {
+          socialCloseBtn.addEventListener("click", closeSocialModal);
+        }
+
+        if (eniCloseBtn) {
+          eniCloseBtn.addEventListener("click", closeEniModal);
+        }
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            if (socialModal.classList.contains("is-open")) {
+              closeSocialModal();
+            }
+            if (eniModal.classList.contains("is-open")) {
+              closeEniModal();
+            }
+          }
+        });
+
+        function loadEniImages() {
+          if (!eniGrid) return;
+          fetch("eni_images.json")
+            .then((res) => res.json())
+            .then((items) => {
+              if (!Array.isArray(items)) return;
+              eniGrid.innerHTML = "";
+              items.forEach((item) => {
+                const card = document.createElement("a");
+                card.className = "eni-card";
+                card.href = item.link || "#";
+                if ((item.link || "#").startsWith("http")) {
+                  card.target = "_blank";
+                  card.rel = "noreferrer";
+                }
+                const title = item.title || "";
+                const id = item.id || "";
+                card.innerHTML = `
+                  <img class="eni-thumb" src="${item.src}" alt="${title}" loading="lazy" />
+                  <div class="eni-body">
+                    <p class="eni-title">${title}</p>
+                    <p class="eni-id">#${id}</p>
+                  </div>
+                `;
+                eniGrid.appendChild(card);
+              });
+              eniLoaded = true;
+            })
+            .catch(() => {
+              eniGrid.innerHTML = "<p class='eni-error'>Could not load images yet.</p>";
+            });
+        }
+      })();
+    </script>
+  </body>
 </html>
 
