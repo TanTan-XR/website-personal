@@ -45,11 +45,7 @@
       <main class="bento">
         <!-- Tile 1: Flagship XXR project (2x2) -->
         <a href="#" class="tile tile-xl gradient-xxr" id="card-3">
-          <div class="card3-tag-row">
-            <span class="pill subtle">WebXR</span>
-            <span class="pill subtle">Environmental Data</span>
-            <span class="pill subtle">three.js</span>
-          </div>
+          <div class="card3-tag-row" id="card3-tags-modal"></div>
           <h2 class="flagship-title">Mixed Reality App to Read Air Quality</h2>
           <p class="tile-body flagship-body">
             A spatial companion that visualises invisible pollution levels around you in real time.
@@ -71,8 +67,8 @@
           </div>
         </a>
 
-        <!-- Tile 3: Project -->
-        <a href="#" class="tile tile-sm">
+        <!-- Tile 3: Project (Card 5) -->
+        <a href="#" class="tile tile-sm" id="card-5">
           <div class="thumb thumb-1"></div>
           <h3>Interactive Timeline with AR features</h3>
           <p>An AR-powered timeline that lets you scrub through stories anchored in real space.</p>
@@ -82,8 +78,8 @@
           </span>
         </a>
 
-        <!-- Tile 4: Project -->
-        <a href="#" class="tile tile-sm">
+        <!-- Tile 4: Project (Card 6) -->
+        <a href="#" class="tile tile-sm" id="card-6">
           <div class="thumb thumb-2"></div>
           <h3>Insect library in VR/MR</h3>
           <p>A living catalogue of insects you can inspect, scale, and study in mixed reality.</p>
@@ -93,8 +89,8 @@
           </span>
         </a>
 
-        <!-- Tile 5: Project -->
-        <a href="#" class="tile tile-sm">
+        <!-- Tile 5: Project (Card 7) -->
+        <a href="#" class="tile tile-sm" id="card-7">
           <div class="thumb thumb-3"></div>
           <h3>Learn about Mars in VR</h3>
           <p>Guided journeys across Martian terrain, mixing scientific data with speculative futures.</p>
@@ -104,8 +100,8 @@
           </span>
         </a>
 
-        <!-- Tile 6: Process / experiments (2x1 wide) -->
-        <a href="#" class="tile tile-wide">
+        <!-- Tile 6: Process / experiments (2x1 wide) – Card 10 -->
+        <a href="#" class="tile tile-wide" id="card-10">
           <div class="masonry">
             <div class="masonry-cell"></div>
             <div class="masonry-cell"></div>
@@ -118,8 +114,8 @@
           </div>
         </a>
 
-        <!-- Tile 7: Project -->
-        <a href="#" class="tile tile-sm">
+        <!-- Tile 7: Project (Card 8) -->
+        <a href="#" class="tile tile-sm" id="card-8">
           <div class="thumb thumb-4"></div>
           <h3>VR Chapel</h3>
           <p>An intimate virtual space for reflection, ambient rituals, and quiet gatherings.</p>
@@ -129,8 +125,8 @@
           </span>
         </a>
 
-        <!-- Tile 8: Workshop / Teaching -->
-        <a href="#" class="tile tile-sm">
+        <!-- Tile 8: Workshop / Teaching (Card 9) -->
+        <a href="#" class="tile tile-sm" id="card-9">
           <div class="thumb thumb-2"></div>
           <h3>Workshops and Lectures</h3>
           <p>Sharing XR practice through talks, studio visits, and hands-on sessions.</p>
@@ -235,15 +231,15 @@
           <div class="card3-bottom-meta">
             <div class="card3-bottom-meta-item">
               <span class="card3-bottom-label">Year</span>
-              <span class="card3-bottom-value">2026</span>
+              <span class="card3-bottom-value" id="card3-year"></span>
             </div>
             <div class="card3-bottom-meta-item">
               <span class="card3-bottom-label">Role</span>
-              <span class="card3-bottom-value">Concept, Direction, Technical Lead</span>
+              <span class="card3-bottom-value" id="card3-role"></span>
             </div>
             <div class="card3-bottom-meta-item">
               <span class="card3-bottom-label">Tools</span>
-              <span class="card3-bottom-value">Unity / Unreal, TouchDesigner, custom shaders</span>
+              <span class="card3-bottom-value" id="card3-tools"></span>
             </div>
           </div>
         </div>
@@ -257,7 +253,13 @@
         const eniModal = document.getElementById("eni-modal");
         const card3Modal = document.getElementById("card3-modal");
         const card3Tile = document.getElementById("card-3");
-        if (!heroCard || !socialModal || !heroCircle || !eniModal || !card3Modal || !card3Tile)
+        const card5Tile = document.getElementById("card-5");
+        const card6Tile = document.getElementById("card-6");
+        const card7Tile = document.getElementById("card-7");
+        const card8Tile = document.getElementById("card-8");
+        const card9Tile = document.getElementById("card-9");
+        const card10Tile = document.getElementById("card-10");
+        if (!heroCard || !socialModal || !heroCircle || !eniModal || !card3Modal)
           return;
 
         const socialCloseBtn = socialModal.querySelector(".social-modal-close");
@@ -271,9 +273,14 @@
         const card3PrevBtn = card3Modal.querySelector(".card3-nav-prev");
         const card3NextBtn = card3Modal.querySelector(".card3-nav-next");
         const card3DotsEl = card3Modal.querySelector("#card3-dots");
+        const card3ModalTagsEl = document.getElementById("card3-tags-modal");
+        const card3YearEl = document.getElementById("card3-year");
+        const card3RoleEl = document.getElementById("card3-role");
+        const card3ToolsEl = document.getElementById("card3-tools");
         let indexImagesCache = null;
         let card3Slides = [];
         let card3SlideIndex = 0;
+        let activeCardId = 3;
 
         function openSocialModal() {
           socialModal.classList.add("is-open");
@@ -298,8 +305,10 @@
           document.body.style.overflow = "";
         }
 
-        function openCard3Modal(event) {
+        function openCardModal(cardId, event) {
           if (event) event.preventDefault();
+          activeCardId = cardId;
+          card3SlideIndex = 0;
           card3Modal.classList.add("is-open");
           document.body.style.overflow = "hidden";
           populateCard3Modal();
@@ -312,7 +321,27 @@
 
         heroCard.addEventListener("click", openSocialModal);
         heroCircle.addEventListener("click", openEniModal);
-        card3Tile.addEventListener("click", openCard3Modal);
+        if (card3Tile) {
+          card3Tile.addEventListener("click", (e) => openCardModal(3, e));
+        }
+        if (card5Tile) {
+          card5Tile.addEventListener("click", (e) => openCardModal(5, e));
+        }
+        if (card6Tile) {
+          card6Tile.addEventListener("click", (e) => openCardModal(6, e));
+        }
+        if (card7Tile) {
+          card7Tile.addEventListener("click", (e) => openCardModal(7, e));
+        }
+        if (card8Tile) {
+          card8Tile.addEventListener("click", (e) => openCardModal(8, e));
+        }
+        if (card9Tile) {
+          card9Tile.addEventListener("click", (e) => openCardModal(9, e));
+        }
+        if (card10Tile) {
+          card10Tile.addEventListener("click", (e) => openCardModal(10, e));
+        }
 
         socialModal.addEventListener("click", (event) => {
           if (event.target === socialModal) {
@@ -372,7 +401,7 @@
           }
         });
 
-        // Load index_images.json for card-specific imagery and text
+        // Load index_content.json for card-specific imagery and text
         loadIndexImages();
 
         function loadEniImages() {
@@ -409,40 +438,77 @@
         }
 
         function loadIndexImages() {
-          fetch("index_images.json")
+          fetch("index_content.json")
             .then((res) => res.json())
             .then((items) => {
               if (!Array.isArray(items)) return;
               indexImagesCache = items;
-              const card3Data = items.find((item) => item.card === 3);
-              if (!card3Data) return;
+              items.forEach((item) => {
+                if (!item || typeof item.card === "undefined") return;
 
-              const flagshipTile = document.getElementById("card-3");
-              if (!flagshipTile) return;
+                if (item.card === 3) {
+                  const flagshipTile = document.getElementById("card-3");
+                  if (flagshipTile) {
+                    const thumb = flagshipTile.querySelector(".flagship-thumb");
+                    const titleEl = flagshipTile.querySelector(".flagship-title");
+                    const bodyEl = flagshipTile.querySelector(".flagship-body");
+                    const homepageTagRow = flagshipTile.querySelector(".card3-tag-row");
 
-              const thumb = flagshipTile.querySelector(".flagship-thumb");
-              const titleEl = flagshipTile.querySelector(".flagship-title");
-              const bodyEl = flagshipTile.querySelector(".flagship-body");
+                    if (thumb && item.src) {
+                      thumb.style.backgroundImage = "url('" + item.src + "')";
+                    }
+                    if (titleEl && item.title) {
+                      titleEl.textContent = item.title;
+                    }
+                    if (bodyEl && item.subtitle) {
+                      bodyEl.textContent = item.subtitle;
+                    }
 
-              if (thumb && card3Data.src) {
-                thumb.style.backgroundImage = "url('" + card3Data.src + "')";
-              }
-              if (titleEl && card3Data.title) {
-                titleEl.textContent = card3Data.title;
-              }
-              if (bodyEl && card3Data.subtitle) {
-                bodyEl.textContent = card3Data.subtitle;
-              }
+                    if (homepageTagRow && Array.isArray(item.tags)) {
+                      homepageTagRow.innerHTML = "";
+                      item.tags.forEach((tag) => {
+                        const span = document.createElement("span");
+                        span.className = "pill subtle";
+                        span.textContent = tag;
+                        homepageTagRow.appendChild(span);
+                      });
+                    }
+                  }
 
-              // prepare slides for card 3
-              if (Array.isArray(card3Data.slides) && card3Data.slides.length > 0) {
-                card3Slides = card3Data.slides;
-              } else if (card3Data.src) {
-                card3Slides = [card3Data.src];
-              } else {
-                card3Slides = [];
-              }
-              buildCard3Dots();
+                  return;
+                }
+
+                // Cards 5, 6, 7, 9, 10 – homepage tiles only
+                const tile = document.getElementById("card-" + item.card);
+                if (!tile) return;
+
+                const titleEl = tile.querySelector("h3");
+                const bodyEl = tile.querySelector("p");
+                const thumbEl = tile.querySelector(".thumb, .thumb-large, .masonry");
+                const pillRow = tile.querySelector(".pill-row");
+
+                if (thumbEl && item.src) {
+                  thumbEl.style.backgroundImage = "url('" + item.src + "')";
+                  thumbEl.style.backgroundSize = "cover";
+                  thumbEl.style.backgroundPosition = "center";
+                }
+                if (titleEl && item.title) {
+                  titleEl.textContent = item.title;
+                }
+                if (bodyEl && item.subtitle) {
+                  bodyEl.textContent = item.subtitle;
+                }
+
+                if (pillRow && Array.isArray(item.tags)) {
+                  pillRow.innerHTML = "";
+                  item.tags.forEach((tag) => {
+                    const span = document.createElement("span");
+                    span.className = "pill subtle";
+                    span.textContent = tag;
+                    pillRow.appendChild(span);
+                  });
+                }
+              });
             })
             .catch(() => {
               // silently fail if JSON can't be loaded
@@ -451,19 +517,45 @@
 
         function populateCard3Modal() {
           if (!indexImagesCache) return;
-          const card3Data = indexImagesCache.find((item) => item.card === 3);
-          if (!card3Data) return;
+          const cardData = indexImagesCache.find((item) => item.card === activeCardId);
+          if (!cardData) return;
 
-          if (card3Slides.length === 0 && card3Data.src) {
-            card3Slides = [card3Data.src];
+          if (Array.isArray(cardData.slides) && cardData.slides.length > 0) {
+            card3Slides = cardData.slides;
+          } else if (cardData.src) {
+            card3Slides = [cardData.src];
+          } else {
+            card3Slides = [];
           }
-          showCard3Slide(card3SlideIndex || 0);
+          card3SlideIndex = 0;
+          buildCard3Dots();
+          showCard3Slide(0);
 
-          if (card3TitleEl && card3Data.title) {
-            card3TitleEl.textContent = card3Data.title;
+          if (card3TitleEl && cardData.title) {
+            card3TitleEl.textContent = cardData.title;
           }
-          if (card3SubtitleEl && card3Data.subtitle) {
-            card3SubtitleEl.textContent = card3Data.subtitle;
+          if (card3SubtitleEl && cardData.subtitle) {
+            card3SubtitleEl.textContent = cardData.subtitle;
+          }
+
+          if (card3ModalTagsEl && Array.isArray(cardData.tags)) {
+            card3ModalTagsEl.innerHTML = "";
+            cardData.tags.forEach((tag) => {
+              const span = document.createElement("span");
+              span.className = "pill subtle";
+              span.textContent = tag;
+              card3ModalTagsEl.appendChild(span);
+            });
+          }
+
+          if (card3YearEl && typeof cardData.year !== "undefined") {
+            card3YearEl.textContent = String(cardData.year);
+          }
+          if (card3RoleEl && cardData.role) {
+            card3RoleEl.textContent = cardData.role;
+          }
+          if (card3ToolsEl && cardData.tools) {
+            card3ToolsEl.textContent = cardData.tools;
           }
         }
 

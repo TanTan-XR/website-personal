@@ -1,0 +1,143 @@
+[
+  {
+    "card": 1,
+    "src": "index images/Frame 2 2.png",
+    "title": "Hero background",
+    "subtitle": "Backdrop for 'Hey, this is Tan'",
+    "tags": ["hero", "background"]
+  },
+  {
+    "card": 2,
+    "src": "index images/11.png",
+    "title": "Hero circle texture",
+    "subtitle": "Visual for card 2",
+    "tags": ["hero", "circle"]
+  },
+  {
+    "card": 3,
+    "src": "index images/11.png",
+    "slides": [
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png"
+    ],
+    "title": "Mixed Reality App to Read Air Quality",
+    "subtitle": "A spatial companion that reveals the invisible data on air quality in real time and in precise locations.",
+    "tags": ["WebXR", "Environmental Data", "three.js"],
+    "year": 2026,
+    "role": "Concept, Direction, Technical Lead",
+    "tools": "Unity / Unreal, TouchDesigner, custom shaders"
+  },
+  {
+    "card": 5,
+    "src": "index images/placeholder-5.png",
+    "title": "Interactive Timeline with AR features",
+    "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
+    "tags": ["AR", "Site-specific"],
+    "slides": [
+      "index images/placeholder-5.png",
+      "index images/placeholder-5.png",
+      "index images/placeholder-5.png",
+      "index images/placeholder-5.png",
+      "index images/placeholder-5.png"
+    ],
+    "year": 2025,
+    "role": "Design, Interaction, Prototyping",
+    "tools": "WebXR, Three.js, custom tooling"
+  },
+  {
+    "card": 6,
+    "src": "index images/placeholder-6.png",
+    "title": "Insect library in VR/MR",
+    "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
+    "tags": ["Installation", "Sound"],
+    "slides": [
+      "index images/placeholder-6.png",
+      "index images/placeholder-6.png",
+      "index images/placeholder-6.png",
+      "index images/placeholder-6.png",
+      "index images/placeholder-6.png"
+    ],
+    "year": 2024,
+    "role": "Concept, Experience Design",
+    "tools": "Unity, spatial audio, custom shaders"
+  },
+  {
+    "card": 7,
+    "src": "index images/placeholder-7.png",
+    "title": "Learn about Mars in VR",
+    "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
+    "tags": ["VR", "Narrative"],
+    "slides": [
+      "index images/placeholder-7.png",
+      "index images/placeholder-7.png",
+      "index images/placeholder-7.png",
+      "index images/placeholder-7.png",
+      "index images/placeholder-7.png"
+    ],
+    "year": 2023,
+    "role": "Creative Direction, Story Design",
+    "tools": "Unreal Engine, world-building tools"
+  },
+  {
+    "card": 8,
+    "src": "index images/placeholder-8.png",
+    "title": "VR Chapel",
+    "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
+    "tags": ["MR", "Performance"],
+    "slides": [
+      "index images/placeholder-8.png",
+      "index images/placeholder-8.png",
+      "index images/placeholder-8.png",
+      "index images/placeholder-8.png",
+      "index images/placeholder-8.png"
+    ],
+    "year": 2022,
+    "role": "Concept, Spatial Design",
+    "tools": "Unity, volumetric lighting"
+  },
+  {
+    "card": 9,
+    "src": "index images/placeholder-9.png",
+    "title": "Workshops and Lectures",
+    "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
+    "tags": ["Teaching", "XR"],
+    "slides": [
+      "index images/placeholder-9.png",
+      "index images/placeholder-9.png",
+      "index images/placeholder-9.png",
+      "index images/placeholder-9.png",
+      "index images/placeholder-9.png"
+    ],
+    "year": 2021,
+    "role": "Facilitator, Speaker",
+    "tools": "Slides, live demos, custom tooling"
+  },
+  {
+    "card": 10,
+    "src": "index images/placeholder-10.png",
+    "title": "An interactive archive for XR design patterns",
+    "subtitle": "Reusable interaction patterns and spatial UI experiments, organised as a living library.",
+    "tags": ["XR", "Design patterns"],
+    "slides": [
+      "index images/placeholder-10.png",
+      "index images/placeholder-10.png",
+      "index images/placeholder-10.png",
+      "index images/placeholder-10.png",
+      "index images/placeholder-10.png"
+    ],
+    "year": 2022,
+    "role": "Research, Systems Design",
+    "tools": "Figma, Unity prototypes, documentation"
+  },
+  {
+    "card": 12,
+    "src": "index images/placeholder-12.png",
+    "title": "Card 12 background",
+    "subtitle": "",
+    "tags": []
+  }
+]
+
