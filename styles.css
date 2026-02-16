@@ -52,13 +52,13 @@ body {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
-  gap: 32px;
-  margin-bottom: 32px;
+  gap: 20px;
+  margin-bottom: 16px;
   align-items: center;
 }
 
 .hero-text {
-  padding: 20px 24px;
+  padding: 20px 16px;
   min-height: clamp(180px, 32vw, 240px);
   border-radius: var(--radius-xl);
   background: linear-gradient(135deg, rgba(139, 91, 255, 0.28), transparent),

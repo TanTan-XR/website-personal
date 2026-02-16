@@ -4,7 +4,34 @@
     "src": "index images/Frame 2 2.png",
     "title": "Hero background",
     "subtitle": "Backdrop for 'Hey, this is Tan'",
-    "tags": ["hero", "background"]
+    "tags": ["hero", "background"],
+    "socialLinks": [
+      {
+        "id": "instagram",
+        "label": "Instagram",
+        "url": "https://instagram.com/",
+        "handle": "@your.ig.handle"
+      },
+      {
+        "id": "x",
+        "label": "X (Twitter)",
+        "url": "https://x.com/",
+        "handle": "@your_x_handle"
+      },
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/",
+        "handle": "/in/your-linkedin"
+      },
+      {
+        "id": "youtube",
+        "label": "YouTube",
+        "url": "https://youtube.com/",
+        "handle": "@your_youtube_channel"
+      }
+    ],
+    "cvUrl": "Tan-CV.pdf"
   },
   {
     "card": 2,

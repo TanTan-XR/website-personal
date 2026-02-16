@@ -136,8 +136,8 @@
           </span>
         </a>
 
-        <!-- Tile 9: Contact / CV -->
-        <a href="#" class="tile tile-sm contact-tile">
+        <!-- Tile 9: Contact / CV – Card 11 -->
+        <a href="#" class="tile tile-sm contact-tile" id="card-11">
           <h3>Contact & Info</h3>
           <p>Available for collaborations, commissions, and residencies.</p>
           <ul class="contact-list">
@@ -167,26 +167,7 @@
           </button>
           <p class="social-modal-eyebrow">Connect</p>
           <h2 class="social-modal-title">Find Tan online</h2>
-          <ul class="social-modal-list">
-            <li>
-              <a href="https://instagram.com/" target="_blank" rel="noreferrer">
-                <span class="social-label">Instagram</span>
-                <span class="social-handle">@your.ig.handle</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/" target="_blank" rel="noreferrer">
-                <span class="social-label">X (Twitter)</span>
-                <span class="social-handle">@your_x_handle</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-                <span class="social-label">LinkedIn</span>
-                <span class="social-handle">/in/your-linkedin</span>
-              </a>
-            </li>
-          </ul>
+          <ul class="social-modal-list"></ul>
           <a class="social-modal-cv" href="Tan-CV.pdf" download>
             <span>Download CV</span>
           </a>
@@ -262,6 +243,8 @@
         const socialModal = document.getElementById("social-modal");
         const heroCircle = document.getElementById("hero-visual");
         const eniModal = document.getElementById("eni-modal");
+        const socialListEl = socialModal && socialModal.querySelector(".social-modal-list");
+        const socialCvEl = socialModal && socialModal.querySelector(".social-modal-cv");
         const card3Modal = document.getElementById("card3-modal");
         const card3Tile = document.getElementById("card-3");
         const card5Tile = document.getElementById("card-5");
@@ -270,6 +253,7 @@
         const card8Tile = document.getElementById("card-8");
         const card9Tile = document.getElementById("card-9");
         const card10Tile = document.getElementById("card-10");
+        const card11Tile = document.getElementById("card-11");
         if (!heroCard || !socialModal || !heroCircle || !eniModal || !card3Modal)
           return;
 
@@ -387,6 +371,12 @@
         if (card9Tile) {
           card9Tile.addEventListener("click", (e) => openCardModal(9, e));
         }
+        if (card11Tile) {
+          card11Tile.addEventListener("click", (e) => {
+            e.preventDefault();
+            openSocialModal();
+          });
+        }
 
         socialModal.addEventListener("click", (event) => {
           if (event.target === socialModal) {
@@ -493,6 +483,27 @@
               indexImagesCache = items;
               items.forEach((item) => {
                 if (!item || typeof item.card === "undefined") return;
+
+                // Card 1: hero & social links
+                if (item.card === 1 && socialListEl) {
+                  socialListEl.innerHTML = "";
+                  if (Array.isArray(item.socialLinks)) {
+                    item.socialLinks.forEach((link) => {
+                      if (!link || !link.url) return;
+                      const li = document.createElement("li");
+                      li.innerHTML = `
+                        <a href="${link.url}" target="_blank" rel="noreferrer">
+                          <span class="social-label">${link.label || ""}</span>
+                          <span class="social-handle">${link.handle || ""}</span>
+                        </a>
+                      `;
+                      socialListEl.appendChild(li);
+                    });
+                  }
+                  if (socialCvEl && item.cvUrl) {
+                    socialCvEl.href = item.cvUrl;
+                  }
+                }
 
                 if (item.card === 3) {
                   const flagshipTile = document.getElementById("card-3");
