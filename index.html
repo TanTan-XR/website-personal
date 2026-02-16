@@ -54,8 +54,8 @@
           <div class="flagship-thumb"></div>
         </a>
 
-        <!-- Tile 2: About / bio (1x1) -->
-        <a href="#" class="tile tile-sm about-tile">
+        <!-- Tile 2: About / bio (1x1) – Card 4 -->
+        <a href="#" class="tile tile-sm about-tile" id="card-4">
           <div class="avatar-orbit">
             <div class="avatar-circle"></div>
           </div>
@@ -147,8 +147,8 @@
           </ul>
         </a>
 
-        <!-- Tile 10: Sketchbook -->
-        <a href="#" class="tile tile-wide">
+        <!-- Tile 10: Sketchbook (Card 12) -->
+        <a href="#" class="tile tile-wide" id="card-12">
           <div class="thumb thumb-5 thumb-large"></div>
           <div class="tile-text">
             <h3>Process and Insights</h3>
@@ -243,7 +243,18 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="link-confirm-overlay" id="link-confirm-modal">
+        <div class="link-confirm-modal">
+          <button class="link-confirm-close" type="button" aria-label="Close">✕</button>
+          <p class="link-confirm-message">This link will open in a new tab.</p>
+          <div class="link-confirm-actions">
+            <button type="button" class="link-confirm-cancel">Cancel</button>
+            <button type="button" class="link-confirm-open">Open in new tab</button>
+          </div>
         </div>
+      </div>
     </div>
     <script>
       (function () {
@@ -277,6 +288,11 @@
         const card3YearEl = document.getElementById("card3-year");
         const card3RoleEl = document.getElementById("card3-role");
         const card3ToolsEl = document.getElementById("card3-tools");
+        const linkConfirmModal = document.getElementById("link-confirm-modal");
+        const linkConfirmCloseBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-close");
+        const linkConfirmCancelBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-cancel");
+        const linkConfirmOpenBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-open");
+        let pendingLinkUrl = null;
         let indexImagesCache = null;
         let card3Slides = [];
         let card3SlideIndex = 0;
@@ -319,6 +335,38 @@
           document.body.style.overflow = "";
         }
 
+        function openLinkConfirmModal(href) {
+          pendingLinkUrl = href;
+          if (linkConfirmModal) {
+            linkConfirmModal.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+          }
+        }
+
+        function closeLinkConfirmModal() {
+          pendingLinkUrl = null;
+          if (linkConfirmModal) {
+            linkConfirmModal.classList.remove("is-open");
+            document.body.style.overflow = "";
+          }
+        }
+
+        if (linkConfirmModal) {
+          linkConfirmModal.addEventListener("click", (e) => {
+            if (e.target === linkConfirmModal) closeLinkConfirmModal();
+          });
+        }
+        if (linkConfirmCloseBtn) linkConfirmCloseBtn.addEventListener("click", closeLinkConfirmModal);
+        if (linkConfirmCancelBtn) linkConfirmCancelBtn.addEventListener("click", closeLinkConfirmModal);
+        if (linkConfirmOpenBtn) {
+          linkConfirmOpenBtn.addEventListener("click", () => {
+            if (pendingLinkUrl) {
+              window.open(pendingLinkUrl, "_blank", "noopener,noreferrer");
+            }
+            closeLinkConfirmModal();
+          });
+        }
+
         heroCard.addEventListener("click", openSocialModal);
         heroCircle.addEventListener("click", openEniModal);
         if (card3Tile) {
@@ -338,9 +386,6 @@
         }
         if (card9Tile) {
           card9Tile.addEventListener("click", (e) => openCardModal(9, e));
-        }
-        if (card10Tile) {
-          card10Tile.addEventListener("click", (e) => openCardModal(10, e));
         }
 
         socialModal.addEventListener("click", (event) => {
@@ -388,7 +433,7 @@
         }
 
         window.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
+            if (event.key === "Escape") {
             if (socialModal.classList.contains("is-open")) {
               closeSocialModal();
             }
@@ -397,6 +442,9 @@
             }
             if (card3Modal.classList.contains("is-open")) {
               closeCard3Modal();
+            }
+            if (linkConfirmModal && linkConfirmModal.classList.contains("is-open")) {
+              closeLinkConfirmModal();
             }
           }
         });
@@ -478,14 +526,55 @@
                   return;
                 }
 
-                // Cards 5, 6, 7, 9, 10 – homepage tiles only
+                if (item.card === 4) {
+                  const aboutTile = document.getElementById("card-4");
+                  if (aboutTile) {
+                    aboutTile.href = item.link || "#";
+                    if (item.link) {
+                      aboutTile.target = "_blank";
+                      aboutTile.rel = "noreferrer";
+                      aboutTile.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        openLinkConfirmModal(aboutTile.href);
+                      });
+                    }
+                    const titleEl = aboutTile.querySelector("h3");
+                    const bodyEl = aboutTile.querySelector("p");
+                    if (titleEl && item.title) titleEl.textContent = item.title;
+                    if (bodyEl && item.subtitle) bodyEl.textContent = item.subtitle;
+                  }
+                  return;
+                }
+
+                // Cards 5, 6, 7, 8, 9, 10, 12 – homepage tiles
                 const tile = document.getElementById("card-" + item.card);
                 if (!tile) return;
 
                 const titleEl = tile.querySelector("h3");
                 const bodyEl = tile.querySelector("p");
-                const thumbEl = tile.querySelector(".thumb, .thumb-large, .masonry");
+                const thumbEl = tile.querySelector(".thumb, .thumb-large");
                 const pillRow = tile.querySelector(".pill-row");
+
+                // Special handling for card 10 mosaic: apply image into each masonry cell
+                if (item.card === 10) {
+                  const masonry = tile.querySelector(".masonry");
+                  if (masonry) {
+                    const cells = masonry.querySelectorAll(".masonry-cell");
+                    const mosaicImages =
+                      Array.isArray(item.mosaic) && item.mosaic.length > 0
+                        ? item.mosaic
+                        : Array.isArray(item.slides) && item.slides.length > 0
+                          ? item.slides
+                          : [item.src];
+                    cells.forEach((cell, idx) => {
+                      const src = mosaicImages[idx % mosaicImages.length];
+                      cell.style.backgroundImage = "url('" + src + "')";
+                      cell.style.backgroundSize = "cover";
+                      cell.style.backgroundPosition = "center";
+                      cell.style.backgroundRepeat = "no-repeat";
+                    });
+                  }
+                }
 
                 if (thumbEl && item.src) {
                   thumbEl.style.backgroundImage = "url('" + item.src + "')";
@@ -506,6 +595,15 @@
                     span.className = "pill subtle";
                     span.textContent = tag;
                     pillRow.appendChild(span);
+                  });
+                }
+                if (item.link) {
+                  tile.href = item.link;
+                  tile.target = "_blank";
+                  tile.rel = "noreferrer";
+                  tile.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    openLinkConfirmModal(tile.href);
                   });
                 }
               });

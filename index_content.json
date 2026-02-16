@@ -31,17 +31,23 @@
     "tools": "Unity / Unreal, TouchDesigner, custom shaders"
   },
   {
+    "card": 4,
+    "title": "About",
+    "subtitle": "XXR artist & creative technologist exploring presence, memory, and speculative futures.",
+    "link": "about.html"
+  },
+  {
     "card": 5,
-    "src": "index images/placeholder-5.png",
+    "src": "index images/11.png",
     "title": "Interactive Timeline with AR features",
     "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
     "tags": ["AR", "Site-specific"],
     "slides": [
-      "index images/placeholder-5.png",
-      "index images/placeholder-5.png",
-      "index images/placeholder-5.png",
-      "index images/placeholder-5.png",
-      "index images/placeholder-5.png"
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png"
     ],
     "year": 2025,
     "role": "Design, Interaction, Prototyping",
@@ -49,16 +55,16 @@
   },
   {
     "card": 6,
-    "src": "index images/placeholder-6.png",
+    "src": "index images/Frame 2 2.png",
     "title": "Insect library in VR/MR",
     "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
     "tags": ["Installation", "Sound"],
     "slides": [
-      "index images/placeholder-6.png",
-      "index images/placeholder-6.png",
-      "index images/placeholder-6.png",
-      "index images/placeholder-6.png",
-      "index images/placeholder-6.png"
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png"
     ],
     "year": 2024,
     "role": "Concept, Experience Design",
@@ -66,16 +72,16 @@
   },
   {
     "card": 7,
-    "src": "index images/placeholder-7.png",
+    "src": "index images/11.png",
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
     "tags": ["VR", "Narrative"],
     "slides": [
-      "index images/placeholder-7.png",
-      "index images/placeholder-7.png",
-      "index images/placeholder-7.png",
-      "index images/placeholder-7.png",
-      "index images/placeholder-7.png"
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png"
     ],
     "year": 2023,
     "role": "Creative Direction, Story Design",
@@ -83,16 +89,16 @@
   },
   {
     "card": 8,
-    "src": "index images/placeholder-8.png",
+    "src": "index images/Frame 2 2.png",
     "title": "VR Chapel",
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
     "tags": ["MR", "Performance"],
     "slides": [
-      "index images/placeholder-8.png",
-      "index images/placeholder-8.png",
-      "index images/placeholder-8.png",
-      "index images/placeholder-8.png",
-      "index images/placeholder-8.png"
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png"
     ],
     "year": 2022,
     "role": "Concept, Spatial Design",
@@ -100,16 +106,16 @@
   },
   {
     "card": 9,
-    "src": "index images/placeholder-9.png",
+    "src": "index images/11.png",
     "title": "Workshops and Lectures",
     "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
     "tags": ["Teaching", "XR"],
     "slides": [
-      "index images/placeholder-9.png",
-      "index images/placeholder-9.png",
-      "index images/placeholder-9.png",
-      "index images/placeholder-9.png",
-      "index images/placeholder-9.png"
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png"
     ],
     "year": 2021,
     "role": "Facilitator, Speaker",
@@ -117,16 +123,23 @@
   },
   {
     "card": 10,
-    "src": "index images/placeholder-10.png",
+    "src": "index images/Frame 2 2.png",
     "title": "An interactive archive for XR design patterns",
     "subtitle": "Reusable interaction patterns and spatial UI experiments, organised as a living library.",
     "tags": ["XR", "Design patterns"],
+    "link": "archive.html",
+    "mosaic": [
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png"
+    ],
     "slides": [
-      "index images/placeholder-10.png",
-      "index images/placeholder-10.png",
-      "index images/placeholder-10.png",
-      "index images/placeholder-10.png",
-      "index images/placeholder-10.png"
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png",
+      "index images/11.png",
+      "index images/Frame 2 2.png"
     ],
     "year": 2022,
     "role": "Research, Systems Design",
@@ -134,10 +147,11 @@
   },
   {
     "card": 12,
-    "src": "index images/placeholder-12.png",
-    "title": "Card 12 background",
-    "subtitle": "",
-    "tags": []
+    "src": "index images/11.png",
+    "title": "Process and Insights",
+    "subtitle": "A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that reveal how the work comes together.",
+    "tags": [],
+    "link": "process.html"
   }
 ]
 
