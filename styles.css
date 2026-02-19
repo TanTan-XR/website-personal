@@ -992,6 +992,15 @@ body {
   background-repeat: no-repeat;
   background-image: linear-gradient(135deg, #10152e, #050712);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.flagship-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
 }
 
 .tile-wide {

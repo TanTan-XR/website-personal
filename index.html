@@ -51,7 +51,7 @@
             A spatial companion that visualises invisible pollution levels around you in real time.
           </p>
           <span class="tile-cta">View case study →</span>
-          <div class="flagship-thumb"></div>
+          <div class="flagship-thumb" id="flagship-thumb"></div>
         </a>
 
         <!-- Tile 2: About / bio (1x1) – Card 4 -->
@@ -514,7 +514,13 @@
                     const homepageTagRow = flagshipTile.querySelector(".card3-tag-row");
 
                     if (thumb && item.src) {
-                      thumb.style.backgroundImage = "url('" + encodeURI(item.src) + "')";
+                      thumb.style.backgroundImage = "none";
+                      thumb.innerHTML = "";
+                      const img = document.createElement("img");
+                      img.src = encodeURI(item.src) + "?v=" + Date.now();
+                      img.alt = item.title || "";
+                      img.className = "flagship-thumb-img";
+                      thumb.appendChild(img);
                     }
                     if (titleEl && item.title) {
                       titleEl.textContent = item.title;
