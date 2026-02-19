@@ -1,7 +1,7 @@
 [
   {
     "card": 1,
-    "src": "index images/Frame 2 2.png",
+    "src": "index images/XRAir/XRAir1-1.png",
     "title": "Hero background",
     "subtitle": "Backdrop for 'Hey, this is Tan'",
     "tags": ["hero", "background"],
@@ -35,21 +35,19 @@
   },
   {
     "card": 2,
-    "src": "index images/11.png",
+    "src": "index images/XRAir/XRAir1.png",
     "title": "Hero circle texture",
     "subtitle": "Visual for card 2",
     "tags": ["hero", "circle"]
   },
   {
     "card": 3,
-    "src": "index images/11.png",
+    "src": "index images/XRAir/XRAir1.png",
     "slides": [
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png"
-    ],
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1-2.png"
+       ],
     "title": "Mixed Reality App to Read Air Quality",
     "subtitle": "A spatial companion that reveals the invisible data on air quality in real time and in precise locations.",
     "tags": ["WebXR", "Environmental Data", "three.js"],
@@ -65,16 +63,16 @@
   },
   {
     "card": 5,
-    "src": "index images/11.png",
+    "src": "index images/XRAir/XRAir1.png",
     "title": "Interactive Timeline with AR features",
     "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
     "tags": ["AR", "Site-specific"],
     "slides": [
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png"
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png"
     ],
     "year": 2025,
     "role": "Design, Interaction, Prototyping",
@@ -82,16 +80,16 @@
   },
   {
     "card": 6,
-    "src": "index images/Frame 2 2.png",
+    "src": "index images/XRAir/XRAir1-1.png",
     "title": "Insect library in VR/MR",
     "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
     "tags": ["Installation", "Sound"],
     "slides": [
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png"
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png"
     ],
     "year": 2024,
     "role": "Concept, Experience Design",
@@ -99,16 +97,16 @@
   },
   {
     "card": 7,
-    "src": "index images/11.png",
+    "src": "index images/XRAir/XRAir1.png",
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
     "tags": ["VR", "Narrative"],
     "slides": [
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png"
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png"
     ],
     "year": 2023,
     "role": "Creative Direction, Story Design",
@@ -116,16 +114,16 @@
   },
   {
     "card": 8,
-    "src": "index images/Frame 2 2.png",
+    "src": "index images/XRAir/XRAir1-1.png",
     "title": "VR Chapel",
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
     "tags": ["MR", "Performance"],
     "slides": [
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png"
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png"
     ],
     "year": 2022,
     "role": "Concept, Spatial Design",
@@ -133,16 +131,16 @@
   },
   {
     "card": 9,
-    "src": "index images/11.png",
+    "src": "index images/XRAir/XRAir1.png",
     "title": "Workshops and Lectures",
     "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
     "tags": ["Teaching", "XR"],
     "slides": [
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png"
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png"
     ],
     "year": 2021,
     "role": "Facilitator, Speaker",
@@ -150,23 +148,23 @@
   },
   {
     "card": 10,
-    "src": "index images/Frame 2 2.png",
+    "src": "index images/XRAir/XRAir1-1.png",
     "title": "An interactive archive for XR design patterns",
     "subtitle": "Reusable interaction patterns and spatial UI experiments, organised as a living library.",
     "tags": ["XR", "Design patterns"],
     "link": "archive.html",
     "mosaic": [
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png"
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png"
     ],
     "slides": [
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png",
-      "index images/11.png",
-      "index images/Frame 2 2.png"
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png",
+      "index images/XRAir/XRAir1.png",
+      "index images/XRAir/XRAir1-1.png"
     ],
     "year": 2022,
     "role": "Research, Systems Design",
@@ -174,7 +172,7 @@
   },
   {
     "card": 12,
-    "src": "index images/11.png",
+    "src": "index images/XRAir/XRAir1.png",
     "title": "Process and Insights",
     "subtitle": "A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that reveal how the work comes together.",
     "tags": [],
