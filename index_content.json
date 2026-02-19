@@ -44,10 +44,12 @@
     "card": 3,
     "src": "index images/XRAir/XRAir1.png",
     "slides": [
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1-2.png"
-       ],
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "XR Air · hero view" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "XR Air · side detail" },
+      { "src": "index images/XRAir/XRAir1-2.png", "caption": "XR Air · interface close‑up" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "XR Air · room-scale context" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "XR Air · environmental overlay" }
+    ],
     "title": "Mixed Reality App to Read Air Quality",
     "subtitle": "A spatial companion that reveals the invisible data on air quality in real time and in precise locations.",
     "tags": ["WebXR", "Environmental Data", "three.js"],
@@ -68,11 +70,11 @@
     "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
     "tags": ["AR", "Site-specific"],
     "slides": [
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png"
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Timeline · anchor in physical space" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Timeline · scrub through story beats" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Timeline · layered annotations" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Timeline · alternate perspective" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Timeline · spatial overview" }
     ],
     "year": 2025,
     "role": "Design, Interaction, Prototyping",
@@ -85,11 +87,11 @@
     "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
     "tags": ["Installation", "Sound"],
     "slides": [
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png"
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Insect library · specimen view" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Insect library · scale and rotation" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Insect library · material detail" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Insect library · spatial arrangement" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Insect library · sound-reactive mode" }
     ],
     "year": 2024,
     "role": "Concept, Experience Design",
@@ -102,11 +104,11 @@
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
     "tags": ["VR", "Narrative"],
     "slides": [
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png"
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Mars · orbital overview" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Mars · surface perspective" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Mars · elevation and terrain" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Mars · wayfinding markers" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Mars · narrative moment" }
     ],
     "year": 2023,
     "role": "Creative Direction, Story Design",
@@ -119,11 +121,11 @@
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
     "tags": ["MR", "Performance"],
     "slides": [
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png"
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "VR Chapel · entrance view" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "VR Chapel · ambient lighting" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "VR Chapel · seating layout" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "VR Chapel · ritual interaction" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "VR Chapel · performance moment" }
     ],
     "year": 2022,
     "role": "Concept, Spatial Design",
@@ -136,11 +138,11 @@
     "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
     "tags": ["Teaching", "XR"],
     "slides": [
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png"
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Workshops · group session" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Workshops · live demo" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Workshops · participant testing" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Workshops · whiteboard mapping" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Workshops · Q&A and discussion" }
     ],
     "year": 2021,
     "role": "Facilitator, Speaker",
@@ -160,11 +162,11 @@
       "index images/XRAir/XRAir1.png"
     ],
     "slides": [
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png"
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · grid of interactions" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · detail card" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · navigation state" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · filter and search" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · pattern in context" }
     ],
     "year": 2022,
     "role": "Research, Systems Design",

@@ -200,7 +200,9 @@
             <p id="card3-slide-subtitle"></p>
           </div>
           <div class="card3-slide-frame">
-            <img id="card3-slide-image" class="card3-slide-image" src="" alt="" loading="lazy" />
+            <div class="card3-slide-image-wrap">
+              <img id="card3-slide-image" class="card3-slide-image" src="" alt="" loading="lazy" />
+            </div>
             <button class="card3-nav card3-nav-prev" type="button" aria-label="Previous slide">
               ‹
             </button>
@@ -208,6 +210,7 @@
               ›
             </button>
             <div class="card3-dots" id="card3-dots"></div>
+            <p class="card3-slide-caption" id="card3-slide-caption"></p>
           </div>
           <div class="card3-bottom-meta">
             <div class="card3-bottom-meta-item">
@@ -272,6 +275,7 @@
         const card3YearEl = document.getElementById("card3-year");
         const card3RoleEl = document.getElementById("card3-role");
         const card3ToolsEl = document.getElementById("card3-tools");
+        const card3CaptionEl = document.getElementById("card3-slide-caption");
         const linkConfirmModal = document.getElementById("link-confirm-modal");
         const linkConfirmCloseBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-close");
         const linkConfirmCancelBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-cancel");
@@ -281,6 +285,29 @@
         let card3Slides = [];
         let card3SlideIndex = 0;
         let activeCardId = 3;
+
+        function normalizeSlides(rawSlides, fallbackSrc) {
+          if (Array.isArray(rawSlides) && rawSlides.length > 0) {
+            return rawSlides
+              .map((entry) => {
+                if (!entry) return null;
+                if (typeof entry === "string") {
+                  return { src: entry, caption: "" };
+                }
+                const src = entry.src || fallbackSrc || "";
+                if (!src) return null;
+                return {
+                  src,
+                  caption: entry.caption || ""
+                };
+              })
+              .filter(Boolean);
+          }
+          if (fallbackSrc) {
+            return [{ src: fallbackSrc, caption: "" }];
+          }
+          return [];
+        }
 
         function openSocialModal() {
           socialModal.classList.add("is-open");
@@ -581,7 +608,9 @@
                       Array.isArray(item.mosaic) && item.mosaic.length > 0
                         ? item.mosaic
                         : Array.isArray(item.slides) && item.slides.length > 0
-                          ? item.slides
+                          ? item.slides.map((entry) =>
+                              typeof entry === "string" ? entry : entry && entry.src ? entry.src : ""
+                            ).filter(Boolean)
                           : [item.src];
                     cells.forEach((cell, idx) => {
                       const src = mosaicImages[idx % mosaicImages.length];
@@ -635,13 +664,7 @@
           const cardData = indexImagesCache.find((item) => item.card === activeCardId);
           if (!cardData) return;
 
-          if (Array.isArray(cardData.slides) && cardData.slides.length > 0) {
-            card3Slides = cardData.slides;
-          } else if (cardData.src) {
-            card3Slides = [cardData.src];
-          } else {
-            card3Slides = [];
-          }
+          card3Slides = normalizeSlides(cardData.slides, cardData.src);
           card3SlideIndex = 0;
           buildCard3Dots();
           showCard3Slide(0);
@@ -678,8 +701,13 @@
           if (!card3ImageEl || card3Slides.length === 0) return;
           const safeIndex = ((index % card3Slides.length) + card3Slides.length) % card3Slides.length;
           card3SlideIndex = safeIndex;
-          const src = card3Slides[safeIndex];
-          card3ImageEl.src = encodeURI(src);
+          const current = card3Slides[safeIndex];
+          card3ImageEl.src = encodeURI(current.src);
+          if (card3CaptionEl) {
+            const captionText = current.caption || "";
+            card3CaptionEl.textContent = captionText;
+            card3CaptionEl.style.display = captionText ? "" : "none";
+          }
           updateCard3Dots();
         }
 
