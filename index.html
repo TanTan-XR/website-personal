@@ -444,7 +444,7 @@
 
         function loadEniImages() {
           if (!eniGrid) return;
-          fetch("eni_images.json")
+          fetch("eni_images.json", { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {
               if (!Array.isArray(items)) return;
@@ -460,7 +460,7 @@
                 const title = item.title || "";
                 const id = item.id || "";
                 card.innerHTML = `
-                  <img class="eni-thumb" src="${item.src}" alt="${title}" loading="lazy" />
+                  <img class="eni-thumb" src="${encodeURI(item.src)}" alt="${title}" loading="lazy" />
                   <div class="eni-body">
                     <p class="eni-title">${title}</p>
                     <p class="eni-id">#${id}</p>
@@ -476,7 +476,7 @@
         }
 
         function loadIndexImages() {
-          fetch("index_content.json")
+          fetch("index_content.json", { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {
               if (!Array.isArray(items)) return;
@@ -514,7 +514,7 @@
                     const homepageTagRow = flagshipTile.querySelector(".card3-tag-row");
 
                     if (thumb && item.src) {
-                      thumb.style.backgroundImage = "url('" + item.src + "')";
+                      thumb.style.backgroundImage = "url('" + encodeURI(item.src) + "')";
                     }
                     if (titleEl && item.title) {
                       titleEl.textContent = item.title;
@@ -579,7 +579,7 @@
                           : [item.src];
                     cells.forEach((cell, idx) => {
                       const src = mosaicImages[idx % mosaicImages.length];
-                      cell.style.backgroundImage = "url('" + src + "')";
+                      cell.style.backgroundImage = "url('" + encodeURI(src) + "')";
                       cell.style.backgroundSize = "cover";
                       cell.style.backgroundPosition = "center";
                       cell.style.backgroundRepeat = "no-repeat";
@@ -588,7 +588,7 @@
                 }
 
                 if (thumbEl && item.src) {
-                  thumbEl.style.backgroundImage = "url('" + item.src + "')";
+                  thumbEl.style.backgroundImage = "url('" + encodeURI(item.src) + "')";
                   thumbEl.style.backgroundSize = "cover";
                   thumbEl.style.backgroundPosition = "center";
                 }
@@ -673,7 +673,7 @@
           const safeIndex = ((index % card3Slides.length) + card3Slides.length) % card3Slides.length;
           card3SlideIndex = safeIndex;
           const src = card3Slides[safeIndex];
-          card3ImageEl.src = src;
+          card3ImageEl.src = encodeURI(src);
           updateCard3Dots();
         }
 
