@@ -42,13 +42,13 @@
   },
   {
     "card": 3,
-    "src": "index images/XRAir/XRAir1.png",
+    "src": "index images/XRAir/1.png",
     "slides": [
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "XR Air · hero view" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "XR Air · side detail" },
-      { "src": "index images/XRAir/XRAir1-2.png", "caption": "XR Air · interface close‑up" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "XR Air · room-scale context" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "XR Air · environmental overlay" }
+      { "src": "index images/XRAir/1.png", "caption": "XR Air · hero view" },
+      { "src": "index images/XRAir/2.png", "caption": "XR Air · side detail" },
+      { "src": "index images/XRAir/3.png", "caption": "XR Air · interface close-up" },
+      { "src": "index images/XRAir/4.png", "caption": "XR Air · room-scale context" },
+      { "src": "index images/XRAir/5.png", "caption": "XR Air · environmental overlay" }
     ],
     "title": "Mixed Reality App to Read Air Quality",
     "subtitle": "A spatial companion that reveals the invisible data on air quality in real time and in precise locations.",
