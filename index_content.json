@@ -27,8 +27,8 @@
       {
         "id": "youtube",
         "label": "YouTube",
-        "url": "https://youtube.com/",
-        "handle": "@your_youtube_channel"
+        "url": "https://www.youtube.com/@Tan_XR",
+        "handle": "@Tan_XR"
       }
     ],
     "cvUrl": "Tan CV.pdf"
@@ -65,16 +65,16 @@
   },
   {
     "card": 5,
-    "src": "index images/XRAir/XRAir1.png",
+    "src": "index images/bloomcity/Slide 16_9 - 3.png",
     "title": "Interactive Timeline with AR features",
     "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
     "tags": ["AR", "Site-specific"],
     "slides": [
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Timeline · anchor in physical space" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Timeline · scrub through story beats" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Timeline · layered annotations" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Timeline · alternate perspective" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Timeline · spatial overview" }
+      { "src": "index images/bloomcity/Slide 16_9 - 3.png", "caption": "Timeline · anchor in physical space" },
+      { "src": "index images/bloomcity/Slide 16_9 - 4.png", "caption": "Timeline · scrub through story beats" },
+      { "src": "index images/bloomcity/Slide 16_9 - 5.png", "caption": "Timeline · layered annotations" },
+      { "src": "index images/bloomcity/Slide 16_9 - 6.png", "caption": "Timeline · alternate perspective" },
+      { "src": "index images/bloomcity/Slide 16_9 - 7.png", "caption": "Timeline · spatial overview" }
     ],
     "year": 2025,
     "role": "Design, Interaction, Prototyping",

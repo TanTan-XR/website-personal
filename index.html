@@ -576,11 +576,7 @@
                     aboutTile.href = item.link || "#";
                     if (item.link) {
                       aboutTile.target = "_blank";
-                      aboutTile.rel = "noreferrer";
-                      aboutTile.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        openLinkConfirmModal(aboutTile.href);
-                      });
+                      aboutTile.rel = "noreferrer noopener";
                     }
                     const titleEl = aboutTile.querySelector("h3");
                     const bodyEl = aboutTile.querySelector("p");
