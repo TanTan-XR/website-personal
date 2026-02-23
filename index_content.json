@@ -99,16 +99,16 @@
   },
   {
     "card": 7,
-    "src": "index images/XRAir/XRAir1.png",
+    "src": "index images/mars/1.png",
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
     "tags": ["VR", "Narrative"],
     "slides": [
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Mars · orbital overview" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Mars · surface perspective" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Mars · elevation and terrain" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Mars · wayfinding markers" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Mars · narrative moment" }
+      { "src": "index images/mars/1.png", "caption": "Mars · orbital overview" },
+      { "src": "index images/mars/2.png", "caption": "Mars · surface perspective" },
+      { "src": "index images/mars/3.png", "caption": "Mars · elevation and terrain" },
+      { "src": "index images/mars/4.png", "caption": "Mars · wayfinding markers" },
+      { "src": "index images/mars/5.png", "caption": "Mars · narrative moment" }
     ],
     "year": 2023,
     "role": "Creative Direction, Story Design",
