@@ -508,6 +508,7 @@
             .then((items) => {
               if (!Array.isArray(items)) return;
               indexImagesCache = items;
+              const lazyThumbEntries = [];
               items.forEach((item) => {
                 if (!item || typeof item.card === "undefined") return;
 
@@ -544,9 +545,12 @@
                       thumb.style.backgroundImage = "none";
                       thumb.innerHTML = "";
                       const img = document.createElement("img");
-                      img.src = encodeURI(item.src) + "?v=" + Date.now();
+                      const imgSrc = encodeURI(item.src) + "?v=" + Date.now();
+                      img.src = imgSrc;
                       img.alt = item.title || "";
-                      img.className = "flagship-thumb-img";
+                      img.className = "flagship-thumb-img is-loading";
+                      img.loading = "lazy";
+                      img.onload = img.onerror = () => img.classList.remove("is-loading");
                       thumb.appendChild(img);
                     }
                     if (titleEl && item.title) {
@@ -595,7 +599,7 @@
                 const thumbEl = tile.querySelector(".thumb, .thumb-large");
                 const pillRow = tile.querySelector(".pill-row");
 
-                // Special handling for card 10 mosaic: apply image into each masonry cell
+                // Special handling for card 10 mosaic: store src on cells for lazy load
                 if (item.card === 10) {
                   const masonry = tile.querySelector(".masonry");
                   if (masonry) {
@@ -609,19 +613,18 @@
                             ).filter(Boolean)
                           : [item.src];
                     cells.forEach((cell, idx) => {
-                      const src = mosaicImages[idx % mosaicImages.length];
-                      cell.style.backgroundImage = "url('" + encodeURI(src) + "')";
-                      cell.style.backgroundSize = "cover";
-                      cell.style.backgroundPosition = "center";
-                      cell.style.backgroundRepeat = "no-repeat";
+                      const src = encodeURI(mosaicImages[idx % mosaicImages.length]);
+                      cell.dataset.src = src;
                     });
+                    lazyThumbEntries.push({ el: tile, mosaic: true });
                   }
                 }
 
-                if (thumbEl && item.src) {
-                  thumbEl.style.backgroundImage = "url('" + encodeURI(item.src) + "')";
-                  thumbEl.style.backgroundSize = "cover";
-                  thumbEl.style.backgroundPosition = "center";
+                if (thumbEl && item.src && item.card !== 10) {
+                  const src = encodeURI(item.src);
+                  thumbEl.dataset.src = src;
+                  thumbEl.classList.add("is-loading");
+                  lazyThumbEntries.push({ el: thumbEl });
                 }
                 if (titleEl && item.title) {
                   titleEl.textContent = item.title;
@@ -649,6 +652,51 @@
                   });
                 }
               });
+
+              // Lazy-load thumbnails when they enter the viewport
+              if (lazyThumbEntries.length > 0 && "IntersectionObserver" in window) {
+                const thumbObserver = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (!entry.isIntersecting) return;
+                      const target = entry.target;
+                      if (target.dataset.mosaic === "1") {
+                        const cells = target.querySelectorAll(".masonry-cell[data-src]");
+                        cells.forEach((cell) => {
+                          const src = cell.dataset.src;
+                          if (src) {
+                            cell.style.backgroundImage = "url('" + src + "')";
+                            cell.style.backgroundSize = "cover";
+                            cell.style.backgroundPosition = "center";
+                            cell.style.backgroundRepeat = "no-repeat";
+                          }
+                        });
+                        thumbObserver.unobserve(target);
+                      } else if (target.dataset.src) {
+                        const src = target.dataset.src;
+                        const img = new Image();
+                        img.onload = () => {
+                          target.style.backgroundImage = "url('" + src + "')";
+                          target.style.backgroundSize = "cover";
+                          target.style.backgroundPosition = "center";
+                          target.classList.remove("is-loading");
+                          thumbObserver.unobserve(target);
+                        };
+                        img.onerror = () => {
+                          target.classList.remove("is-loading");
+                          thumbObserver.unobserve(target);
+                        };
+                        img.src = src;
+                      }
+                    });
+                  },
+                  { rootMargin: "100px", threshold: 0.01 }
+                );
+                lazyThumbEntries.forEach(({ el, mosaic }) => {
+                  if (mosaic) el.dataset.mosaic = "1";
+                  thumbObserver.observe(el);
+                });
+              }
             })
             .catch(() => {
               // silently fail if JSON can't be loaded
@@ -698,6 +746,13 @@
           const safeIndex = ((index % card3Slides.length) + card3Slides.length) % card3Slides.length;
           card3SlideIndex = safeIndex;
           const current = card3Slides[safeIndex];
+          const wrap = card3ImageEl.closest(".card3-slide-image-wrap");
+          if (wrap) wrap.classList.add("is-loading");
+          card3ImageEl.classList.add("is-loading");
+          card3ImageEl.onload = card3ImageEl.onerror = () => {
+            card3ImageEl.classList.remove("is-loading");
+            if (wrap) wrap.classList.remove("is-loading");
+          };
           card3ImageEl.src = encodeURI(current.src);
           if (card3CaptionEl) {
             const captionText = current.caption || "";
@@ -705,6 +760,14 @@
             card3CaptionEl.style.display = captionText ? "" : "none";
           }
           updateCard3Dots();
+          // Preload adjacent slides for smoother navigation
+          [safeIndex - 1, safeIndex + 1].forEach((i) => {
+            const idx = ((i % card3Slides.length) + card3Slides.length) % card3Slides.length;
+            if (idx !== safeIndex && card3Slides[idx]) {
+              const preload = new Image();
+              preload.src = encodeURI(card3Slides[idx].src);
+            }
+          });
         }
 
         function stepCard3Slide(delta) {

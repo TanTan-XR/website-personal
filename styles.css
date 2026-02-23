@@ -686,6 +686,31 @@ body {
   display: block;
   object-fit: contain;
   object-position: center;
+  transition: opacity 0.25s ease;
+}
+
+.card3-slide-image.is-loading {
+  opacity: 0.4;
+}
+
+.card3-slide-image-wrap.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(13, 19, 40, 0.6) 0%,
+    rgba(20, 30, 70, 0.5) 40%,
+    rgba(13, 19, 40, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  animation: slide-shimmer 1.2s ease-in-out infinite;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+@keyframes slide-shimmer {
+  to { background-position: 200% 0; }
 }
 
 .card3-slide-caption {
@@ -1026,6 +1051,11 @@ body {
   object-fit: cover;
   border-radius: 18px;
   display: block;
+  transition: opacity 0.25s ease;
+}
+
+.flagship-thumb-img.is-loading {
+  opacity: 0.5;
 }
 
 .tile-wide {
@@ -1107,6 +1137,31 @@ body {
   background-position: center;
   margin-bottom: 4px;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: opacity 0.25s ease;
+}
+
+.thumb.is-loading {
+  position: relative;
+}
+
+.thumb.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(
+    110deg,
+    rgba(13, 19, 40, 0.5) 0%,
+    rgba(30, 40, 80, 0.4) 40%,
+    rgba(13, 19, 40, 0.5) 100%
+  );
+  background-size: 200% 100%;
+  animation: thumb-shimmer 1.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes thumb-shimmer {
+  to { background-position: 200% 0; }
 }
 
 .thumb-1 {
