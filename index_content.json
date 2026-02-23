@@ -82,16 +82,16 @@
   },
   {
     "card": 6,
-    "src": "index images/XRAir/XRAir1-1.png",
+    "src": "index images/InsectInventory/1.png",
     "title": "Insect library in VR/MR",
     "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
     "tags": ["Installation", "Sound"],
     "slides": [
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Insect library · specimen view" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Insect library · scale and rotation" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Insect library · material detail" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Insect library · spatial arrangement" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Insect library · sound-reactive mode" }
+      { "src": "index images/InsectInventory/1.png", "caption": "Insect library · specimen view" },
+      { "src": "index images/InsectInventory/2.png", "caption": "Insect library · scale and rotation" },
+      { "src": "index images/InsectInventory/3.png", "caption": "Insect library · material detail" },
+      { "src": "index images/InsectInventory/4.png", "caption": "Insect library · spatial arrangement" },
+      { "src": "index images/InsectInventory/5.png", "caption": "Insect library · sound-reactive mode" }
     ],
     "year": 2024,
     "role": "Concept, Experience Design",
