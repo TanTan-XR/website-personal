@@ -99,16 +99,16 @@
   },
   {
     "card": 7,
-    "src": "index images/mars/1.png",
+    "src": "index images/mars/mars-vr-01.png",
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
     "tags": ["VR", "Narrative"],
     "slides": [
-      { "src": "index images/mars/1.png", "caption": "Mars · orbital overview" },
-      { "src": "index images/mars/2.png", "caption": "Mars · surface perspective" },
-      { "src": "index images/mars/3.png", "caption": "Mars · elevation and terrain" },
-      { "src": "index images/mars/4.png", "caption": "Mars · wayfinding markers" },
-      { "src": "index images/mars/5.png", "caption": "Mars · narrative moment" }
+      { "src": "index images/mars/mars-vr-01.png", "caption": "Mars · orbital overview" },
+      { "src": "index images/mars/mars-vr-02.png", "caption": "Mars · surface perspective" },
+      { "src": "index images/mars/mars-vr-03.png", "caption": "Mars · elevation and terrain" },
+      { "src": "index images/mars/mars-vr-04.png", "caption": "Mars · wayfinding markers" },
+      { "src": "index images/mars/mars-vr-05.png", "caption": "Mars · narrative moment" }
     ],
     "year": 2023,
     "role": "Creative Direction, Story Design",
@@ -116,16 +116,16 @@
   },
   {
     "card": 8,
-    "src": "index images/chapel/1.png",
+    "src": "index images/chapel/chapel-vr-01.png",
     "title": "VR Chapel",
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
     "tags": ["MR", "Performance"],
     "slides": [
-      { "src": "index images/chapel/1.png", "caption": "VR Chapel · entrance view" },
-      { "src": "index images/chapel/2.png", "caption": "VR Chapel · ambient lighting" },
-      { "src": "index images/chapel/3.png", "caption": "VR Chapel · seating layout" },
-      { "src": "index images/chapel/4.png", "caption": "VR Chapel · ritual interaction" },
-      { "src": "index images/chapel/5.png", "caption": "VR Chapel · performance moment" }
+      { "src": "index images/chapel/chapel-vr-01.png", "caption": "VR Chapel · entrance view" },
+      { "src": "index images/chapel/chapel-vr-02.png", "caption": "VR Chapel · ambient lighting" },
+      { "src": "index images/chapel/chapel-vr-03.png", "caption": "VR Chapel · seating layout" },
+      { "src": "index images/chapel/chapel-vr-04.png", "caption": "VR Chapel · ritual interaction" },
+      { "src": "index images/chapel/chapel-vr-05.png", "caption": "VR Chapel · performance moment" }
     ],
     "year": 2022,
     "role": "Concept, Spatial Design",
