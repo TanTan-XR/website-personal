@@ -116,16 +116,16 @@
   },
   {
     "card": 8,
-    "src": "index images/XRAir/XRAir1-1.png",
+    "src": "index images/chapel/1.png",
     "title": "VR Chapel",
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
     "tags": ["MR", "Performance"],
     "slides": [
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "VR Chapel · entrance view" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "VR Chapel · ambient lighting" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "VR Chapel · seating layout" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "VR Chapel · ritual interaction" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "VR Chapel · performance moment" }
+      { "src": "index images/chapel/1.png", "caption": "VR Chapel · entrance view" },
+      { "src": "index images/chapel/2.png", "caption": "VR Chapel · ambient lighting" },
+      { "src": "index images/chapel/3.png", "caption": "VR Chapel · seating layout" },
+      { "src": "index images/chapel/4.png", "caption": "VR Chapel · ritual interaction" },
+      { "src": "index images/chapel/5.png", "caption": "VR Chapel · performance moment" }
     ],
     "year": 2022,
     "role": "Concept, Spatial Design",
