@@ -42,7 +42,7 @@
   },
   {
     "card": 3,
-    "src": "index images/XRAir/1.png",
+    "src": "index images/ThumbnailImages/card3.png",
     "slides": [
       { "src": "index images/XRAir/1.png", "caption": "XR Air · hero view" },
       { "src": "index images/XRAir/2.png", "caption": "XR Air · side detail" },
@@ -65,7 +65,7 @@
   },
   {
     "card": 5,
-    "src": "index images/bloomcity/Slide 16_9 - 3.png",
+    "src": "index images/ThumbnailImages/card5.png",
     "title": "Interactive Timeline with AR features",
     "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
     "tags": ["AR", "Site-specific"],
@@ -82,7 +82,7 @@
   },
   {
     "card": 6,
-    "src": "index images/InsectInventory/1.png",
+    "src": "index images/ThumbnailImages/card6.png",
     "title": "Insect library in VR/MR",
     "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
     "tags": ["Installation", "Sound"],
@@ -99,7 +99,7 @@
   },
   {
     "card": 7,
-    "src": "index images/Mars/mars-vr-01.png",
+    "src": "index images/ThumbnailImages/card7.png",
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
     "tags": ["VR", "Narrative"],
@@ -116,7 +116,7 @@
   },
   {
     "card": 8,
-    "src": "index images/Chapel/chapel-vr-01.png",
+    "src": "index images/ThumbnailImages/card8.png",
     "title": "VR Chapel",
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
     "tags": ["MR", "Performance"],
@@ -133,7 +133,7 @@
   },
   {
     "card": 9,
-    "src": "index images/FellowBot/fellowbot-01.png",
+    "src": "index images/ThumbnailImages/card9.png",
     "title": "Workshops and Lectures",
     "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
     "tags": ["Teaching", "XR"],
