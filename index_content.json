@@ -133,16 +133,16 @@
   },
   {
     "card": 9,
-    "src": "index images/XRAir/XRAir1.png",
+    "src": "index images/FellowBot/fellowbot-01.png",
     "title": "Workshops and Lectures",
     "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
     "tags": ["Teaching", "XR"],
     "slides": [
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Workshops · group session" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Workshops · live demo" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Workshops · participant testing" },
-      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Workshops · whiteboard mapping" },
-      { "src": "index images/XRAir/XRAir1.png",   "caption": "Workshops · Q&A and discussion" }
+      { "src": "index images/FellowBot/fellowbot-01.png", "caption": "Workshops · group session" },
+      { "src": "index images/FellowBot/fellowbot-02.png", "caption": "Workshops · live demo" },
+      { "src": "index images/FellowBot/fellowbot-03.png", "caption": "Workshops · participant testing" },
+      { "src": "index images/FellowBot/fellowbot-04.png", "caption": "Workshops · whiteboard mapping" },
+      { "src": "index images/FellowBot/fellowbot-05.png", "caption": "Workshops · Q&A and discussion" }
     ],
     "year": 2021,
     "role": "Facilitator, Speaker",
