@@ -156,10 +156,10 @@
     "tags": ["XR", "Design patterns"],
     "link": "archive.html",
     "mosaic": [
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png",
-      "index images/XRAir/XRAir1-1.png",
-      "index images/XRAir/XRAir1.png"
+      "index images/ThumbnailImages/card101.png",
+      "index images/ThumbnailImages/card102.png",
+      "index images/ThumbnailImages/card103.png",
+      "index images/ThumbnailImages/card104.png"
     ],
     "slides": [
       { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · grid of interactions" },
