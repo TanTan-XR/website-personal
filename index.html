@@ -100,12 +100,7 @@
 
         <!-- Tile 6: Process / experiments (2x1 wide) – Card 10 -->
         <a href="#" class="tile tile-wide" id="card-10">
-          <div class="masonry">
-            <div class="masonry-cell"></div>
-            <div class="masonry-cell"></div>
-            <div class="masonry-cell"></div>
-            <div class="masonry-cell"></div>
-          </div>
+          <div class="thumb thumb-large"></div>
           <div class="tile-text">
             <h3>An interactive archive for XR design patterns</h3>
             <p>Reusable interaction patterns and spatial UI experiments, organised as a living library.</p>
@@ -585,28 +580,7 @@
                 const thumbEl = tile.querySelector(".thumb, .thumb-large");
                 const pillRow = tile.querySelector(".pill-row");
 
-                // Special handling for card 10 mosaic: store src on cells for lazy load
-                if (item.card === 10) {
-                  const masonry = tile.querySelector(".masonry");
-                  if (masonry) {
-                    const cells = masonry.querySelectorAll(".masonry-cell");
-                    const mosaicImages =
-                      Array.isArray(item.mosaic) && item.mosaic.length > 0
-                        ? item.mosaic
-                        : Array.isArray(item.slides) && item.slides.length > 0
-                          ? item.slides.map((entry) =>
-                              typeof entry === "string" ? entry : entry && entry.src ? entry.src : ""
-                            ).filter(Boolean)
-                          : [item.src];
-                    cells.forEach((cell, idx) => {
-                      const src = encodeURI(mosaicImages[idx % mosaicImages.length]);
-                      cell.dataset.src = src;
-                    });
-                    lazyThumbEntries.push({ el: tile, mosaic: true });
-                  }
-                }
-
-                if (thumbEl && item.src && item.card !== 10) {
+                if (thumbEl && item.src) {
                   const src = encodeURI(item.src);
                   thumbEl.dataset.src = src;
                   thumbEl.classList.add("is-loading");
@@ -646,19 +620,7 @@
                     entries.forEach((entry) => {
                       if (!entry.isIntersecting) return;
                       const target = entry.target;
-                      if (target.dataset.mosaic === "1") {
-                        const cells = target.querySelectorAll(".masonry-cell[data-src]");
-                        cells.forEach((cell) => {
-                          const src = cell.dataset.src;
-                          if (src) {
-                            cell.style.backgroundImage = "url('" + src + "')";
-                            cell.style.backgroundSize = "cover";
-                            cell.style.backgroundPosition = "center";
-                            cell.style.backgroundRepeat = "no-repeat";
-                          }
-                        });
-                        thumbObserver.unobserve(target);
-                      } else if (target.dataset.src) {
+                      if (target.dataset.src) {
                         const src = target.dataset.src;
                         const img = new Image();
                         img.onload = () => {
@@ -678,8 +640,7 @@
                   },
                   { rootMargin: "100px", threshold: 0.01 }
                 );
-                lazyThumbEntries.forEach(({ el, mosaic }) => {
-                  if (mosaic) el.dataset.mosaic = "1";
+                lazyThumbEntries.forEach(({ el }) => {
                   thumbObserver.observe(el);
                 });
               }

@@ -1196,6 +1196,11 @@ body {
   border-radius: 18px;
 }
 
+#card-10 .thumb-large {
+  height: 180px;
+  flex: 0 0 220px;
+}
+
 .masonry {
   flex: 1.1;
   display: grid;
