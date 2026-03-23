@@ -59,9 +59,18 @@
   },
   {
     "card": 4,
-    "title": "About",
-    "subtitle": "XXR artist & creative technologist exploring presence, memory, and speculative futures.",
-    "link": "about.html"
+    "src": "index images/ThumbnailImages/card3.png",
+    "title": "Generative audio visual artwork in VVVV",
+    "subtitle": "An immersive generative piece combining real-time visuals, procedural motion, and reactive audio composition.",
+    "tags": ["Generative", "VVVV", "Audio-Visual"],
+    "slides": [
+      { "src": "index images/ThumbnailImages/card3.png", "caption": "Generative AV · still frame" },
+      { "src": "index images/XRAir/1.png", "caption": "Generative AV · reactive composition" },
+      { "src": "index images/XRAir/2.png", "caption": "Generative AV · motion and rhythm study" }
+    ],
+    "year": 2026,
+    "role": "Concept, Visual Programming, Sound Design",
+    "tools": "VVVV, custom shaders, real-time audio"
   },
   {
     "card": 5,

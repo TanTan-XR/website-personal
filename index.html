@@ -54,17 +54,15 @@
           <div class="flagship-thumb" id="flagship-thumb"></div>
         </a>
 
-        <!-- Tile 2: About / bio (1x1) – Card 4 -->
-        <a href="#" class="tile tile-sm about-tile" id="card-4">
-          <div class="avatar-orbit">
-            <div class="avatar-circle"></div>
-          </div>
-          <div>
-            <h3>About</h3>
-            <p>
-              XXR artist & creative technologist exploring presence, memory, and speculative futures.
-            </p>
-          </div>
+        <!-- Tile 2: Project (Card 4) -->
+        <a href="#" class="tile tile-sm" id="card-4">
+          <div class="thumb thumb-1"></div>
+          <h3>Generative audio visual artwork in VVVV</h3>
+          <p>An immersive generative piece that combines real-time visuals and reactive sound design.</p>
+          <span class="pill-row">
+            <span class="pill subtle">Generative</span>
+            <span class="pill subtle">VVVV</span>
+          </span>
         </a>
 
         <!-- Tile 3: Project (Card 5) -->
@@ -250,6 +248,7 @@
         const socialCvEl = socialModal && socialModal.querySelector(".social-modal-cv");
         const card3Modal = document.getElementById("card3-modal");
         const card3Tile = document.getElementById("card-3");
+        const card4Tile = document.getElementById("card-4");
         const card5Tile = document.getElementById("card-5");
         const card6Tile = document.getElementById("card-6");
         const card7Tile = document.getElementById("card-7");
@@ -382,6 +381,9 @@
         heroCircle.addEventListener("click", openEniModal);
         if (card3Tile) {
           card3Tile.addEventListener("click", (e) => openCardModal(3, e));
+        }
+        if (card4Tile) {
+          card4Tile.addEventListener("click", (e) => openCardModal(4, e));
         }
         if (card5Tile) {
           card5Tile.addEventListener("click", (e) => openCardModal(5, e));
@@ -571,22 +573,6 @@
                     }
                   }
 
-                  return;
-                }
-
-                if (item.card === 4) {
-                  const aboutTile = document.getElementById("card-4");
-                  if (aboutTile) {
-                    aboutTile.href = item.link || "#";
-                    if (item.link) {
-                      aboutTile.target = "_blank";
-                      aboutTile.rel = "noreferrer noopener";
-                    }
-                    const titleEl = aboutTile.querySelector("h3");
-                    const bodyEl = aboutTile.querySelector("p");
-                    if (titleEl && item.title) titleEl.textContent = item.title;
-                    if (bodyEl && item.subtitle) bodyEl.textContent = item.subtitle;
-                  }
                   return;
                 }
 
