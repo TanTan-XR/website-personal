@@ -34,7 +34,7 @@
           <p class="eyebrow">XR / Creative Immersive Technology</p>
           <h1>Hey, this is Tan</h1>
           <p class="tagline">
-            Designing immersive, experimental worlds across extended reality and interactive media.
+            Designing for over a decade and developing since 2023 | Now a happy creator of immersive worlds across extended reality and interactive media.
           </p>
         </div>
         <div class="hero-visual" id="hero-visual">
@@ -155,11 +155,7 @@
 
       <div class="social-modal-overlay" id="social-modal">
         <div class="social-modal">
-          <button class="social-modal-close" type="button" aria-label="Close social links">
-            ✕
-          </button>
-          <p class="social-modal-eyebrow">Connect</p>
-          <h2 class="social-modal-title">Find Tan online</h2>
+          <p class="social-modal-eyebrow">FIND ME ONLINE</p>
           <ul class="social-modal-list"></ul>
           <a class="social-modal-cv" href="#">
             <span>Download CV</span>
@@ -502,9 +498,8 @@
         }
 
         function loadIndexImages(forceFresh) {
-          const url = forceFresh
-            ? "index_content.json?v=" + Date.now()
-            : "index_content.json";
+          const cacheBust = forceFresh ? Date.now() : Date.now();
+          const url = "index_content.json?v=" + cacheBust;
           return fetch(url, { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {

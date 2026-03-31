@@ -367,7 +367,8 @@ body {
 }
 
 .social-modal-eyebrow {
-  margin: 0 0 4px;
+  margin: 0 0 16px;
+  padding-left: 8px;
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -416,9 +417,11 @@ body {
 }
 
 .social-modal-cv {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  margin-left: auto;
   padding: 8px 14px;
   border-radius: 999px;
   background: linear-gradient(135deg, #42e5ff, #8b5bff);
