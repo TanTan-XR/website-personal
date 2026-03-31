@@ -58,7 +58,7 @@ body {
 }
 
 .hero-text {
-  padding: 20px 16px;
+  padding: 20px 44px 20px 16px;
   min-height: clamp(180px, 32vw, 240px);
   border-radius: var(--radius-xl);
   background: linear-gradient(135deg, rgba(139, 91, 255, 0.28), transparent),
