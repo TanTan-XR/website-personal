@@ -509,8 +509,20 @@
               items.forEach((item) => {
                 if (!item || typeof item.card === "undefined") return;
 
-                // Card 1: hero & social links
+                // Card 1: hero text & social links
                 if (item.card === 1 && socialListEl) {
+                  const heroEyebrowEl = heroCard.querySelector(".eyebrow");
+                  const heroTitleEl = heroCard.querySelector("h1");
+                  const heroTaglineEl = heroCard.querySelector(".tagline");
+                  if (heroEyebrowEl && item.eyebrow) {
+                    heroEyebrowEl.textContent = item.eyebrow;
+                  }
+                  if (heroTitleEl && item.title) {
+                    heroTitleEl.textContent = item.title;
+                  }
+                  if (heroTaglineEl && item.subtitle) {
+                    heroTaglineEl.textContent = item.subtitle;
+                  }
                   socialListEl.innerHTML = "";
                   if (Array.isArray(item.socialLinks)) {
                     item.socialLinks.forEach((link) => {

@@ -2,8 +2,9 @@
   {
     "card": 1,
     "src": "index images/XRAir/XRAir1-1.png",
-    "title": "Hero background",
-    "subtitle": "Backdrop for 'Hey, this is Tan'",
+    "eyebrow": "XR / Creative Immersive Technology",
+    "title": "Hey, this is Tan",
+    "subtitle": "Designing immersive, experimental worlds across extended reality and interactive media.",
     "tags": ["hero", "background"],
     "socialLinks": [
       {
