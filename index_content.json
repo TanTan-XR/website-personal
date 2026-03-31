@@ -4,26 +4,26 @@
     "src": "index images/XRAir/XRAir1-1.png",
     "eyebrow": "XR / Creative Immersive Technology",
     "title": "Hey, this is Tan",
-    "subtitle": "Designing immersive, experimental worlds across extended reality and interactive media.",
+    "subtitle": "Creating immersive worlds across extended reality and interactive media.",
     "tags": ["hero", "background"],
     "socialLinks": [
       {
         "id": "instagram",
         "label": "Instagram",
-        "url": "https://instagram.com/",
-        "handle": "@your.ig.handle"
+        "url": "https://instagram.com/tanni_tsi/",
+        "handle": "@tanni_tsi"
       },
       {
         "id": "x",
         "label": "X (Twitter)",
-        "url": "https://x.com/",
-        "handle": "@your_x_handle"
+        "url": "https://x.com/TN_03",
+        "handle": "@TN_07"
       },
       {
         "id": "linkedin",
         "label": "LinkedIn",
-        "url": "https://www.linkedin.com/",
-        "handle": "/in/your-linkedin"
+        "url": "https://www.linkedin.com/in/tanni91/",
+        "handle": "/in/tanni91"
       },
       {
         "id": "youtube",
@@ -32,7 +32,8 @@
         "handle": "@Tan_XR"
       }
     ],
-    "cvUrl": "Tan CV.pdf"
+    "cvUrl": "Tan CV.pdf",
+    "linksVersion": "card1-links-tn-20260331"
   },
   {
     "card": 2,

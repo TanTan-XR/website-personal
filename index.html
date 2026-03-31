@@ -161,7 +161,7 @@
           <p class="social-modal-eyebrow">Connect</p>
           <h2 class="social-modal-title">Find Tan online</h2>
           <ul class="social-modal-list"></ul>
-          <a class="social-modal-cv" href="Tan-CV.pdf" download>
+          <a class="social-modal-cv" href="#">
             <span>Download CV</span>
           </a>
         </div>
@@ -303,7 +303,9 @@
           return [];
         }
 
-        function openSocialModal() {
+        async function openSocialModal() {
+          // Always fetch the latest JSON before opening card 1 modal.
+          await loadIndexImages(true);
           socialModal.classList.add("is-open");
           document.body.style.overflow = "hidden";
         }
@@ -499,8 +501,11 @@
             });
         }
 
-        function loadIndexImages() {
-          fetch("index_content.json", { cache: "no-store" })
+        function loadIndexImages(forceFresh) {
+          const url = forceFresh
+            ? "index_content.json?v=" + Date.now()
+            : "index_content.json";
+          return fetch(url, { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {
               if (!Array.isArray(items)) return;
@@ -539,6 +544,16 @@
                   }
                   if (socialCvEl && item.cvUrl) {
                     socialCvEl.href = item.cvUrl;
+                    const isPdf = /\.pdf($|\?)/i.test(item.cvUrl);
+                    if (isPdf) {
+                      socialCvEl.setAttribute("download", "");
+                      socialCvEl.removeAttribute("target");
+                      socialCvEl.removeAttribute("rel");
+                    } else {
+                      socialCvEl.removeAttribute("download");
+                      socialCvEl.setAttribute("target", "_blank");
+                      socialCvEl.setAttribute("rel", "noreferrer");
+                    }
                   }
                 }
 
