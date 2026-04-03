@@ -597,6 +597,15 @@
                     <p class="eni-id">#${id}</p>
                   </div>
                 `;
+            card.addEventListener("click", (e) => {
+              if (!e.target.classList.contains("eni-thumb")) return;
+              e.preventDefault();
+              e.stopPropagation();
+              card.classList.add("is-enlarged");
+            });
+            card.addEventListener("mouseleave", () => {
+              card.classList.remove("is-enlarged");
+            });
             eniGrid.appendChild(card);
           });
         }
