@@ -507,6 +507,29 @@ body {
   margin: 0 0 14px;
 }
 
+a.eni-modal-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  width: fit-content;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.eni-modal-back-home:hover {
+  filter: brightness(1.08);
+}
+
+.eni-modal-back-arrow {
+  letter-spacing: 0;
+  margin-right: -0.02em;
+}
+
+.eni-modal-back-label {
+  letter-spacing: 0.18em;
+}
+
 .eni-browser {
   display: flex;
   flex: 1;

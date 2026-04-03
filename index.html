@@ -168,7 +168,13 @@
           <button class="eni-modal-close" type="button" aria-label="Close image gallery">
             ✕
           </button>
-          <p class="eni-modal-eyebrow eni-modal-eyebrow-secondary">Snapshots taken</p>
+          <a
+            href="index.html"
+            class="eni-modal-eyebrow eni-modal-eyebrow-secondary eni-modal-back-home"
+          >
+            <span class="eni-modal-back-arrow" aria-hidden="true">&larr;</span>
+            <span class="eni-modal-back-label">Back To Homepage</span>
+          </a>
           <div class="eni-browser">
             <nav class="snap-tree" id="snap-tree" aria-label="Work snapshots folders"></nav>
             <div class="eni-grid-scroll">
@@ -464,6 +470,17 @@
 
         if (eniCloseBtn) {
           eniCloseBtn.addEventListener("click", closeEniModal);
+        }
+
+        const eniBackHome = eniModal.querySelector(".eni-modal-back-home");
+        if (eniBackHome) {
+          eniBackHome.addEventListener("click", (e) => {
+            closeEniModal();
+            if (document.getElementById("hero-card")) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          });
         }
 
         if (card3CloseBtn) {
