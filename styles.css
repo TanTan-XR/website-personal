@@ -503,10 +503,8 @@ body {
   color: var(--accent-2);
 }
 
-.eni-modal-title {
+.eni-modal-eyebrow-secondary {
   margin: 0 0 14px;
-  font-size: 1.1rem;
-  flex-shrink: 0;
 }
 
 .eni-browser {
@@ -519,11 +517,11 @@ body {
 }
 
 .snap-tree {
-  flex: 0 0 220px;
+  flex: 0 0 232px;
   max-width: 40%;
   padding: 8px 12px 8px 0;
   font-size: 0.82rem;
-  line-height: 1.35;
+  line-height: 1.4;
   overflow: auto;
   align-self: stretch;
 }
@@ -535,15 +533,15 @@ body {
 .snap-tree-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   width: 100%;
   text-align: left;
   background: transparent;
   border: none;
   color: var(--text-muted, rgba(255, 255, 255, 0.72));
   cursor: pointer;
-  padding: 5px 8px;
-  border-radius: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
   font: inherit;
 }
 
@@ -559,19 +557,20 @@ body {
 
 .snap-tree-folder {
   padding-left: 10px;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .snap-tree-folder.is-selected {
-  background: rgba(66, 229, 255, 0.12);
-  color: #e8fbff;
+  background: rgba(80, 120, 140, 0.28);
+  color: rgba(255, 255, 255, 0.96);
 }
 
 .snap-tree-children {
   padding-left: 14px;
-  margin-top: 2px;
+  margin-top: 6px;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 4px;
 }
 
 .snap-tree-chevron {
@@ -695,10 +694,8 @@ body {
   .snap-tree {
     flex: 0 0 auto;
     max-width: none;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0 0 12px;
     max-height: 42vh;
+    margin-bottom: 4px;
   }
 
   .eni-grid-scroll {

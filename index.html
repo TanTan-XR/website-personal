@@ -168,8 +168,7 @@
           <button class="eni-modal-close" type="button" aria-label="Close image gallery">
             ✕
           </button>
-          <p class="eni-modal-eyebrow">Image Library</p>
-          <h2 class="eni-modal-title">Work snapshots</h2>
+          <p class="eni-modal-eyebrow eni-modal-eyebrow-secondary">Snapshots taken</p>
           <div class="eni-browser">
             <nav class="snap-tree" id="snap-tree" aria-label="Work snapshots folders"></nav>
             <div class="eni-grid-scroll">
@@ -263,8 +262,12 @@
         let eniByFolder = null;
         let eniFolderOrder = [];
         let eniSelectedFolder = "";
-        /** Dummy / placeholder folders (shown in tree even when empty). */
-        const SNAPSHOT_DUMMY_FOLDERS = ["feb-14-2026", "spring-lab", "archive-drafts"];
+        /** Root folder for snapshot image files (matches folder name on disk). */
+        const SNAPSHOT_MEDIA_ROOT = "Project by Project";
+        /** Lists subfolders under SNAPSHOT_MEDIA_ROOT (maintain when you add date folders on disk). */
+        const SNAPSHOT_FOLDERS_JSON = encodeURI(SNAPSHOT_MEDIA_ROOT + "/folders.json");
+        /** Special value meaning: show snapshots from all folders (combined + shuffled). */
+        const SNAPSHOT_ALL = "__all__";
         const card3CloseBtn = card3Modal.querySelector(".card3-modal-close");
         const card3ImageEl = document.getElementById("card3-slide-image");
         const card3TitleEl = document.getElementById("card3-slide-title");
@@ -508,12 +511,12 @@
         function folderFromSnapshotSrc(src) {
           if (!src || typeof src !== "string") return "ungrouped";
           const parts = src.split("/").filter(Boolean);
-          const i = parts.indexOf("w_snapshots");
+          const i = parts.indexOf(SNAPSHOT_MEDIA_ROOT);
           if (i >= 0 && parts[i + 1]) return parts[i + 1];
           return "ungrouped";
         }
 
-        function mergeFolderOrder(keysFromData) {
+        function mergeFolderOrder(diskFolders, keysFromData) {
           const seen = new Set();
           const out = [];
           function push(n) {
@@ -521,15 +524,40 @@
             seen.add(n);
             out.push(n);
           }
-          keysFromData.forEach(push);
-          SNAPSHOT_DUMMY_FOLDERS.forEach(push);
+          if (Array.isArray(diskFolders)) diskFolders.forEach(push);
+          if (Array.isArray(keysFromData)) keysFromData.forEach(push);
           return out;
+        }
+
+        function parseFoldersJsonResponse(res) {
+          if (!res || !res.ok) return Promise.resolve([]);
+          return res
+            .json()
+            .then((data) => (Array.isArray(data) ? data : []))
+            .catch(() => []);
         }
 
         function renderEniGrid(folder) {
           if (!eniGrid) return;
           eniGrid.innerHTML = "";
-          const items = (eniByFolder && eniByFolder[folder]) || [];
+          let items = [];
+          if (folder === SNAPSHOT_ALL) {
+            // Combine everything into a single list, then randomize ordering.
+            items = [];
+            if (eniByFolder) {
+              Object.keys(eniByFolder).forEach((k) => {
+                const arr = eniByFolder[k] || [];
+                items.push(...arr);
+              });
+            }
+            // Fisher–Yates shuffle (in-place on our local `items` array).
+            for (let i = items.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [items[i], items[j]] = [items[j], items[i]];
+            }
+          } else {
+            items = (eniByFolder && eniByFolder[folder]) || [];
+          }
           if (items.length === 0) {
             eniGrid.innerHTML =
               "<p class='eni-empty-folder'>No snapshots in this folder yet.</p>";
@@ -558,7 +586,7 @@
 
         function updateSnapTreeSelection() {
           if (!snapTreeEl) return;
-          snapTreeEl.querySelectorAll(".snap-tree-folder").forEach((btn) => {
+          snapTreeEl.querySelectorAll(".snap-tree-row[data-folder]").forEach((btn) => {
             btn.classList.toggle("is-selected", btn.getAttribute("data-folder") === eniSelectedFolder);
           });
         }
@@ -573,6 +601,14 @@
           if (!snapTreeEl || !eniByFolder) return;
           snapTreeEl.innerHTML = "";
 
+          const allRow = document.createElement("button");
+          allRow.type = "button";
+          allRow.className = "snap-tree-row snap-tree-folder";
+          allRow.setAttribute("data-folder", SNAPSHOT_ALL);
+          allRow.innerHTML = `<span class="snap-tree-label">All</span>`;
+          allRow.addEventListener("click", () => selectEniFolder(SNAPSHOT_ALL));
+          snapTreeEl.appendChild(allRow);
+
           const root = document.createElement("div");
           root.className = "snap-tree-root is-expanded";
 
@@ -581,7 +617,9 @@
           rootRow.className = "snap-tree-row snap-tree-row-root";
           rootRow.setAttribute("aria-expanded", "true");
           rootRow.innerHTML =
-            '<span class="snap-tree-chevron" aria-hidden="true">›</span><span class="snap-tree-label">w_snapshots</span>';
+            '<span class="snap-tree-chevron" aria-hidden="true">›</span><span class="snap-tree-label">' +
+            SNAPSHOT_MEDIA_ROOT +
+            "</span>";
 
           const childrenWrap = document.createElement("div");
           childrenWrap.className = "snap-tree-children";
@@ -596,7 +634,15 @@
             btn.type = "button";
             btn.className = "snap-tree-row snap-tree-folder";
             btn.setAttribute("data-folder", folderName);
-            btn.innerHTML = `<span class="snap-tree-chevron snap-tree-chevron-muted" aria-hidden="true">›</span><span class="snap-tree-label">${folderName}</span>`;
+            const chev = document.createElement("span");
+            chev.className = "snap-tree-chevron snap-tree-chevron-muted";
+            chev.setAttribute("aria-hidden", "true");
+            chev.textContent = "›";
+            const lab = document.createElement("span");
+            lab.className = "snap-tree-label";
+            lab.textContent = folderName;
+            btn.appendChild(chev);
+            btn.appendChild(lab);
             btn.addEventListener("click", () => selectEniFolder(folderName));
             childrenWrap.appendChild(btn);
           });
@@ -610,9 +656,14 @@
 
         function loadEniImages() {
           if (!eniGrid || !snapTreeEl) return;
-          fetch("w_snapshots.json", { cache: "no-store" })
-            .then((res) => res.json())
-            .then((items) => {
+          Promise.all([
+            fetch("w_snapshots.json", { cache: "no-store" }).then((res) => {
+              if (!res.ok) throw new Error("snapshots json");
+              return res.json();
+            }),
+            fetch(SNAPSHOT_FOLDERS_JSON, { cache: "no-store" }).then((res) => parseFoldersJsonResponse(res)),
+          ])
+            .then(([items, diskFolders]) => {
               if (!Array.isArray(items)) return;
               eniByFolder = {};
               items.forEach((item) => {
@@ -620,7 +671,8 @@
                 if (!eniByFolder[f]) eniByFolder[f] = [];
                 eniByFolder[f].push(item);
               });
-              eniFolderOrder = mergeFolderOrder(Object.keys(eniByFolder));
+              const diskList = Array.isArray(diskFolders) ? diskFolders : [];
+              eniFolderOrder = mergeFolderOrder(diskList, Object.keys(eniByFolder));
               const firstWith =
                 eniFolderOrder.find((f) => (eniByFolder[f] || []).length > 0) || eniFolderOrder[0] || "";
               eniSelectedFolder = firstWith;
