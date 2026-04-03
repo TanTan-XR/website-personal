@@ -506,15 +506,114 @@ body {
 .eni-modal-title {
   margin: 0 0 14px;
   font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.eni-browser {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap: 20px;
+  margin-top: 4px;
+  align-items: stretch;
+}
+
+.snap-tree {
+  flex: 0 0 220px;
+  max-width: 40%;
+  padding: 8px 12px 8px 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  overflow: auto;
+  align-self: stretch;
+}
+
+.snap-tree-root:not(.is-expanded) .snap-tree-children {
+  display: none;
+}
+
+.snap-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text-muted, rgba(255, 255, 255, 0.72));
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.snap-tree-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.snap-tree-row-root {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.snap-tree-folder {
+  padding-left: 10px;
+}
+
+.snap-tree-folder.is-selected {
+  background: rgba(66, 229, 255, 0.12);
+  color: #e8fbff;
+}
+
+.snap-tree-children {
+  padding-left: 14px;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.snap-tree-chevron {
+  display: inline-flex;
+  width: 0.9em;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.95em;
+  opacity: 0.75;
+  transition: transform 0.15s ease-out;
+}
+
+.snap-tree-chevron-muted {
+  opacity: 0.45;
+}
+
+.snap-tree-root.is-expanded > .snap-tree-row-root .snap-tree-chevron {
+  transform: rotate(90deg);
+}
+
+.snap-tree-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eni-grid-scroll {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
 }
 
 .eni-grid {
-  margin-top: 8px;
+  margin-top: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  overflow: auto;
-  padding-right: 4px;
+  overflow: visible;
+  padding-right: 0;
   align-items: flex-start;
 }
 
@@ -580,6 +679,32 @@ body {
   margin: 8px 0 0;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.eni-empty-folder {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 720px) {
+  .eni-browser {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .snap-tree {
+    flex: 0 0 auto;
+    max-width: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 0 12px;
+    max-height: 42vh;
+  }
+
+  .eni-grid-scroll {
+    min-height: 180px;
+  }
 }
 
 /* Slideshow modal (project slideshow) – card 3 first; reusable for other cards */

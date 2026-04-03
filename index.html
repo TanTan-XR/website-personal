@@ -10,7 +10,7 @@
     <!--
       Card index for internal reference:
       1: Hero left card – "Hey, this is Tan"
-      2: Hero right circular card – "Selected experiments & installations"
+      2: Hero right circular card – "WORK SNAPSHOTS"
       3: Large flagship tile – "Mixed Reality App to Read Air Quality"
       4: About tile – "About"
       5: Project tile – "Interactive Timeline with AR features"
@@ -38,7 +38,7 @@
           </p>
         </div>
         <div class="hero-visual" id="hero-visual">
-          <p class="hero-caption">Selected experiments & installations</p>
+          <p class="hero-caption">WORK SNAPSHOTS</p>
         </div>
       </header>
 
@@ -169,8 +169,13 @@
             ✕
           </button>
           <p class="eni-modal-eyebrow">Image Library</p>
-          <h2 class="eni-modal-title">Project snapshots</h2>
-          <div class="eni-grid" id="eni-grid"></div>
+          <h2 class="eni-modal-title">Work snapshots</h2>
+          <div class="eni-browser">
+            <nav class="snap-tree" id="snap-tree" aria-label="Work snapshots folders"></nav>
+            <div class="eni-grid-scroll">
+              <div class="eni-grid" id="eni-grid"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -253,7 +258,13 @@
         const socialCloseBtn = socialModal.querySelector(".social-modal-close");
         const eniCloseBtn = eniModal.querySelector(".eni-modal-close");
         const eniGrid = document.getElementById("eni-grid");
+        const snapTreeEl = document.getElementById("snap-tree");
         let eniLoaded = false;
+        let eniByFolder = null;
+        let eniFolderOrder = [];
+        let eniSelectedFolder = "";
+        /** Dummy / placeholder folders (shown in tree even when empty). */
+        const SNAPSHOT_DUMMY_FOLDERS = ["feb-14-2026", "spring-lab", "archive-drafts"];
         const card3CloseBtn = card3Modal.querySelector(".card3-modal-close");
         const card3ImageEl = document.getElementById("card3-slide-image");
         const card3TitleEl = document.getElementById("card3-slide-title");
@@ -275,6 +286,26 @@
         let card3Slides = [];
         let card3SlideIndex = 0;
         let activeCardId = 3;
+        let heroVisualLink = null;
+
+        function isHeroVisualLink(url) {
+          if (!url || typeof url !== "string") return false;
+          const t = url.trim();
+          if (!t || t === "#") return false;
+          if (/^javascript:/i.test(t)) return false;
+          return true;
+        }
+
+        function openEniInNewTab() {
+          let u;
+          try {
+            u = new URL(window.location.href);
+          } catch (_) {
+            u = new URL("index.html", window.location.origin || window.location.href);
+          }
+          u.searchParams.set("eni", "1");
+          window.open(u.toString(), "_blank", "noopener,noreferrer");
+        }
 
         function normalizeSlides(rawSlides, fallbackSrc) {
           if (Array.isArray(rawSlides) && rawSlides.length > 0) {
@@ -371,7 +402,13 @@
         }
 
         heroCard.addEventListener("click", openSocialModal);
-        heroCircle.addEventListener("click", openEniModal);
+        heroCircle.addEventListener("click", () => {
+          if (heroVisualLink) {
+            window.open(heroVisualLink, "_blank", "noopener,noreferrer");
+          } else {
+            openEniInNewTab();
+          }
+        });
         if (card3Tile) {
           card3Tile.addEventListener("click", (e) => openCardModal(3, e));
         }
@@ -464,35 +501,136 @@
         // Load index_content.json for card-specific imagery and text
         loadIndexImages();
 
-        function loadEniImages() {
+        if (new URLSearchParams(window.location.search).get("eni") === "1") {
+          queueMicrotask(() => openEniModal());
+        }
+
+        function folderFromSnapshotSrc(src) {
+          if (!src || typeof src !== "string") return "ungrouped";
+          const parts = src.split("/").filter(Boolean);
+          const i = parts.indexOf("w_snapshots");
+          if (i >= 0 && parts[i + 1]) return parts[i + 1];
+          return "ungrouped";
+        }
+
+        function mergeFolderOrder(keysFromData) {
+          const seen = new Set();
+          const out = [];
+          function push(n) {
+            if (!n || seen.has(n)) return;
+            seen.add(n);
+            out.push(n);
+          }
+          keysFromData.forEach(push);
+          SNAPSHOT_DUMMY_FOLDERS.forEach(push);
+          return out;
+        }
+
+        function renderEniGrid(folder) {
           if (!eniGrid) return;
-          fetch("eni_images.json", { cache: "no-store" })
-            .then((res) => res.json())
-            .then((items) => {
-              if (!Array.isArray(items)) return;
-              eniGrid.innerHTML = "";
-              items.forEach((item) => {
-                const card = document.createElement("a");
-                card.className = "eni-card";
-                card.href = item.link || "#";
-                if ((item.link || "#").startsWith("http")) {
-                  card.target = "_blank";
-                  card.rel = "noreferrer";
-                }
-                const title = item.title || "";
-                const id = item.id || "";
-                card.innerHTML = `
+          eniGrid.innerHTML = "";
+          const items = (eniByFolder && eniByFolder[folder]) || [];
+          if (items.length === 0) {
+            eniGrid.innerHTML =
+              "<p class='eni-empty-folder'>No snapshots in this folder yet.</p>";
+            return;
+          }
+          items.forEach((item) => {
+            const card = document.createElement("a");
+            card.className = "eni-card";
+            card.href = item.link || "#";
+            if ((item.link || "#").startsWith("http")) {
+              card.target = "_blank";
+              card.rel = "noreferrer";
+            }
+            const title = item.title || "";
+            const id = item.id || "";
+            card.innerHTML = `
                   <img class="eni-thumb" src="${encodeURI(item.src)}" alt="${title}" loading="lazy" />
                   <div class="eni-body">
                     <p class="eni-title">${title}</p>
                     <p class="eni-id">#${id}</p>
                   </div>
                 `;
-                eniGrid.appendChild(card);
+            eniGrid.appendChild(card);
+          });
+        }
+
+        function updateSnapTreeSelection() {
+          if (!snapTreeEl) return;
+          snapTreeEl.querySelectorAll(".snap-tree-folder").forEach((btn) => {
+            btn.classList.toggle("is-selected", btn.getAttribute("data-folder") === eniSelectedFolder);
+          });
+        }
+
+        function selectEniFolder(folder) {
+          eniSelectedFolder = folder;
+          renderEniGrid(folder);
+          updateSnapTreeSelection();
+        }
+
+        function buildSnapTree() {
+          if (!snapTreeEl || !eniByFolder) return;
+          snapTreeEl.innerHTML = "";
+
+          const root = document.createElement("div");
+          root.className = "snap-tree-root is-expanded";
+
+          const rootRow = document.createElement("button");
+          rootRow.type = "button";
+          rootRow.className = "snap-tree-row snap-tree-row-root";
+          rootRow.setAttribute("aria-expanded", "true");
+          rootRow.innerHTML =
+            '<span class="snap-tree-chevron" aria-hidden="true">›</span><span class="snap-tree-label">w_snapshots</span>';
+
+          const childrenWrap = document.createElement("div");
+          childrenWrap.className = "snap-tree-children";
+
+          rootRow.addEventListener("click", () => {
+            const exp = root.classList.toggle("is-expanded");
+            rootRow.setAttribute("aria-expanded", exp ? "true" : "false");
+          });
+
+          eniFolderOrder.forEach((folderName) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "snap-tree-row snap-tree-folder";
+            btn.setAttribute("data-folder", folderName);
+            btn.innerHTML = `<span class="snap-tree-chevron snap-tree-chevron-muted" aria-hidden="true">›</span><span class="snap-tree-label">${folderName}</span>`;
+            btn.addEventListener("click", () => selectEniFolder(folderName));
+            childrenWrap.appendChild(btn);
+          });
+
+          root.appendChild(rootRow);
+          root.appendChild(childrenWrap);
+          snapTreeEl.appendChild(root);
+
+          updateSnapTreeSelection();
+        }
+
+        function loadEniImages() {
+          if (!eniGrid || !snapTreeEl) return;
+          fetch("w_snapshots.json", { cache: "no-store" })
+            .then((res) => res.json())
+            .then((items) => {
+              if (!Array.isArray(items)) return;
+              eniByFolder = {};
+              items.forEach((item) => {
+                const f = (item.folder && String(item.folder).trim()) || folderFromSnapshotSrc(item.src);
+                if (!eniByFolder[f]) eniByFolder[f] = [];
+                eniByFolder[f].push(item);
               });
+              eniFolderOrder = mergeFolderOrder(Object.keys(eniByFolder));
+              const firstWith =
+                eniFolderOrder.find((f) => (eniByFolder[f] || []).length > 0) || eniFolderOrder[0] || "";
+              eniSelectedFolder = firstWith;
+              buildSnapTree();
+              renderEniGrid(eniSelectedFolder);
               eniLoaded = true;
             })
             .catch(() => {
+              eniByFolder = null;
+              snapTreeEl.innerHTML = "";
               eniGrid.innerHTML = "<p class='eni-error'>Could not load images yet.</p>";
             });
         }
@@ -550,6 +688,11 @@
                       socialCvEl.setAttribute("rel", "noreferrer");
                     }
                   }
+                }
+
+                if (item.card === 2) {
+                  heroVisualLink = isHeroVisualLink(item.link) ? item.link.trim() : null;
+                  return;
                 }
 
                 if (item.card === 3) {
