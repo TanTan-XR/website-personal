@@ -855,12 +855,12 @@
           snapTreeEl.appendChild(allRow);
 
           const root = document.createElement("div");
-          root.className = "snap-tree-root is-expanded";
+          root.className = "snap-tree-root";
 
           const rootRow = document.createElement("button");
           rootRow.type = "button";
           rootRow.className = "snap-tree-row snap-tree-row-root";
-          rootRow.setAttribute("aria-expanded", "true");
+          rootRow.setAttribute("aria-expanded", "false");
           rootRow.innerHTML =
             '<span class="snap-tree-chevron" aria-hidden="true">›</span><span class="snap-tree-label">' +
             SNAPSHOT_MEDIA_ROOT +
