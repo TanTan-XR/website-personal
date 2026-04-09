@@ -1,38 +1,200 @@
 [
   {
     "id": "001",
-    "src": "Project by Project/jan-3-2025/Instagram story - 17.jpg",
-    "title": "Instagram Story Still",
+    "src": "Project by Project/3D models/Frame 1.png",
+    "title": "Frame 1",
     "link": "#"
   },
   {
     "id": "002",
-    "src": "Project by Project/jan-3-2025/Screenshot 2026-01-09 232213.png",
-    "title": "XR Interface Snapshot A",
+    "src": "Project by Project/3D models/row 1.png",
+    "title": "row 1",
     "link": "#"
   },
   {
     "id": "003",
-    "src": "Project by Project/jan-3-2025/Screenshot 2026-01-09 232045.png",
-    "title": "XR Interface Snapshot B",
+    "src": "Project by Project/3D models/Screenshot 2025-09-23 151310.png",
+    "title": "Screenshot 2025-09-23 151310",
     "link": "#"
   },
   {
     "id": "004",
-    "src": "Project by Project/jan-3-2025/Screenshot 2026-01-09 231935.png",
-    "title": "Prototype Environment",
+    "src": "Project by Project/Bloom City AR Installation/467814332_10169580295415461_6677217421651860789_n.jpg",
+    "title": "467814332 10169580295415461 6677217421651860789 n",
     "link": "#"
   },
   {
     "id": "005",
-    "src": "Project by Project/jan-3-2025/Screenshot 2026-01-09 210857.png",
-    "title": "Interaction Study",
+    "src": "Project by Project/Book Design/Screenshot 2025-09-07 232515.png",
+    "title": "Screenshot 2025-09-07 232515",
     "link": "#"
   },
   {
     "id": "006",
-    "src": "Project by Project/jan-3-2025/Screenshot 2025-10-12 160702.png",
-    "title": "Early XR Sketch",
+    "src": "Project by Project/Book Design/Screenshot 2026-01-07 125758.png",
+    "title": "Screenshot 2026-01-07 125758",
+    "link": "#"
+  },
+  {
+    "id": "007",
+    "src": "Project by Project/Book Design/Screenshot 2026-01-07 125812.png",
+    "title": "Screenshot 2026-01-07 125812",
+    "link": "#"
+  },
+  {
+    "id": "008",
+    "src": "Project by Project/Book Design/Screenshot 2026-01-07 125825.png",
+    "title": "Screenshot 2026-01-07 125825",
+    "link": "#"
+  },
+  {
+    "id": "009",
+    "src": "Project by Project/Generative Art VVVV/Screenshot 2026-03-09 155115.png",
+    "title": "Screenshot 2026-03-09 155115",
+    "link": "#"
+  },
+  {
+    "id": "010",
+    "src": "Project by Project/Generative Art VVVV/Screenshot 2026-03-25 161556.png",
+    "title": "Screenshot 2026-03-25 161556",
+    "link": "#"
+  },
+  {
+    "id": "011",
+    "src": "Project by Project/Generative Art VVVV/Screenshot 2026-03-25 161623.png",
+    "title": "Screenshot 2026-03-25 161623",
+    "link": "#"
+  },
+  {
+    "id": "012",
+    "src": "Project by Project/Insect Library/Screenshot 2026-01-09 231935.png",
+    "title": "Screenshot 2026-01-09 231935",
+    "link": "#"
+  },
+  {
+    "id": "013",
+    "src": "Project by Project/Installtion Art/IMG_8622.jpg",
+    "title": "IMG 8622",
+    "link": "#"
+  },
+  {
+    "id": "014",
+    "src": "Project by Project/Packaging Design/IMG_6547.jpg",
+    "title": "IMG 6547",
+    "link": "#"
+  },
+  {
+    "id": "015",
+    "src": "Project by Project/Packaging Design/Screenshot 2022-07-27 at 1.51.22 PM.jpg",
+    "title": "Screenshot 2022-07-27 at 1.51.22 PM",
+    "link": "#"
+  },
+  {
+    "id": "016",
+    "src": "Project by Project/Packaging Design/Screenshot 2026-01-09 210857.png",
+    "title": "Screenshot 2026-01-09 210857",
+    "link": "#"
+  },
+  {
+    "id": "017",
+    "src": "Project by Project/Packaging Design/Screenshot 2026-01-09 211720.png",
+    "title": "Screenshot 2026-01-09 211720",
+    "link": "#"
+  },
+  {
+    "id": "018",
+    "src": "Project by Project/Packaging Design/Screenshot 2026-01-09 211738.png",
+    "title": "Screenshot 2026-01-09 211738",
+    "link": "#"
+  },
+  {
+    "id": "019",
+    "src": "Project by Project/Static Digital Art/Instagram story - 17.jpg",
+    "title": "Instagram story - 17",
+    "link": "#"
+  },
+  {
+    "id": "020",
+    "src": "Project by Project/TD Experiments/Screenshot 2025-09-30 165805.png",
+    "title": "Screenshot 2025-09-30 165805",
+    "link": "#"
+  },
+  {
+    "id": "021",
+    "src": "Project by Project/TD Experiments/Screenshot 2025-09-30 165946.png",
+    "title": "Screenshot 2025-09-30 165946",
+    "link": "#"
+  },
+  {
+    "id": "022",
+    "src": "Project by Project/TD Experiments/Screenshot 2026-01-09 232045.png",
+    "title": "Screenshot 2026-01-09 232045",
+    "link": "#"
+  },
+  {
+    "id": "023",
+    "src": "Project by Project/TD Experiments/Screenshot 2026-01-09 232213.png",
+    "title": "Screenshot 2026-01-09 232213",
+    "link": "#"
+  },
+  {
+    "id": "024",
+    "src": "Project by Project/Three.js Experiments/h.png",
+    "title": "h",
+    "link": "#"
+  },
+  {
+    "id": "025",
+    "src": "Project by Project/Three.js Experiments/Screenshot 2025-10-12 160702.png",
+    "title": "Screenshot 2025-10-12 160702",
+    "link": "#"
+  },
+  {
+    "id": "026",
+    "src": "Project by Project/Three.js Experiments/Screenshot 2025-10-18 140737.png",
+    "title": "Screenshot 2025-10-18 140737",
+    "link": "#"
+  },
+  {
+    "id": "027",
+    "src": "Project by Project/UI Design Engineering Unreal/ChatGPT Image Sep 30, 2025, 07_57_17 PM.png",
+    "title": "ChatGPT Image Sep 30, 2025, 07 57 17 PM",
+    "link": "#"
+  },
+  {
+    "id": "028",
+    "src": "Project by Project/UI Design Engineering Unreal/Frame 427319196.png",
+    "title": "Frame 427319196",
+    "link": "#"
+  },
+  {
+    "id": "029",
+    "src": "Project by Project/UI Design Engineering Unreal/Frame 427319197.jpg",
+    "title": "Frame 427319197",
+    "link": "#"
+  },
+  {
+    "id": "030",
+    "src": "Project by Project/UI Design Engineering Unreal/Settings menu (1).jpg",
+    "title": "Settings menu (1)",
+    "link": "#"
+  },
+  {
+    "id": "031",
+    "src": "Project by Project/Unity Experiments/Screenshot 2025-10-12 161058.png",
+    "title": "Screenshot 2025-10-12 161058",
+    "link": "#"
+  },
+  {
+    "id": "032",
+    "src": "Project by Project/VR Educational App - Mars/IMG_0688.jpg",
+    "title": "IMG 0688",
+    "link": "#"
+  },
+  {
+    "id": "033",
+    "src": "Project by Project/XR AIR/aqi.png",
+    "title": "aqi",
     "link": "#"
   }
 ]

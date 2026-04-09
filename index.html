@@ -241,6 +241,35 @@
     </div>
     <script>
       (function () {
+        /** Site root as URL (for /, /index.html, /worksnaps/, etc.). */
+        function siteRootUrl() {
+          const u = new URL(window.location.href);
+          let path = u.pathname.replace(/\/index\.html$/i, "");
+          path = path.replace(/\/?worksnaps\/?$/i, "") || "/";
+          if (!path.startsWith("/")) path = "/" + path;
+          const basePath = path.endsWith("/") ? path : path + "/";
+          return new URL(basePath, u.origin);
+        }
+
+        function isWorksnapsPath() {
+          return /\/worksnaps(\/|\/index\.html)?$/i.test(window.location.pathname);
+        }
+
+        /** Old ?eni=1 links → /worksnaps/ (keeps bookmarks and shares working). */
+        function migrateLegacyEniQuery() {
+          const params = new URLSearchParams(window.location.search);
+          if (params.get("eni") !== "1") return;
+          params.delete("eni");
+          const qs = params.toString();
+          const tail = (qs ? "?" + qs : "") + window.location.hash;
+          try {
+            const target = new URL("worksnaps/", siteRootUrl());
+            history.replaceState({}, "", target.pathname + tail);
+          } catch (_) {}
+        }
+
+        migrateLegacyEniQuery();
+
         const heroCard = document.getElementById("hero-card");
         const socialModal = document.getElementById("social-modal");
         const heroCircle = document.getElementById("hero-visual");
@@ -268,6 +297,11 @@
         let eniByFolder = null;
         let eniFolderOrder = [];
         let eniSelectedFolder = "";
+        let eniThumbObserver = null;
+        /** Tiny SVG placeholder until a snapshot thumb is near the modal viewport. */
+        const ENI_LAZY_PLACEHOLDER =
+          "data:image/svg+xml," +
+          encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="260" height="160"/>');
         /** Root folder for snapshot image files (matches folder name on disk). */
         const SNAPSHOT_MEDIA_ROOT = "Project by Project";
         /** Lists subfolders under SNAPSHOT_MEDIA_ROOT (maintain when you add date folders on disk). */
@@ -306,14 +340,12 @@
         }
 
         function openEniInNewTab() {
-          let u;
           try {
-            u = new URL(window.location.href);
+            const target = new URL("worksnaps/", siteRootUrl());
+            window.open(target.href, "_blank", "noopener,noreferrer");
           } catch (_) {
-            u = new URL("index.html", window.location.origin || window.location.href);
+            window.open("worksnaps/index.html", "_blank", "noopener,noreferrer");
           }
-          u.searchParams.set("eni", "1");
-          window.open(u.toString(), "_blank", "noopener,noreferrer");
         }
 
         function normalizeSlides(rawSlides, fallbackSrc) {
@@ -521,7 +553,7 @@
         // Load index_content.json for card-specific imagery and text
         loadIndexImages();
 
-        if (new URLSearchParams(window.location.search).get("eni") === "1") {
+        if (isWorksnapsPath() || new URLSearchParams(window.location.search).get("eni") === "1") {
           queueMicrotask(() => openEniModal());
         }
 
@@ -546,6 +578,41 @@
           return out;
         }
 
+        function disconnectEniThumbObserver() {
+          if (eniThumbObserver) {
+            eniThumbObserver.disconnect();
+            eniThumbObserver = null;
+          }
+        }
+
+        /** Load `.eni-thumb` URLs when they enter the ENI modal scroll area (not just the window). */
+        function hydrateEniThumb(img) {
+          if (!img || !eniThumbObserver) return;
+          const ds = img.getAttribute("data-src");
+          if (!ds) return;
+          img.src = ds;
+          img.removeAttribute("data-src");
+          img.classList.remove("eni-thumb-pending");
+          eniThumbObserver.unobserve(img);
+        }
+
+        function observeEniGridThumbnails() {
+          disconnectEniThumbObserver();
+          if (!eniGrid || !eniModal || !("IntersectionObserver" in window)) return;
+          const pending = eniGrid.querySelectorAll("img.eni-thumb[data-src]");
+          if (!pending.length) return;
+          eniThumbObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                hydrateEniThumb(entry.target);
+              });
+            },
+            { root: eniModal, rootMargin: "140px 0px", threshold: 0.01 }
+          );
+          pending.forEach((img) => eniThumbObserver.observe(img));
+        }
+
         function parseFoldersJsonResponse(res) {
           if (!res || !res.ok) return Promise.resolve([]);
           return res
@@ -556,6 +623,7 @@
 
         function renderEniGrid(folder) {
           if (!eniGrid) return;
+          disconnectEniThumbObserver();
           eniGrid.innerHTML = "";
           let items = [];
           if (folder === SNAPSHOT_ALL) {
@@ -580,6 +648,7 @@
               "<p class='eni-empty-folder'>No snapshots in this folder yet.</p>";
             return;
           }
+          const useLazyThumbs = "IntersectionObserver" in window && !!eniModal;
           items.forEach((item) => {
             const card = document.createElement("a");
             card.className = "eni-card";
@@ -590,15 +659,23 @@
             }
             const title = item.title || "";
             const id = item.id || "";
+            const src = encodeURI(item.src);
+            const thumbAttrs = useLazyThumbs
+              ? `class="eni-thumb eni-thumb-pending" src="${ENI_LAZY_PLACEHOLDER}" data-src="${src}" alt="${title}" decoding="async"`
+              : `class="eni-thumb" src="${src}" alt="${title}" loading="lazy" decoding="async"`;
             card.innerHTML = `
-                  <img class="eni-thumb" src="${encodeURI(item.src)}" alt="${title}" loading="lazy" />
+                  <img ${thumbAttrs} />
                   <div class="eni-body">
                     <p class="eni-title">${title}</p>
                     <p class="eni-id">#${id}</p>
                   </div>
                 `;
+            card.addEventListener("mouseenter", () => {
+              hydrateEniThumb(card.querySelector(".eni-thumb[data-src]"));
+            });
             card.addEventListener("click", (e) => {
               if (!e.target.classList.contains("eni-thumb")) return;
+              hydrateEniThumb(card.querySelector(".eni-thumb[data-src]"));
               e.preventDefault();
               e.stopPropagation();
               card.classList.add("is-enlarged");
@@ -608,6 +685,7 @@
             });
             eniGrid.appendChild(card);
           });
+          observeEniGridThumbnails();
         }
 
         function updateSnapTreeSelection() {

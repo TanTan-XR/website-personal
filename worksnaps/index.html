@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Asset URLs resolve from site root (parent of /worksnaps/). Keep in sync with /index.html. -->
+    <base href="../" />
+    <title>Work snapshots · XR & Creative Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      Card index for internal reference:
+      1: Hero left card – "Hey, this is Tan"
+      2: Hero right circular card – "WORK SNAPSHOTS"
+      3: Large flagship tile – "Mixed Reality App to Read Air Quality"
+      4: About tile – "About"
+      5: Project tile – "Interactive Timeline with AR features"
+      6: Project tile – "Insect library in VR/MR"
+      7: Project tile – "Learn about Mars in VR"
+      8: Project tile – "VR Chapel"
+      9: Project tile – "Workshops and Lectures"
+      10: Wide tile – "An interactive archive for XR design patterns"
+      11: Contact tile – "Contact & Info"
+      12: Wide tile – "Process and Insights"
+
+      Feature name – Slideshow modal (project slideshow):
+      Full-screen popup with image slides, prev/next arrows, dot indicators,
+      and a top-left "Project info" (i) button that opens a left-edge drawer.
+      First implemented on card 3. Use this name when asking to add the same
+      feature to other cards (e.g. "add the slideshow modal to card 5").
+    -->
+    <div class="page">
+      <header class="hero">
+        <div class="hero-text" id="hero-card">
+          <p class="eyebrow">XR / Creative Immersive Technology</p>
+          <h1>Hej, this is Tan</h1>
+          <p class="tagline">
+            Designing for over a decade and developing since 2023 | Now a happy creator of immersive worlds across extended reality and interactive media.
+          </p>
+        </div>
+        <div class="hero-visual" id="hero-visual">
+          <p class="hero-caption">WORK SNAPSHOTS</p>
+        </div>
+      </header>
+
+      <main class="bento">
+        <!-- Tile 1: Flagship XXR project (2x2) -->
+        <a href="#" class="tile tile-xl gradient-xxr" id="card-3">
+          <div class="card3-tag-row" id="card3-tags-modal"></div>
+          <h2 class="flagship-title">Mixed Reality App to Read Air Quality</h2>
+          <p class="tile-body flagship-body">
+            A spatial companion that visualises invisible pollution levels around you in real time.
+          </p>
+          <span class="tile-cta">View case study →</span>
+          <div class="flagship-thumb" id="flagship-thumb"></div>
+        </a>
+
+        <!-- Tile 2: Project (Card 4) -->
+        <a href="#" class="tile tile-sm" id="card-4">
+          <div class="thumb thumb-1"></div>
+          <h3>Generative audio visual artwork in VVVV</h3>
+          <p>An immersive generative piece that combines real-time visuals and reactive sound design.</p>
+          <span class="pill-row">
+            <span class="pill subtle">Generative</span>
+            <span class="pill subtle">VVVV</span>
+          </span>
+        </a>
+
+        <!-- Tile 3: Project (Card 5) -->
+        <a href="#" class="tile tile-sm" id="card-5">
+          <div class="thumb thumb-1"></div>
+          <h3>Interactive Timeline with AR features</h3>
+          <p>An AR-powered timeline that lets you scrub through stories anchored in real space.</p>
+          <span class="pill-row">
+            <span class="pill subtle">AR</span>
+            <span class="pill subtle">Site-specific</span>
+          </span>
+        </a>
+
+        <!-- Tile 4: Project (Card 6) -->
+        <a href="#" class="tile tile-sm" id="card-6">
+          <div class="thumb thumb-2"></div>
+          <h3>Insect library in VR/MR</h3>
+          <p>A living catalogue of insects you can inspect, scale, and study in mixed reality.</p>
+          <span class="pill-row">
+            <span class="pill subtle">Installation</span>
+            <span class="pill subtle">Sound</span>
+          </span>
+        </a>
+
+        <!-- Tile 5: Project (Card 7) -->
+        <a href="#" class="tile tile-sm" id="card-7">
+          <div class="thumb thumb-3"></div>
+          <h3>Learn about Mars in VR</h3>
+          <p>Guided journeys across Martian terrain, mixing scientific data with speculative futures.</p>
+          <span class="pill-row">
+            <span class="pill subtle">VR</span>
+            <span class="pill subtle">Narrative</span>
+          </span>
+        </a>
+
+        <!-- Tile 6: Process / experiments (2x1 wide) – Card 10 -->
+        <a href="#" class="tile tile-wide" id="card-10">
+          <div class="thumb thumb-large"></div>
+          <div class="tile-text">
+            <h3>An interactive archive for XR design patterns</h3>
+            <p>Reusable interaction patterns and spatial UI experiments, organised as a living library.</p>
+          </div>
+        </a>
+
+        <!-- Tile 7: Project (Card 8) -->
+        <a href="#" class="tile tile-sm" id="card-8">
+          <div class="thumb thumb-4"></div>
+          <h3>VR Chapel</h3>
+          <p>An intimate virtual space for reflection, ambient rituals, and quiet gatherings.</p>
+          <span class="pill-row">
+            <span class="pill subtle">MR</span>
+            <span class="pill subtle">Performance</span>
+          </span>
+        </a>
+
+        <!-- Tile 8: Workshop / Teaching (Card 9) -->
+        <a href="#" class="tile tile-sm" id="card-9">
+          <div class="thumb thumb-2"></div>
+          <h3>Workshops and Lectures</h3>
+          <p>Sharing XR practice through talks, studio visits, and hands-on sessions.</p>
+          <span class="pill-row">
+            <span class="pill subtle">Teaching</span>
+            <span class="pill subtle">XR</span>
+          </span>
+        </a>
+
+        <!-- Tile 9: Contact / CV – Card 11 -->
+        <a href="#" class="tile tile-sm contact-tile" id="card-11">
+          <h3>Contact & Info</h3>
+          <p>Available for collaborations, commissions, and residencies.</p>
+          <ul class="contact-list">
+            <li>Email · yourname@studio.xyz</li>
+            <li>CV / Resume</li>
+            <li>Instagram / X / Are.na</li>
+          </ul>
+        </a>
+
+        <!-- Tile 10: Sketchbook (Card 12) -->
+        <a href="#" class="tile tile-wide" id="card-12">
+          <div class="thumb thumb-5 thumb-large"></div>
+          <div class="tile-text">
+            <h3>Process and Insights</h3>
+            <p>
+              A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that
+              reveal how the work comes together.
+            </p>
+          </div>
+        </a>
+      </main>
+
+      <div class="social-modal-overlay" id="social-modal">
+        <div class="social-modal">
+          <p class="social-modal-eyebrow">FIND ME ONLINE</p>
+          <ul class="social-modal-list"></ul>
+          <a class="social-modal-cv" href="#">
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="eni-modal-overlay" id="eni-modal">
+        <div class="eni-modal">
+          <button class="eni-modal-close" type="button" aria-label="Close image gallery">
+            ✕
+          </button>
+          <a
+            href="index.html"
+            class="eni-modal-eyebrow eni-modal-eyebrow-secondary eni-modal-back-home"
+          >
+            <span class="eni-modal-back-arrow" aria-hidden="true">&larr;</span>
+            <span class="eni-modal-back-label">Back To Homepage</span>
+          </a>
+          <div class="eni-browser">
+            <nav class="snap-tree" id="snap-tree" aria-label="Work snapshots folders"></nav>
+            <div class="eni-grid-scroll">
+              <div class="eni-grid" id="eni-grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card3-modal-overlay" id="card3-modal">
+        <div class="card3-modal">
+          <button class="card3-modal-close" type="button" aria-label="Close project slideshow">
+            ✕
+          </button>
+          <div class="card3-tag-row">
+            <span class="pill subtle">WebXR</span>
+            <span class="pill subtle">Environmental Data</span>
+            <span class="pill subtle">three.js</span>
+          </div>
+          <div class="card3-slide-meta">
+            <h2 id="card3-slide-title"></h2>
+            <p id="card3-slide-subtitle"></p>
+          </div>
+          <div class="card3-slide-frame">
+            <div class="card3-slide-image-wrap">
+              <img id="card3-slide-image" class="card3-slide-image" src="" alt="" loading="lazy" />
+            </div>
+            <button class="card3-nav card3-nav-prev" type="button" aria-label="Previous slide">
+              ‹
+            </button>
+            <button class="card3-nav card3-nav-next" type="button" aria-label="Next slide">
+              ›
+            </button>
+            <div class="card3-dots" id="card3-dots"></div>
+            <p class="card3-slide-caption" id="card3-slide-caption"></p>
+          </div>
+          <div class="card3-bottom-meta">
+            <div class="card3-bottom-meta-item">
+              <span class="card3-bottom-label">Year</span>
+              <span class="card3-bottom-value" id="card3-year"></span>
+            </div>
+            <div class="card3-bottom-meta-item">
+              <span class="card3-bottom-label">Role</span>
+              <span class="card3-bottom-value" id="card3-role"></span>
+            </div>
+            <div class="card3-bottom-meta-item">
+              <span class="card3-bottom-label">Tools</span>
+              <span class="card3-bottom-value" id="card3-tools"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="link-confirm-overlay" id="link-confirm-modal">
+        <div class="link-confirm-modal">
+          <button class="link-confirm-close" type="button" aria-label="Close">✕</button>
+          <p class="link-confirm-message">This link will open in a new tab.</p>
+          <div class="link-confirm-actions">
+            <button type="button" class="link-confirm-cancel">Cancel</button>
+            <button type="button" class="link-confirm-open">Open in new tab</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        /** Site root as URL (for /, /index.html, /worksnaps/, etc.). */
+        function siteRootUrl() {
+          const u = new URL(window.location.href);
+          let path = u.pathname.replace(/\/index\.html$/i, "");
+          path = path.replace(/\/?worksnaps\/?$/i, "") || "/";
+          if (!path.startsWith("/")) path = "/" + path;
+          const basePath = path.endsWith("/") ? path : path + "/";
+          return new URL(basePath, u.origin);
+        }
+
+        function isWorksnapsPath() {
+          return /\/worksnaps(\/|\/index\.html)?$/i.test(window.location.pathname);
+        }
+
+        /** Old ?eni=1 links → /worksnaps/ (keeps bookmarks and shares working). */
+        function migrateLegacyEniQuery() {
+          const params = new URLSearchParams(window.location.search);
+          if (params.get("eni") !== "1") return;
+          params.delete("eni");
+          const qs = params.toString();
+          const tail = (qs ? "?" + qs : "") + window.location.hash;
+          try {
+            const target = new URL("worksnaps/", siteRootUrl());
+            history.replaceState({}, "", target.pathname + tail);
+          } catch (_) {}
+        }
+
+        migrateLegacyEniQuery();
+
+        const heroCard = document.getElementById("hero-card");
+        const socialModal = document.getElementById("social-modal");
+        const heroCircle = document.getElementById("hero-visual");
+        const eniModal = document.getElementById("eni-modal");
+        const socialListEl = socialModal && socialModal.querySelector(".social-modal-list");
+        const socialCvEl = socialModal && socialModal.querySelector(".social-modal-cv");
+        const card3Modal = document.getElementById("card3-modal");
+        const card3Tile = document.getElementById("card-3");
+        const card4Tile = document.getElementById("card-4");
+        const card5Tile = document.getElementById("card-5");
+        const card6Tile = document.getElementById("card-6");
+        const card7Tile = document.getElementById("card-7");
+        const card8Tile = document.getElementById("card-8");
+        const card9Tile = document.getElementById("card-9");
+        const card10Tile = document.getElementById("card-10");
+        const card11Tile = document.getElementById("card-11");
+        if (!heroCard || !socialModal || !heroCircle || !eniModal || !card3Modal)
+          return;
+
+        const socialCloseBtn = socialModal.querySelector(".social-modal-close");
+        const eniCloseBtn = eniModal.querySelector(".eni-modal-close");
+        const eniGrid = document.getElementById("eni-grid");
+        const snapTreeEl = document.getElementById("snap-tree");
+        let eniLoaded = false;
+        let eniByFolder = null;
+        let eniFolderOrder = [];
+        let eniSelectedFolder = "";
+        let eniThumbObserver = null;
+        /** Tiny SVG placeholder until a snapshot thumb is near the modal viewport. */
+        const ENI_LAZY_PLACEHOLDER =
+          "data:image/svg+xml," +
+          encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="260" height="160"/>');
+        /** Root folder for snapshot image files (matches folder name on disk). */
+        const SNAPSHOT_MEDIA_ROOT = "Project by Project";
+        /** Lists subfolders under SNAPSHOT_MEDIA_ROOT (maintain when you add date folders on disk). */
+        const SNAPSHOT_FOLDERS_JSON = encodeURI(SNAPSHOT_MEDIA_ROOT + "/folders.json");
+        /** Special value meaning: show snapshots from all folders (combined + shuffled). */
+        const SNAPSHOT_ALL = "__all__";
+        const card3CloseBtn = card3Modal.querySelector(".card3-modal-close");
+        const card3ImageEl = document.getElementById("card3-slide-image");
+        const card3TitleEl = document.getElementById("card3-slide-title");
+        const card3SubtitleEl = document.getElementById("card3-slide-subtitle");
+        const card3PrevBtn = card3Modal.querySelector(".card3-nav-prev");
+        const card3NextBtn = card3Modal.querySelector(".card3-nav-next");
+        const card3DotsEl = card3Modal.querySelector("#card3-dots");
+        const card3ModalTagsEl = document.getElementById("card3-tags-modal");
+        const card3YearEl = document.getElementById("card3-year");
+        const card3RoleEl = document.getElementById("card3-role");
+        const card3ToolsEl = document.getElementById("card3-tools");
+        const card3CaptionEl = document.getElementById("card3-slide-caption");
+        const linkConfirmModal = document.getElementById("link-confirm-modal");
+        const linkConfirmCloseBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-close");
+        const linkConfirmCancelBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-cancel");
+        const linkConfirmOpenBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-open");
+        let pendingLinkUrl = null;
+        let indexImagesCache = null;
+        let card3Slides = [];
+        let card3SlideIndex = 0;
+        let activeCardId = 3;
+        let heroVisualLink = null;
+
+        function isHeroVisualLink(url) {
+          if (!url || typeof url !== "string") return false;
+          const t = url.trim();
+          if (!t || t === "#") return false;
+          if (/^javascript:/i.test(t)) return false;
+          return true;
+        }
+
+        function openEniInNewTab() {
+          try {
+            const target = new URL("worksnaps/", siteRootUrl());
+            window.open(target.href, "_blank", "noopener,noreferrer");
+          } catch (_) {
+            window.open("worksnaps/index.html", "_blank", "noopener,noreferrer");
+          }
+        }
+
+        function normalizeSlides(rawSlides, fallbackSrc) {
+          if (Array.isArray(rawSlides) && rawSlides.length > 0) {
+            return rawSlides
+              .map((entry) => {
+                if (!entry) return null;
+                if (typeof entry === "string") {
+                  return { src: entry, caption: "" };
+                }
+                const src = entry.src || fallbackSrc || "";
+                if (!src) return null;
+                return {
+                  src,
+                  caption: entry.caption || ""
+                };
+              })
+              .filter(Boolean);
+          }
+          if (fallbackSrc) {
+            return [{ src: fallbackSrc, caption: "" }];
+          }
+          return [];
+        }
+
+        async function openSocialModal() {
+          // Always fetch the latest JSON before opening card 1 modal.
+          await loadIndexImages(true);
+          socialModal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeSocialModal() {
+          socialModal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        function openEniModal() {
+          eniModal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+          if (!eniLoaded) {
+            loadEniImages();
+          }
+        }
+
+        function closeEniModal() {
+          eniModal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        function openCardModal(cardId, event) {
+          if (event) event.preventDefault();
+          activeCardId = cardId;
+          card3SlideIndex = 0;
+          card3Modal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+          populateCard3Modal();
+        }
+
+        function closeCard3Modal() {
+          card3Modal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        function openLinkConfirmModal(href) {
+          pendingLinkUrl = href;
+          if (linkConfirmModal) {
+            linkConfirmModal.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+          }
+        }
+
+        function closeLinkConfirmModal() {
+          pendingLinkUrl = null;
+          if (linkConfirmModal) {
+            linkConfirmModal.classList.remove("is-open");
+            document.body.style.overflow = "";
+          }
+        }
+
+        if (linkConfirmModal) {
+          linkConfirmModal.addEventListener("click", (e) => {
+            if (e.target === linkConfirmModal) closeLinkConfirmModal();
+          });
+        }
+        if (linkConfirmCloseBtn) linkConfirmCloseBtn.addEventListener("click", closeLinkConfirmModal);
+        if (linkConfirmCancelBtn) linkConfirmCancelBtn.addEventListener("click", closeLinkConfirmModal);
+        if (linkConfirmOpenBtn) {
+          linkConfirmOpenBtn.addEventListener("click", () => {
+            if (pendingLinkUrl) {
+              window.open(pendingLinkUrl, "_blank", "noopener,noreferrer");
+            }
+            closeLinkConfirmModal();
+          });
+        }
+
+        heroCard.addEventListener("click", openSocialModal);
+        heroCircle.addEventListener("click", () => {
+          if (heroVisualLink) {
+            window.open(heroVisualLink, "_blank", "noopener,noreferrer");
+          } else {
+            openEniInNewTab();
+          }
+        });
+        if (card3Tile) {
+          card3Tile.addEventListener("click", (e) => openCardModal(3, e));
+        }
+        if (card4Tile) {
+          card4Tile.addEventListener("click", (e) => openCardModal(4, e));
+        }
+        if (card5Tile) {
+          card5Tile.addEventListener("click", (e) => openCardModal(5, e));
+        }
+        if (card6Tile) {
+          card6Tile.addEventListener("click", (e) => openCardModal(6, e));
+        }
+        if (card7Tile) {
+          card7Tile.addEventListener("click", (e) => openCardModal(7, e));
+        }
+        if (card8Tile) {
+          card8Tile.addEventListener("click", (e) => openCardModal(8, e));
+        }
+        if (card9Tile) {
+          card9Tile.addEventListener("click", (e) => openCardModal(9, e));
+        }
+        if (card11Tile) {
+          card11Tile.addEventListener("click", (e) => {
+            e.preventDefault();
+            openSocialModal();
+          });
+        }
+
+        socialModal.addEventListener("click", (event) => {
+          if (event.target === socialModal) {
+            closeSocialModal();
+          }
+        });
+
+        eniModal.addEventListener("click", (event) => {
+          if (event.target === eniModal) {
+            closeEniModal();
+          }
+        });
+
+        card3Modal.addEventListener("click", (event) => {
+          if (event.target === card3Modal) {
+            closeCard3Modal();
+          }
+        });
+
+        if (socialCloseBtn) {
+          socialCloseBtn.addEventListener("click", closeSocialModal);
+        }
+
+        if (eniCloseBtn) {
+          eniCloseBtn.addEventListener("click", closeEniModal);
+        }
+
+        const eniBackHome = eniModal.querySelector(".eni-modal-back-home");
+        if (eniBackHome) {
+          eniBackHome.addEventListener("click", (e) => {
+            closeEniModal();
+            if (document.getElementById("hero-card")) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          });
+        }
+
+        if (card3CloseBtn) {
+          card3CloseBtn.addEventListener("click", closeCard3Modal);
+        }
+
+        if (card3PrevBtn) {
+          card3PrevBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            stepCard3Slide(-1);
+          });
+        }
+
+        if (card3NextBtn) {
+          card3NextBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            stepCard3Slide(1);
+          });
+        }
+
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+            if (socialModal.classList.contains("is-open")) {
+              closeSocialModal();
+            }
+            if (eniModal.classList.contains("is-open")) {
+              closeEniModal();
+            }
+            if (card3Modal.classList.contains("is-open")) {
+              closeCard3Modal();
+            }
+            if (linkConfirmModal && linkConfirmModal.classList.contains("is-open")) {
+              closeLinkConfirmModal();
+            }
+          }
+        });
+
+        // Load index_content.json for card-specific imagery and text
+        loadIndexImages();
+
+        if (isWorksnapsPath() || new URLSearchParams(window.location.search).get("eni") === "1") {
+          queueMicrotask(() => openEniModal());
+        }
+
+        function folderFromSnapshotSrc(src) {
+          if (!src || typeof src !== "string") return "ungrouped";
+          const parts = src.split("/").filter(Boolean);
+          const i = parts.indexOf(SNAPSHOT_MEDIA_ROOT);
+          if (i >= 0 && parts[i + 1]) return parts[i + 1];
+          return "ungrouped";
+        }
+
+        function mergeFolderOrder(diskFolders, keysFromData) {
+          const seen = new Set();
+          const out = [];
+          function push(n) {
+            if (!n || seen.has(n)) return;
+            seen.add(n);
+            out.push(n);
+          }
+          if (Array.isArray(diskFolders)) diskFolders.forEach(push);
+          if (Array.isArray(keysFromData)) keysFromData.forEach(push);
+          return out;
+        }
+
+        function disconnectEniThumbObserver() {
+          if (eniThumbObserver) {
+            eniThumbObserver.disconnect();
+            eniThumbObserver = null;
+          }
+        }
+
+        /** Load `.eni-thumb` URLs when they enter the ENI modal scroll area (not just the window). */
+        function hydrateEniThumb(img) {
+          if (!img || !eniThumbObserver) return;
+          const ds = img.getAttribute("data-src");
+          if (!ds) return;
+          img.src = ds;
+          img.removeAttribute("data-src");
+          img.classList.remove("eni-thumb-pending");
+          eniThumbObserver.unobserve(img);
+        }
+
+        function observeEniGridThumbnails() {
+          disconnectEniThumbObserver();
+          if (!eniGrid || !eniModal || !("IntersectionObserver" in window)) return;
+          const pending = eniGrid.querySelectorAll("img.eni-thumb[data-src]");
+          if (!pending.length) return;
+          eniThumbObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                hydrateEniThumb(entry.target);
+              });
+            },
+            { root: eniModal, rootMargin: "140px 0px", threshold: 0.01 }
+          );
+          pending.forEach((img) => eniThumbObserver.observe(img));
+        }
+
+        function parseFoldersJsonResponse(res) {
+          if (!res || !res.ok) return Promise.resolve([]);
+          return res
+            .json()
+            .then((data) => (Array.isArray(data) ? data : []))
+            .catch(() => []);
+        }
+
+        function renderEniGrid(folder) {
+          if (!eniGrid) return;
+          disconnectEniThumbObserver();
+          eniGrid.innerHTML = "";
+          let items = [];
+          if (folder === SNAPSHOT_ALL) {
+            // Combine everything into a single list, then randomize ordering.
+            items = [];
+            if (eniByFolder) {
+              Object.keys(eniByFolder).forEach((k) => {
+                const arr = eniByFolder[k] || [];
+                items.push(...arr);
+              });
+            }
+            // Fisher–Yates shuffle (in-place on our local `items` array).
+            for (let i = items.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [items[i], items[j]] = [items[j], items[i]];
+            }
+          } else {
+            items = (eniByFolder && eniByFolder[folder]) || [];
+          }
+          if (items.length === 0) {
+            eniGrid.innerHTML =
+              "<p class='eni-empty-folder'>No snapshots in this folder yet.</p>";
+            return;
+          }
+          const useLazyThumbs = "IntersectionObserver" in window && !!eniModal;
+          items.forEach((item) => {
+            const card = document.createElement("a");
+            card.className = "eni-card";
+            card.href = item.link || "#";
+            if ((item.link || "#").startsWith("http")) {
+              card.target = "_blank";
+              card.rel = "noreferrer";
+            }
+            const title = item.title || "";
+            const id = item.id || "";
+            const src = encodeURI(item.src);
+            const thumbAttrs = useLazyThumbs
+              ? `class="eni-thumb eni-thumb-pending" src="${ENI_LAZY_PLACEHOLDER}" data-src="${src}" alt="${title}" decoding="async"`
+              : `class="eni-thumb" src="${src}" alt="${title}" loading="lazy" decoding="async"`;
+            card.innerHTML = `
+                  <img ${thumbAttrs} />
+                  <div class="eni-body">
+                    <p class="eni-title">${title}</p>
+                    <p class="eni-id">#${id}</p>
+                  </div>
+                `;
+            card.addEventListener("mouseenter", () => {
+              hydrateEniThumb(card.querySelector(".eni-thumb[data-src]"));
+            });
+            card.addEventListener("click", (e) => {
+              if (!e.target.classList.contains("eni-thumb")) return;
+              hydrateEniThumb(card.querySelector(".eni-thumb[data-src]"));
+              e.preventDefault();
+              e.stopPropagation();
+              card.classList.add("is-enlarged");
+            });
+            card.addEventListener("mouseleave", () => {
+              card.classList.remove("is-enlarged");
+            });
+            eniGrid.appendChild(card);
+          });
+          observeEniGridThumbnails();
+        }
+
+        function updateSnapTreeSelection() {
+          if (!snapTreeEl) return;
+          snapTreeEl.querySelectorAll(".snap-tree-row[data-folder]").forEach((btn) => {
+            btn.classList.toggle("is-selected", btn.getAttribute("data-folder") === eniSelectedFolder);
+          });
+        }
+
+        function selectEniFolder(folder) {
+          eniSelectedFolder = folder;
+          renderEniGrid(folder);
+          updateSnapTreeSelection();
+        }
+
+        function buildSnapTree() {
+          if (!snapTreeEl || !eniByFolder) return;
+          snapTreeEl.innerHTML = "";
+
+          const allRow = document.createElement("button");
+          allRow.type = "button";
+          allRow.className = "snap-tree-row snap-tree-folder";
+          allRow.setAttribute("data-folder", SNAPSHOT_ALL);
+          allRow.innerHTML = `<span class="snap-tree-label">All</span>`;
+          allRow.addEventListener("click", () => selectEniFolder(SNAPSHOT_ALL));
+          snapTreeEl.appendChild(allRow);
+
+          const root = document.createElement("div");
+          root.className = "snap-tree-root is-expanded";
+
+          const rootRow = document.createElement("button");
+          rootRow.type = "button";
+          rootRow.className = "snap-tree-row snap-tree-row-root";
+          rootRow.setAttribute("aria-expanded", "true");
+          rootRow.innerHTML =
+            '<span class="snap-tree-chevron" aria-hidden="true">›</span><span class="snap-tree-label">' +
+            SNAPSHOT_MEDIA_ROOT +
+            "</span>";
+
+          const childrenWrap = document.createElement("div");
+          childrenWrap.className = "snap-tree-children";
+
+          rootRow.addEventListener("click", () => {
+            const exp = root.classList.toggle("is-expanded");
+            rootRow.setAttribute("aria-expanded", exp ? "true" : "false");
+          });
+
+          eniFolderOrder.forEach((folderName) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "snap-tree-row snap-tree-folder";
+            btn.setAttribute("data-folder", folderName);
+            const chev = document.createElement("span");
+            chev.className = "snap-tree-chevron snap-tree-chevron-muted";
+            chev.setAttribute("aria-hidden", "true");
+            chev.textContent = "›";
+            const lab = document.createElement("span");
+            lab.className = "snap-tree-label";
+            lab.textContent = folderName;
+            btn.appendChild(chev);
+            btn.appendChild(lab);
+            btn.addEventListener("click", () => selectEniFolder(folderName));
+            childrenWrap.appendChild(btn);
+          });
+
+          root.appendChild(rootRow);
+          root.appendChild(childrenWrap);
+          snapTreeEl.appendChild(root);
+
+          updateSnapTreeSelection();
+        }
+
+        function loadEniImages() {
+          if (!eniGrid || !snapTreeEl) return;
+          Promise.all([
+            fetch("w_snapshots.json", { cache: "no-store" }).then((res) => {
+              if (!res.ok) throw new Error("snapshots json");
+              return res.json();
+            }),
+            fetch(SNAPSHOT_FOLDERS_JSON, { cache: "no-store" }).then((res) => parseFoldersJsonResponse(res)),
+          ])
+            .then(([items, diskFolders]) => {
+              if (!Array.isArray(items)) return;
+              eniByFolder = {};
+              items.forEach((item) => {
+                const f = (item.folder && String(item.folder).trim()) || folderFromSnapshotSrc(item.src);
+                if (!eniByFolder[f]) eniByFolder[f] = [];
+                eniByFolder[f].push(item);
+              });
+              const diskList = Array.isArray(diskFolders) ? diskFolders : [];
+              eniFolderOrder = mergeFolderOrder(diskList, Object.keys(eniByFolder));
+              const firstWith =
+                eniFolderOrder.find((f) => (eniByFolder[f] || []).length > 0) || eniFolderOrder[0] || "";
+              eniSelectedFolder = firstWith;
+              buildSnapTree();
+              renderEniGrid(eniSelectedFolder);
+              eniLoaded = true;
+            })
+            .catch(() => {
+              eniByFolder = null;
+              snapTreeEl.innerHTML = "";
+              eniGrid.innerHTML = "<p class='eni-error'>Could not load images yet.</p>";
+            });
+        }
+
+        function loadIndexImages(forceFresh) {
+          const cacheBust = forceFresh ? Date.now() : Date.now();
+          const url = "index_content.json?v=" + cacheBust;
+          return fetch(url, { cache: "no-store" })
+            .then((res) => res.json())
+            .then((items) => {
+              if (!Array.isArray(items)) return;
+              indexImagesCache = items;
+              const lazyThumbEntries = [];
+              items.forEach((item) => {
+                if (!item || typeof item.card === "undefined") return;
+
+                // Card 1: hero text & social links
+                if (item.card === 1 && socialListEl) {
+                  const heroEyebrowEl = heroCard.querySelector(".eyebrow");
+                  const heroTitleEl = heroCard.querySelector("h1");
+                  const heroTaglineEl = heroCard.querySelector(".tagline");
+                  if (heroEyebrowEl && item.eyebrow) {
+                    heroEyebrowEl.textContent = item.eyebrow;
+                  }
+                  if (heroTitleEl && item.title) {
+                    heroTitleEl.textContent = item.title;
+                  }
+                  if (heroTaglineEl && item.subtitle) {
+                    heroTaglineEl.textContent = item.subtitle;
+                  }
+                  socialListEl.innerHTML = "";
+                  if (Array.isArray(item.socialLinks)) {
+                    item.socialLinks.forEach((link) => {
+                      if (!link || !link.url) return;
+                      const li = document.createElement("li");
+                      li.innerHTML = `
+                        <a href="${link.url}" target="_blank" rel="noreferrer">
+                          <span class="social-label">${link.label || ""}</span>
+                          <span class="social-handle">${link.handle || ""}</span>
+                        </a>
+                      `;
+                      socialListEl.appendChild(li);
+                    });
+                  }
+                  if (socialCvEl && item.cvUrl) {
+                    socialCvEl.href = item.cvUrl;
+                    const isPdf = /\.pdf($|\?)/i.test(item.cvUrl);
+                    if (isPdf) {
+                      socialCvEl.setAttribute("download", "");
+                      socialCvEl.removeAttribute("target");
+                      socialCvEl.removeAttribute("rel");
+                    } else {
+                      socialCvEl.removeAttribute("download");
+                      socialCvEl.setAttribute("target", "_blank");
+                      socialCvEl.setAttribute("rel", "noreferrer");
+                    }
+                  }
+                }
+
+                if (item.card === 2) {
+                  heroVisualLink = isHeroVisualLink(item.link) ? item.link.trim() : null;
+                  return;
+                }
+
+                if (item.card === 3) {
+                  const flagshipTile = document.getElementById("card-3");
+                  if (flagshipTile) {
+                    const thumb = flagshipTile.querySelector(".flagship-thumb");
+                    const titleEl = flagshipTile.querySelector(".flagship-title");
+                    const bodyEl = flagshipTile.querySelector(".flagship-body");
+                    const homepageTagRow = flagshipTile.querySelector(".card3-tag-row");
+
+                    if (thumb && item.src) {
+                      thumb.style.backgroundImage = "none";
+                      thumb.innerHTML = "";
+                      const img = document.createElement("img");
+                      const imgSrc = encodeURI(item.src) + "?v=" + Date.now();
+                      img.src = imgSrc;
+                      img.alt = item.title || "";
+                      img.className = "flagship-thumb-img is-loading";
+                      img.loading = "lazy";
+                      img.onload = img.onerror = () => img.classList.remove("is-loading");
+                      thumb.appendChild(img);
+                    }
+                    if (titleEl && item.title) {
+                      titleEl.textContent = item.title;
+                    }
+                    if (bodyEl && item.subtitle) {
+                      bodyEl.textContent = item.subtitle;
+                    }
+
+                    if (homepageTagRow && Array.isArray(item.tags)) {
+                      homepageTagRow.innerHTML = "";
+                      item.tags.forEach((tag) => {
+                        const span = document.createElement("span");
+                        span.className = "pill subtle";
+                        span.textContent = tag;
+                        homepageTagRow.appendChild(span);
+                      });
+                    }
+                  }
+
+                  return;
+                }
+
+                // Cards 5, 6, 7, 8, 9, 10, 12 – homepage tiles
+                const tile = document.getElementById("card-" + item.card);
+                if (!tile) return;
+
+                const titleEl = tile.querySelector("h3");
+                const bodyEl = tile.querySelector("p");
+                const thumbEl = tile.querySelector(".thumb, .thumb-large");
+                const pillRow = tile.querySelector(".pill-row");
+
+                if (thumbEl && item.src) {
+                  const src = encodeURI(item.src);
+                  thumbEl.dataset.src = src;
+                  thumbEl.classList.add("is-loading");
+                  lazyThumbEntries.push({ el: thumbEl });
+                }
+                if (titleEl && item.title) {
+                  titleEl.textContent = item.title;
+                }
+                if (bodyEl && item.subtitle) {
+                  bodyEl.textContent = item.subtitle;
+                }
+
+                if (pillRow && Array.isArray(item.tags)) {
+                  pillRow.innerHTML = "";
+                  item.tags.forEach((tag) => {
+                    const span = document.createElement("span");
+                    span.className = "pill subtle";
+                    span.textContent = tag;
+                    pillRow.appendChild(span);
+                  });
+                }
+                if (item.link) {
+                  tile.href = item.link;
+                  tile.target = "_blank";
+                  tile.rel = "noreferrer";
+                  tile.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    openLinkConfirmModal(tile.href);
+                  });
+                }
+              });
+
+              // Lazy-load thumbnails when they enter the viewport
+              if (lazyThumbEntries.length > 0 && "IntersectionObserver" in window) {
+                const thumbObserver = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (!entry.isIntersecting) return;
+                      const target = entry.target;
+                      if (target.dataset.src) {
+                        const src = target.dataset.src;
+                        const img = new Image();
+                        img.onload = () => {
+                          target.style.backgroundImage = "url('" + src + "')";
+                          target.style.backgroundSize = "cover";
+                          target.style.backgroundPosition = "center";
+                          target.classList.remove("is-loading");
+                          thumbObserver.unobserve(target);
+                        };
+                        img.onerror = () => {
+                          target.classList.remove("is-loading");
+                          thumbObserver.unobserve(target);
+                        };
+                        img.src = src;
+                      }
+                    });
+                  },
+                  { rootMargin: "100px", threshold: 0.01 }
+                );
+                lazyThumbEntries.forEach(({ el }) => {
+                  thumbObserver.observe(el);
+                });
+              }
+            })
+            .catch(() => {
+              // silently fail if JSON can't be loaded
+            });
+        }
+
+        function populateCard3Modal() {
+          if (!indexImagesCache) return;
+          const cardData = indexImagesCache.find((item) => item.card === activeCardId);
+          if (!cardData) return;
+
+          card3Slides = normalizeSlides(cardData.slides, cardData.src);
+          card3SlideIndex = 0;
+          buildCard3Dots();
+          showCard3Slide(0);
+
+          if (card3TitleEl && cardData.title) {
+            card3TitleEl.textContent = cardData.title;
+          }
+          if (card3SubtitleEl && cardData.subtitle) {
+            card3SubtitleEl.textContent = cardData.subtitle;
+          }
+
+          if (card3ModalTagsEl && Array.isArray(cardData.tags)) {
+            card3ModalTagsEl.innerHTML = "";
+            cardData.tags.forEach((tag) => {
+              const span = document.createElement("span");
+              span.className = "pill subtle";
+              span.textContent = tag;
+              card3ModalTagsEl.appendChild(span);
+            });
+          }
+
+          if (card3YearEl && typeof cardData.year !== "undefined") {
+            card3YearEl.textContent = String(cardData.year);
+          }
+          if (card3RoleEl && cardData.role) {
+            card3RoleEl.textContent = cardData.role;
+          }
+          if (card3ToolsEl && cardData.tools) {
+            card3ToolsEl.textContent = cardData.tools;
+          }
+        }
+
+        function showCard3Slide(index) {
+          if (!card3ImageEl || card3Slides.length === 0) return;
+          const safeIndex = ((index % card3Slides.length) + card3Slides.length) % card3Slides.length;
+          card3SlideIndex = safeIndex;
+          const current = card3Slides[safeIndex];
+          const wrap = card3ImageEl.closest(".card3-slide-image-wrap");
+          if (wrap) wrap.classList.add("is-loading");
+          card3ImageEl.classList.add("is-loading");
+          card3ImageEl.onload = card3ImageEl.onerror = () => {
+            card3ImageEl.classList.remove("is-loading");
+            if (wrap) wrap.classList.remove("is-loading");
+          };
+          card3ImageEl.src = encodeURI(current.src);
+          if (card3CaptionEl) {
+            const captionText = current.caption || "";
+            card3CaptionEl.textContent = captionText;
+            card3CaptionEl.style.display = captionText ? "" : "none";
+          }
+          updateCard3Dots();
+          // Preload adjacent slides for smoother navigation
+          [safeIndex - 1, safeIndex + 1].forEach((i) => {
+            const idx = ((i % card3Slides.length) + card3Slides.length) % card3Slides.length;
+            if (idx !== safeIndex && card3Slides[idx]) {
+              const preload = new Image();
+              preload.src = encodeURI(card3Slides[idx].src);
+            }
+          });
+        }
+
+        function stepCard3Slide(delta) {
+          showCard3Slide((card3SlideIndex || 0) + delta);
+        }
+
+        function buildCard3Dots() {
+          if (!card3DotsEl) return;
+          card3DotsEl.innerHTML = "";
+          card3Slides.forEach((_, i) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "card3-dot";
+            dot.addEventListener("click", function (e) {
+              e.stopPropagation();
+              showCard3Slide(i);
+            });
+            card3DotsEl.appendChild(dot);
+          });
+          updateCard3Dots();
+        }
+
+        function updateCard3Dots() {
+          if (!card3DotsEl) return;
+          const dots = card3DotsEl.querySelectorAll(".card3-dot");
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("is-active", i === card3SlideIndex);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
+
