@@ -238,6 +238,18 @@
           </div>
         </div>
       </div>
+
+      <div class="eni-lightbox-overlay" id="eni-lightbox" aria-hidden="true">
+        <button type="button" class="eni-lightbox-backdrop" aria-label="Close image preview"></button>
+        <div class="eni-lightbox-sheet" role="dialog" aria-modal="true" aria-label="Snapshot image">
+          <button type="button" class="eni-lightbox-close" aria-label="Close">✕</button>
+          <a class="eni-lightbox-open-tab" href="#" target="_blank" rel="noreferrer">Open in new tab</a>
+          <div class="eni-lightbox-img-wrap">
+            <img class="eni-lightbox-img" src="" alt="" decoding="async" />
+          </div>
+          <p class="eni-lightbox-caption"></p>
+        </div>
+      </div>
     </div>
     <script>
       (function () {
@@ -298,6 +310,8 @@
         let eniFolderOrder = [];
         let eniSelectedFolder = "";
         let eniThumbObserver = null;
+        let eniMasonryResizeObserver = null;
+        let eniMasonryRaf = 0;
         /** Tiny SVG placeholder until a snapshot thumb is near the modal viewport. */
         const ENI_LAZY_PLACEHOLDER =
           "data:image/svg+xml," +
@@ -324,6 +338,7 @@
         const linkConfirmCloseBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-close");
         const linkConfirmCancelBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-cancel");
         const linkConfirmOpenBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-open");
+        const eniLightbox = document.getElementById("eni-lightbox");
         let pendingLinkUrl = null;
         let indexImagesCache = null;
         let card3Slides = [];
@@ -426,6 +441,41 @@
           }
         }
 
+        function closeEniLightbox() {
+          if (!eniLightbox) return;
+          eniLightbox.classList.remove("is-open");
+          eniLightbox.setAttribute("aria-hidden", "true");
+          const lbImg = eniLightbox.querySelector(".eni-lightbox-img");
+          if (lbImg) {
+            lbImg.src = "";
+            lbImg.alt = "";
+          }
+        }
+
+        function openEniLightbox(rawSrc, title) {
+          if (!eniLightbox || !rawSrc) return;
+          const lbImg = eniLightbox.querySelector(".eni-lightbox-img");
+          const cap = eniLightbox.querySelector(".eni-lightbox-caption");
+          const tab = eniLightbox.querySelector(".eni-lightbox-open-tab");
+          let abs;
+          try {
+            abs = new URL(encodeURI(rawSrc), document.baseURI).href;
+          } catch (_) {
+            abs = encodeURI(String(rawSrc));
+          }
+          if (lbImg) {
+            lbImg.src = abs;
+            lbImg.alt = title || "";
+          }
+          if (cap) cap.textContent = title || "";
+          if (tab) {
+            tab.href = abs;
+            tab.setAttribute("aria-label", "Open snapshot image in a new tab");
+          }
+          eniLightbox.classList.add("is-open");
+          eniLightbox.setAttribute("aria-hidden", "false");
+        }
+
         if (linkConfirmModal) {
           linkConfirmModal.addEventListener("click", (e) => {
             if (e.target === linkConfirmModal) closeLinkConfirmModal();
@@ -439,6 +489,16 @@
               window.open(pendingLinkUrl, "_blank", "noopener,noreferrer");
             }
             closeLinkConfirmModal();
+          });
+        }
+
+        if (eniLightbox) {
+          const lbBack = eniLightbox.querySelector(".eni-lightbox-backdrop");
+          const lbX = eniLightbox.querySelector(".eni-lightbox-close");
+          if (lbBack) lbBack.addEventListener("click", closeEniLightbox);
+          if (lbX) lbX.addEventListener("click", closeEniLightbox);
+          eniLightbox.addEventListener("click", (e) => {
+            if (e.target === eniLightbox) closeEniLightbox();
           });
         }
 
@@ -534,19 +594,22 @@
         }
 
         window.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-            if (socialModal.classList.contains("is-open")) {
-              closeSocialModal();
-            }
-            if (eniModal.classList.contains("is-open")) {
-              closeEniModal();
-            }
-            if (card3Modal.classList.contains("is-open")) {
-              closeCard3Modal();
-            }
-            if (linkConfirmModal && linkConfirmModal.classList.contains("is-open")) {
-              closeLinkConfirmModal();
-            }
+          if (event.key !== "Escape") return;
+          if (eniLightbox && eniLightbox.classList.contains("is-open")) {
+            closeEniLightbox();
+            return;
+          }
+          if (socialModal.classList.contains("is-open")) {
+            closeSocialModal();
+          }
+          if (eniModal.classList.contains("is-open")) {
+            closeEniModal();
+          }
+          if (card3Modal.classList.contains("is-open")) {
+            closeCard3Modal();
+          }
+          if (linkConfirmModal && linkConfirmModal.classList.contains("is-open")) {
+            closeLinkConfirmModal();
           }
         });
 
@@ -578,6 +641,76 @@
           return out;
         }
 
+        const ENI_MASONRY_GAP = 12;
+        const ENI_MASONRY_MIN_COL_PX = 180;
+
+        function eniMasonryColumnCount() {
+          if (!eniGrid) return 1;
+          const w = eniGrid.clientWidth;
+          const g = ENI_MASONRY_GAP;
+          const m = ENI_MASONRY_MIN_COL_PX;
+          return Math.max(1, Math.floor((w + g) / (m + g)));
+        }
+
+        function eniModalScrollBox() {
+          return eniModal && eniModal.querySelector(".eni-modal");
+        }
+
+        /** Shortest-column packing. Items are placed in `data-masonry-order` sequence (list / shuffle order). */
+        function layoutEniMasonry() {
+          if (!eniGrid) return;
+          const scrollBox = eniModalScrollBox();
+          const prevTop = scrollBox ? scrollBox.scrollTop : null;
+          const cards = Array.from(eniGrid.querySelectorAll(".eni-card"));
+          if (cards.length === 0) {
+            eniGrid.querySelectorAll(".eni-masonry-col").forEach((c) => c.remove());
+            return;
+          }
+          cards.sort((a, b) => Number(a.dataset.masonryOrder || 0) - Number(b.dataset.masonryOrder || 0));
+          eniGrid.querySelectorAll(".eni-masonry-col").forEach((col) => {
+            while (col.firstChild) eniGrid.appendChild(col.firstChild);
+          });
+          eniGrid.querySelectorAll(".eni-masonry-col").forEach((c) => c.remove());
+
+          const n = eniMasonryColumnCount();
+          const gap = ENI_MASONRY_GAP;
+          const heights = new Array(n).fill(0);
+          const colEls = [];
+          for (let i = 0; i < n; i++) {
+            const col = document.createElement("div");
+            col.className = "eni-masonry-col";
+            eniGrid.appendChild(col);
+            colEls.push(col);
+          }
+          cards.forEach((card) => {
+            let minIdx = 0;
+            for (let j = 1; j < n; j++) {
+              if (heights[j] < heights[minIdx]) minIdx = j;
+            }
+            colEls[minIdx].appendChild(card);
+            heights[minIdx] += card.offsetHeight + gap;
+          });
+          if (scrollBox && prevTop !== null) {
+            const max = Math.max(0, scrollBox.scrollHeight - scrollBox.clientHeight);
+            scrollBox.scrollTop = Math.min(prevTop, max);
+          }
+        }
+
+        function scheduleEniMasonryLayout() {
+          if (eniMasonryRaf) cancelAnimationFrame(eniMasonryRaf);
+          eniMasonryRaf = requestAnimationFrame(() => {
+            eniMasonryRaf = 0;
+            layoutEniMasonry();
+            requestAnimationFrame(layoutEniMasonry);
+          });
+        }
+
+        function ensureEniMasonryResizeObserver() {
+          if (!eniGrid || typeof ResizeObserver === "undefined" || eniMasonryResizeObserver) return;
+          eniMasonryResizeObserver = new ResizeObserver(() => scheduleEniMasonryLayout());
+          eniMasonryResizeObserver.observe(eniGrid);
+        }
+
         function disconnectEniThumbObserver() {
           if (eniThumbObserver) {
             eniThumbObserver.disconnect();
@@ -587,13 +720,16 @@
 
         /** Load `.eni-thumb` URLs when they enter the ENI modal scroll area (not just the window). */
         function hydrateEniThumb(img) {
-          if (!img || !eniThumbObserver) return;
+          if (!img) return;
           const ds = img.getAttribute("data-src");
           if (!ds) return;
+          img.addEventListener("load", scheduleEniMasonryLayout, { once: true });
+          img.addEventListener("error", scheduleEniMasonryLayout, { once: true });
           img.src = ds;
           img.removeAttribute("data-src");
           img.classList.remove("eni-thumb-pending");
-          eniThumbObserver.unobserve(img);
+          if (eniThumbObserver) eniThumbObserver.unobserve(img);
+          scheduleEniMasonryLayout();
         }
 
         function observeEniGridThumbnails() {
@@ -649,9 +785,10 @@
             return;
           }
           const useLazyThumbs = "IntersectionObserver" in window && !!eniModal;
-          items.forEach((item) => {
+          items.forEach((item, orderIdx) => {
             const card = document.createElement("a");
             card.className = "eni-card";
+            card.dataset.masonryOrder = String(orderIdx);
             card.href = item.link || "#";
             if ((item.link || "#").startsWith("http")) {
               card.target = "_blank";
@@ -670,22 +807,24 @@
                     <p class="eni-id">#${id}</p>
                   </div>
                 `;
-            card.addEventListener("mouseenter", () => {
-              hydrateEniThumb(card.querySelector(".eni-thumb[data-src]"));
-            });
+            const thumbImg = card.querySelector("img.eni-thumb");
+            if (thumbImg) {
+              thumbImg.addEventListener("load", scheduleEniMasonryLayout);
+              thumbImg.addEventListener("error", scheduleEniMasonryLayout);
+              if (thumbImg.complete) scheduleEniMasonryLayout();
+            }
             card.addEventListener("click", (e) => {
               if (!e.target.classList.contains("eni-thumb")) return;
               hydrateEniThumb(card.querySelector(".eni-thumb[data-src]"));
               e.preventDefault();
               e.stopPropagation();
-              card.classList.add("is-enlarged");
-            });
-            card.addEventListener("mouseleave", () => {
-              card.classList.remove("is-enlarged");
+              openEniLightbox(item.src, title);
             });
             eniGrid.appendChild(card);
           });
           observeEniGridThumbnails();
+          ensureEniMasonryResizeObserver();
+          scheduleEniMasonryLayout();
         }
 
         function updateSnapTreeSelection() {
@@ -779,7 +918,7 @@
               eniFolderOrder = mergeFolderOrder(diskList, Object.keys(eniByFolder));
               const firstWith =
                 eniFolderOrder.find((f) => (eniByFolder[f] || []).length > 0) || eniFolderOrder[0] || "";
-              eniSelectedFolder = firstWith;
+              eniSelectedFolder = isWorksnapsPath() ? SNAPSHOT_ALL : firstWith;
               buildSnapTree();
               renderEniGrid(eniSelectedFolder);
               eniLoaded = true;

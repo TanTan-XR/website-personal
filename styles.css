@@ -369,6 +369,113 @@ body {
   background: rgba(59, 130, 246, 0.35);
 }
 
+/* Full-size snapshot preview (above work-snapshots modal) */
+.eni-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.eni-lightbox-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eni-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(2, 4, 12, 0.88);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.eni-lightbox-sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(96vw, 1280px);
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.eni-lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(5, 7, 18, 0.92);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.eni-lightbox-close:hover {
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #fff;
+}
+
+.eni-lightbox-open-tab {
+  font-size: 0.78rem;
+  text-decoration: none;
+  color: var(--accent-2);
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+.eni-lightbox-open-tab:hover {
+  filter: brightness(1.12);
+}
+
+.eni-lightbox-img-wrap {
+  width: 100%;
+  max-height: calc(94vh - 100px);
+  overflow: auto;
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.eni-lightbox-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(94vh - 100px);
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.eni-lightbox-caption {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 56ch;
+  line-height: 1.35;
+}
+
 .social-modal-eyebrow {
   margin: 0 0 16px;
   padding-left: 8px;
@@ -632,14 +739,23 @@ a.eni-modal-back-home:hover {
   padding-right: 4px;
 }
 
+/* JS masonry: shortest-column packing; .eni-masonry-col wrappers created at runtime */
 .eni-grid {
   margin-top: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
   overflow: visible;
   padding-right: 0;
+  display: flex;
+  flex-direction: row;
   align-items: flex-start;
+  gap: 12px;
+}
+
+.eni-masonry-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .eni-card {
@@ -652,8 +768,8 @@ a.eni-modal-back-home:hover {
   color: inherit;
   cursor: pointer;
   transition: transform 0.16s ease-out, box-shadow 0.16s ease-out;
-  flex: 0 0 auto;
-  display: inline-block;
+  display: block;
+  width: 100%;
 }
 
 .eni-card:hover {
@@ -661,31 +777,20 @@ a.eni-modal-back-home:hover {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
 }
 
-.eni-card.is-enlarged,
-.eni-card.is-enlarged:hover {
-  transform: none;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
-}
-
 .eni-thumb {
   height: auto;
-  max-width: 260px;
-  width: auto;
+  width: 100%;
+  max-width: none;
   border-radius: 16px;
   display: block;
   object-fit: contain;
   border: 0;
-  /* Layout-size growth (not transform) so flex grid reflows and pushes siblings */
   transition: max-width 0.22s ease-out;
 }
 
 .eni-thumb-pending {
   min-height: 120px;
   background: rgba(255, 255, 255, 0.04);
-}
-
-.eni-card.is-enlarged .eni-thumb {
-  max-width: calc(260px * 1.7);
 }
 
 .eni-body {
