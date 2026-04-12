@@ -5,10 +5,7 @@
     "eyebrow": "XR / Creative Immersive Technology",
     "title": "Hej, this is Tan",
     "subtitle": "Designing for over a decade and developing since 2023 | Now a happy creator of immersive worlds across extended reality and interactive media.",
-    "tags": [
-      "hero",
-      "background"
-    ],
+    "tags": ["hero", "background"],
     "socialLinks": [
       {
         "id": "instagram",
@@ -43,43 +40,21 @@
     "src": "index images/XRAir/XRAir1.png",
     "title": "Hero circle texture",
     "subtitle": "Visual for card 2",
-    "tags": [
-      "hero",
-      "circle"
-    ]
+    "tags": ["hero", "circle"]
   },
   {
     "card": 3,
     "src": "index images/ThumbnailImages/card3.png",
     "slides": [
-      {
-        "src": "index images/XRAir/1.png",
-        "caption": "XR Air · hero view"
-      },
-      {
-        "src": "index images/XRAir/2.png",
-        "caption": "XR Air · side detail"
-      },
-      {
-        "src": "index images/XRAir/3.png",
-        "caption": "XR Air · interface close-up"
-      },
-      {
-        "src": "index images/XRAir/4.png",
-        "caption": "XR Air · room-scale context"
-      },
-      {
-        "src": "index images/XRAir/5.png",
-        "caption": "XR Air · environmental overlay"
-      }
+      { "src": "index images/XRAir/1.png", "caption": "XR Air · hero view" },
+      { "src": "index images/XRAir/2.png", "caption": "XR Air · side detail" },
+      { "src": "index images/XRAir/3.png", "caption": "XR Air · interface close-up" },
+      { "src": "index images/XRAir/4.png", "caption": "XR Air · room-scale context" },
+      { "src": "index images/XRAir/5.png", "caption": "XR Air · environmental overlay" }
     ],
     "title": "Mixed Reality App to Read Air Quality",
     "subtitle": "A spatial companion that reveals the invisible data on air quality in real time and in precise locations.",
-    "tags": [
-      "WebXR",
-      "Environmental Data",
-      "three.js"
-    ],
+    "tags": ["WebXR", "Environmental Data", "three.js"],
     "year": 2025,
     "role": "Developer, Designer, Conceptualizer",
     "tools": "WebXR, Cursor, Three.js, Meta Quest 3, Google API, Location API"
@@ -87,27 +62,14 @@
   {
     "card": 4,
     "src": "index images/ThumbnailImages/card3.png",
+    "slides": [
+      { "src": "index images/ThumbnailImages/card3.png", "caption": "Generative AV · still frame" },
+      { "src": "index images/XRAir/1.png", "caption": "Generative AV · reactive composition" },
+      { "src": "index images/XRAir/2.png", "caption": "Generative AV · motion and rhythm study" }
+    ],
     "title": "Generative audio visual artwork in VVVV",
     "subtitle": "An immersive generative piece combining real-time visuals, procedural motion, and reactive audio composition.",
-    "tags": [
-      "Generative",
-      "VVVV",
-      "Audio-Visual"
-    ],
-    "slides": [
-      {
-        "src": "index images/ThumbnailImages/card3.png",
-        "caption": "Generative AV · still frame"
-      },
-      {
-        "src": "index images/XRAir/1.png",
-        "caption": "Generative AV · reactive composition"
-      },
-      {
-        "src": "index images/XRAir/2.png",
-        "caption": "Generative AV · motion and rhythm study"
-      }
-    ],
+    "tags": ["Generative", "VVVV", "Audio-Visual"],
     "year": 2025,
     "role": "Concept, Visual Programming, Sound Design",
     "tools": "VVVV, custom shaders, real-time audio"
@@ -115,34 +77,16 @@
   {
     "card": 5,
     "src": "index images/ThumbnailImages/card5.png",
+    "slides": [
+      { "src": "index images/bloomcity/Slide 16_9 - 3.png", "caption": "Timeline · anchor in physical space" },
+      { "src": "index images/bloomcity/Slide 16_9 - 4.png", "caption": "Timeline · scrub through story beats" },
+      { "src": "index images/bloomcity/Slide 16_9 - 5.png", "caption": "Timeline · layered annotations" },
+      { "src": "index images/bloomcity/Slide 16_9 - 6.png", "caption": "Timeline · alternate perspective" },
+      { "src": "index images/bloomcity/Slide 16_9 - 7.png", "caption": "Timeline · spatial overview" }
+    ],
     "title": "Interactive Timeline with AR features",
     "subtitle": "An AR-powered timeline that lets you scrub through stories anchored in real space.",
-    "tags": [
-      "AR",
-      "Site-specific"
-    ],
-    "slides": [
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 3.png",
-        "caption": "Timeline · anchor in physical space"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 4.png",
-        "caption": "Timeline · scrub through story beats"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 5.png",
-        "caption": "Timeline · layered annotations"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 6.png",
-        "caption": "Timeline · alternate perspective"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 7.png",
-        "caption": "Timeline · spatial overview"
-      }
-    ],
+    "tags": ["AR", "Site-specific"],
     "year": 2025,
     "role": "Design, Interaction, Prototyping",
     "tools": "WebXR, Three.js, custom tooling"
@@ -150,34 +94,16 @@
   {
     "card": 6,
     "src": "index images/ThumbnailImages/card6.png",
+    "slides": [
+      { "src": "index images/InsectInventory/1.png", "caption": "Insect library · specimen view" },
+      { "src": "index images/InsectInventory/2.png", "caption": "Insect library · scale and rotation" },
+      { "src": "index images/InsectInventory/3.png", "caption": "Insect library · material detail" },
+      { "src": "index images/InsectInventory/4.png", "caption": "Insect library · spatial arrangement" },
+      { "src": "index images/InsectInventory/5.png", "caption": "Insect library · sound-reactive mode" }
+    ],
     "title": "Insect library in VR/MR",
     "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
-    "tags": [
-      "Installation",
-      "Sound"
-    ],
-    "slides": [
-      {
-        "src": "index images/InsectInventory/1.png",
-        "caption": "Insect library · specimen view"
-      },
-      {
-        "src": "index images/InsectInventory/2.png",
-        "caption": "Insect library · scale and rotation"
-      },
-      {
-        "src": "index images/InsectInventory/3.png",
-        "caption": "Insect library · material detail"
-      },
-      {
-        "src": "index images/InsectInventory/4.png",
-        "caption": "Insect library · spatial arrangement"
-      },
-      {
-        "src": "index images/InsectInventory/5.png",
-        "caption": "Insect library · sound-reactive mode"
-      }
-    ],
+    "tags": ["Installation", "Sound"],
     "year": 2024,
     "role": "Concept, Experience Design",
     "tools": "Unity, spatial audio, custom shaders"
@@ -185,34 +111,16 @@
   {
     "card": 7,
     "src": "index images/ThumbnailImages/card7.png",
+    "slides": [
+      { "src": "index images/Mars/mars-vr-01.png", "caption": "Mars · orbital overview" },
+      { "src": "index images/Mars/mars-vr-02.png", "caption": "Mars · surface perspective" },
+      { "src": "index images/Mars/mars-vr-03.png", "caption": "Mars · elevation and terrain" },
+      { "src": "index images/Mars/mars-vr-04.png", "caption": "Mars · wayfinding markers" },
+      { "src": "index images/Mars/mars-vr-05.png", "caption": "Mars · narrative moment" }
+    ],
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
-    "tags": [
-      "VR",
-      "Narrative"
-    ],
-    "slides": [
-      {
-        "src": "index images/Mars/mars-vr-01.png",
-        "caption": "Mars · orbital overview"
-      },
-      {
-        "src": "index images/Mars/mars-vr-02.png",
-        "caption": "Mars · surface perspective"
-      },
-      {
-        "src": "index images/Mars/mars-vr-03.png",
-        "caption": "Mars · elevation and terrain"
-      },
-      {
-        "src": "index images/Mars/mars-vr-04.png",
-        "caption": "Mars · wayfinding markers"
-      },
-      {
-        "src": "index images/Mars/mars-vr-05.png",
-        "caption": "Mars · narrative moment"
-      }
-    ],
+    "tags": ["VR", "Narrative"],
     "year": 2023,
     "role": "Creative Direction, Story Design",
     "tools": "Unreal Engine, world-building tools"
@@ -220,34 +128,16 @@
   {
     "card": 8,
     "src": "index images/Chapel/chapel-vr-01.png",
+    "slides": [
+      { "src": "index images/Chapel/chapel-vr-01.png", "caption": "VR Chapel · entrance view" },
+      { "src": "index images/Chapel/chapel-vr-02.png", "caption": "VR Chapel · ambient lighting" },
+      { "src": "index images/Chapel/chapel-vr-03.png", "caption": "VR Chapel · seating layout" },
+      { "src": "index images/Chapel/chapel-vr-04.png", "caption": "VR Chapel · ritual interaction" },
+      { "src": "index images/Chapel/chapel-vr-05.png", "caption": "VR Chapel · performance moment" }
+    ],
     "title": "VR Chapel",
     "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
-    "tags": [
-      "MR",
-      "Performance"
-    ],
-    "slides": [
-      {
-        "src": "index images/Chapel/chapel-vr-01.png",
-        "caption": "VR Chapel · entrance view"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-02.png",
-        "caption": "VR Chapel · ambient lighting"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-03.png",
-        "caption": "VR Chapel · seating layout"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-04.png",
-        "caption": "VR Chapel · ritual interaction"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-05.png",
-        "caption": "VR Chapel · performance moment"
-      }
-    ],
+    "tags": ["MR", "Performance"],
     "year": 2022,
     "role": "Concept, Spatial Design",
     "tools": "Unity, volumetric lighting"
@@ -255,34 +145,16 @@
   {
     "card": 9,
     "src": "index images/ThumbnailImages/card9.png",
+    "slides": [
+      { "src": "index images/FellowBot/fellowbot-01.png", "caption": "Workshops · group session" },
+      { "src": "index images/FellowBot/fellowbot-02.png", "caption": "Workshops · live demo" },
+      { "src": "index images/FellowBot/fellowbot-03.png", "caption": "Workshops · participant testing" },
+      { "src": "index images/FellowBot/fellowbot-04.png", "caption": "Workshops · whiteboard mapping" },
+      { "src": "index images/FellowBot/fellowbot-05.png", "caption": "Workshops · Q&A and discussion" }
+    ],
     "title": "Workshops and Lectures",
     "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
-    "tags": [
-      "Teaching",
-      "XR"
-    ],
-    "slides": [
-      {
-        "src": "index images/FellowBot/fellowbot-01.png",
-        "caption": "Workshops · group session"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-02.png",
-        "caption": "Workshops · live demo"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-03.png",
-        "caption": "Workshops · participant testing"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-04.png",
-        "caption": "Workshops · whiteboard mapping"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-05.png",
-        "caption": "Workshops · Q&A and discussion"
-      }
-    ],
+    "tags": ["Teaching", "XR"],
     "year": 2021,
     "role": "Facilitator, Speaker",
     "tools": "Slides, live demos, custom tooling"
@@ -290,51 +162,42 @@
   {
     "card": 10,
     "src": "index images/XRAir/XRAir1-1.png",
+    "slides": [
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · grid of interactions" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · detail card" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · navigation state" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · filter and search" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · pattern in context" }
+    ],
     "title": "An interactive archive for XR design patterns",
     "subtitle": "Reusable interaction patterns and spatial UI experiments, organised as a living library.",
-    "tags": [
-      "XR",
-      "Design patterns"
-    ],
+    "tags": ["XR", "Design patterns"],
+    "year": 2022,
+    "role": "Research, Systems Design",
+    "tools": "Figma, Unity prototypes, documentation",
     "link": "archive.html",
     "mosaic": [
       "index images/ThumbnailImages/card101.png",
       "index images/ThumbnailImages/card102.png",
       "index images/ThumbnailImages/card103.png",
       "index images/ThumbnailImages/card104.png"
-    ],
-    "slides": [
-      {
-        "src": "index images/XRAir/XRAir1-1.png",
-        "caption": "Pattern library · grid of interactions"
-      },
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Pattern library · detail card"
-      },
-      {
-        "src": "index images/XRAir/XRAir1-1.png",
-        "caption": "Pattern library · navigation state"
-      },
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Pattern library · filter and search"
-      },
-      {
-        "src": "index images/XRAir/XRAir1-1.png",
-        "caption": "Pattern library · pattern in context"
-      }
-    ],
-    "year": 2022,
-    "role": "Research, Systems Design",
-    "tools": "Figma, Unity prototypes, documentation"
+    ]
   },
   {
     "card": 12,
     "src": "index images/XRAir/XRAir1.png",
+    "slides": [
+      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · sketches and early tests" },
+      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · diagrams and iteration" },
+      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · notes and in-progress ideas" }
+    ],
     "title": "Process and Insights",
     "subtitle": "A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that reveal how the work comes together.",
     "tags": [],
+    "year": 2025,
+    "role": "Documentation, Research, Practice",
+    "tools": "Notebook, Figma, prototypes, photography",
     "link": "process.html"
   }
 ]
+
