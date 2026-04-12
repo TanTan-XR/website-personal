@@ -45,10 +45,11 @@
       <main class="bento">
         <!-- Tile 1: Flagship XXR project (2x2) -->
         <a href="#" class="tile tile-xl gradient-xxr" id="card-3">
-          <div class="card3-tag-row" id="card3-tags-modal"></div>
+          <div class="card3-tag-row"></div>
           <h2 class="flagship-title">Mixed Reality App to Read Air Quality</h2>
           <p class="tile-body flagship-body">
-            A spatial companion that visualises invisible pollution levels around you in real time.
+            A spatial companion that reveals the invisible data on air quality in real time and in
+            precise locations.
           </p>
           <span class="tile-cta">View case study →</span>
           <div class="flagship-thumb" id="flagship-thumb"></div>
@@ -189,11 +190,7 @@
           <button class="card3-modal-close" type="button" aria-label="Close project slideshow">
             ✕
           </button>
-          <div class="card3-tag-row">
-            <span class="pill subtle">WebXR</span>
-            <span class="pill subtle">Environmental Data</span>
-            <span class="pill subtle">three.js</span>
-          </div>
+          <div class="card3-tag-row" id="card3-modal-tags"></div>
           <div class="card3-slide-meta">
             <h2 id="card3-slide-title"></h2>
             <p id="card3-slide-subtitle"></p>
@@ -329,7 +326,7 @@
         const card3PrevBtn = card3Modal.querySelector(".card3-nav-prev");
         const card3NextBtn = card3Modal.querySelector(".card3-nav-next");
         const card3DotsEl = card3Modal.querySelector("#card3-dots");
-        const card3ModalTagsEl = document.getElementById("card3-tags-modal");
+        const card3ModalTagsEl = document.getElementById("card3-modal-tags");
         const card3YearEl = document.getElementById("card3-year");
         const card3RoleEl = document.getElementById("card3-role");
         const card3ToolsEl = document.getElementById("card3-tools");
@@ -343,6 +340,7 @@
         let indexImagesCache = null;
         let card3Slides = [];
         let card3SlideIndex = 0;
+        let slideMediaBust = Date.now();
         let activeCardId = 3;
         let heroVisualLink = null;
 
@@ -411,10 +409,11 @@
           document.body.style.overflow = "";
         }
 
-        function openCardModal(cardId, event) {
+        async function openCardModal(cardId, event) {
           if (event) event.preventDefault();
           activeCardId = cardId;
           card3SlideIndex = 0;
+          await loadIndexImages(true);
           card3Modal.classList.add("is-open");
           document.body.style.overflow = "hidden";
           populateCard3Modal();
@@ -931,13 +930,14 @@
         }
 
         function loadIndexImages(forceFresh) {
-          const cacheBust = forceFresh ? Date.now() : Date.now();
+          const cacheBust = Date.now();
           const url = "index_content.json?v=" + cacheBust;
           return fetch(url, { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {
               if (!Array.isArray(items)) return;
               indexImagesCache = items;
+              slideMediaBust = Date.now();
               const lazyThumbEntries = [];
               items.forEach((item) => {
                 if (!item || typeof item.card === "undefined") return;
@@ -1160,7 +1160,10 @@
             card3ImageEl.classList.remove("is-loading");
             if (wrap) wrap.classList.remove("is-loading");
           };
-          card3ImageEl.src = encodeURI(current.src);
+          const rawSrc = encodeURI(current.src);
+          card3ImageEl.src = rawSrc.includes("?")
+            ? rawSrc + "&v=" + slideMediaBust
+            : rawSrc + "?v=" + slideMediaBust;
           if (card3CaptionEl) {
             const captionText = current.caption || "";
             card3CaptionEl.textContent = captionText;
@@ -1172,7 +1175,8 @@
             const idx = ((i % card3Slides.length) + card3Slides.length) % card3Slides.length;
             if (idx !== safeIndex && card3Slides[idx]) {
               const preload = new Image();
-              preload.src = encodeURI(card3Slides[idx].src);
+              const ps = encodeURI(card3Slides[idx].src);
+              preload.src = ps.includes("?") ? ps + "&v=" + slideMediaBust : ps + "?v=" + slideMediaBust;
             }
           });
         }
