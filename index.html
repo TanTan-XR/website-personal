@@ -14,7 +14,7 @@
       3: Large flagship tile – "Mixed Reality App to Read Air Quality"
       4: About tile – "About"
       5: Project tile – "Educational Installation with AR features"
-      6: Project tile – "Insect library in VR/MR"
+      6: Project tile – "Digital Archive of Insect/Arthropod in VR/MR"
       7: Project tile – "Learn about Mars in VR"
       8: Project tile – "VR Chapel"
       9: Project tile – "Workshops and Lectures"
@@ -84,11 +84,14 @@
         <!-- Tile 4: Project (Card 6) -->
         <a href="#" class="tile tile-sm" id="card-6">
           <div class="thumb thumb-2"></div>
-          <h3>Insect library in VR/MR</h3>
-          <p>A living catalogue of insects you can inspect, scale, and study in mixed reality.</p>
+          <h3>Digital Archive of Insect/Arthropod in VR/MR</h3>
+          <p>
+            A MVP of a living catalogue of insects you can inspect, scale, and study in mixed reality.
+          </p>
           <span class="pill-row">
-            <span class="pill subtle">Installation</span>
-            <span class="pill subtle">Sound</span>
+            <span class="pill subtle">Mixed Reality</span>
+            <span class="pill subtle">Prototyping</span>
+            <span class="pill subtle">XRUI</span>
           </span>
         </a>
 
@@ -375,9 +378,10 @@
                 }
                 const src = entry.src || fallbackSrc || "";
                 if (!src) return null;
+                const cap = entry.caption;
                 return {
                   src,
-                  caption: entry.caption || ""
+                  caption: cap == null || cap === "" ? "" : String(cap)
                 };
               })
               .filter(Boolean);
@@ -934,10 +938,18 @@
         }
 
         function loadIndexImages(forceFresh) {
-          const cacheBust = Date.now();
-          const url = "index_content.json?v=" + cacheBust;
-          return fetch(url, { cache: "no-store" })
-            .then((res) => res.json())
+          const cacheBust =
+            String(Date.now()) + (forceFresh ? "_" + Math.random().toString(36).slice(2) : "");
+          const jsonUrl = new URL("index_content.json", siteRootUrl());
+          jsonUrl.searchParams.set("v", cacheBust);
+          return fetch(jsonUrl.href, {
+            cache: "no-store",
+            headers: { "Cache-Control": "no-cache", Pragma: "no-cache" }
+          })
+            .then((res) => {
+              if (!res.ok) throw new Error("index_content.json " + res.status);
+              return res.json();
+            })
             .then((items) => {
               if (!Array.isArray(items)) return;
               indexImagesCache = items;
@@ -1122,7 +1134,6 @@
           card3Slides = normalizeSlides(cardData.slides, cardData.src);
           card3SlideIndex = 0;
           buildCard3Dots();
-          showCard3Slide(0);
 
           if (card3TitleEl && cardData.title) {
             card3TitleEl.textContent = cardData.title;
@@ -1150,6 +1161,8 @@
           if (card3ToolsEl && cardData.tools) {
             card3ToolsEl.textContent = cardData.tools;
           }
+
+          showCard3Slide(0);
         }
 
         function showCard3Slide(index) {
@@ -1169,7 +1182,7 @@
             ? rawSrc + "&v=" + slideMediaBust
             : rawSrc + "?v=" + slideMediaBust;
           if (card3CaptionEl) {
-            const captionText = current.caption || "";
+            const captionText = current.caption != null ? String(current.caption) : "";
             card3CaptionEl.textContent = captionText;
             card3CaptionEl.style.display = captionText ? "" : "none";
           }

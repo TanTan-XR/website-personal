@@ -78,16 +78,16 @@
     "card": 5,
     "src": "index images/ThumbnailImages/card5.png",
     "slides": [
-      { "src": "index images/bloomcity/Slide 16_9 - 3.png", "caption": "Timeline · anchor in physical space" },
-      { "src": "index images/bloomcity/Slide 16_9 - 4.png", "caption": "Timeline · scrub through story beats" },
-      { "src": "index images/bloomcity/Slide 16_9 - 5.png", "caption": "Timeline · layered annotations" },
-      { "src": "index images/bloomcity/Slide 16_9 - 6.png", "caption": "Timeline · alternate perspective" },
-      { "src": "index images/bloomcity/Slide 16_9 - 7.png", "caption": "Timeline · spatial overview" }
+      { "src": "index images/bloomcity/Slide 16_9 - 3.png", "caption": "Project Bloom City · Chunks of history anchored in physical space" },
+      { "src": "index images/bloomcity/Slide 16_9 - 4.png", "caption": "Project Bloom City · Unique AR markers generated from a design system" },
+      { "src": "index images/bloomcity/Slide 16_9 - 5.png", "caption": "Project Bloom City · Tan and her work" },
+      { "src": "index images/bloomcity/Slide 16_9 - 6.png", "caption": "Project Bloom City · Merch with AR features" },
+      { "src": "index images/bloomcity/Slide 16_9 - 7.png", "caption": "Project Bloom City · Screenshots of the generated print made on logics that connected to the concept" }
     ],
     "title": "Educational Installation with AR features",
     "subtitle": "An AR timeline that lets you interact both digitally and with real hands, as history is chunked down to blocks, literally!",
     "tags": ["AR", "Generative Patterns", "Installation"],
-    "year": 2025,
+    "year": 2017,
     "role": "Design, Interaction, System",
     "tools": "Illustrator, Unity"
   },
@@ -95,18 +95,18 @@
     "card": 6,
     "src": "index images/ThumbnailImages/card6.png",
     "slides": [
-      { "src": "index images/InsectInventory/1.png", "caption": "Insect library · specimen view" },
-      { "src": "index images/InsectInventory/2.png", "caption": "Insect library · scale and rotation" },
-      { "src": "index images/InsectInventory/3.png", "caption": "Insect library · material detail" },
-      { "src": "index images/InsectInventory/4.png", "caption": "Insect library · spatial arrangement" },
-      { "src": "index images/InsectInventory/5.png", "caption": "Insect library · sound-reactive mode" }
+      { "src": "index images/InsectInventory/1.png", "caption": "Insect Archive · A scope to inspect specimen in real life scale" },
+      { "src": "index images/InsectInventory/2.png", "caption": "Insect Archive · WIP | Unity screenshots" },
+      { "src": "index images/InsectInventory/3.png", "caption": "Insect Archive · The core advantage of having VR for studying insects" },
+      { "src": "index images/InsectInventory/4.png", "caption": "Insect Archive · Working UI in mixed reality" },
+      { "src": "index images/InsectInventory/5.png", "caption": "Insect Archive · WIP | Unity screenshots" }
     ],
-    "title": "Insect library in VR/MR",
-    "subtitle": "A living catalogue of insects you can inspect, scale, and study in mixed reality.",
-    "tags": ["Installation", "Sound"],
+    "title": "Digital Archive of Insect/Arthropod in VR/MR",
+    "subtitle": "A MVP of a living catalogue of insects you can inspect, scale, and study in mixed reality.",
+    "tags": ["Mixed Reality", "Prototyping", "XRUI"],
     "year": 2024,
-    "role": "Concept, Experience Design",
-    "tools": "Unity, spatial audio, custom shaders"
+    "role": "Interaction Designer, Developer, 3D UI Artist, Technical Artist",
+    "tools": "Unity, Spline, Figma"
   },
   {
     "card": 7,
