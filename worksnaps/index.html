@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Avoid stale HTML during local dev; use hard refresh (Ctrl+Shift+R) if tiles look outdated. -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
     <!-- Asset URLs resolve from site root (parent of /worksnaps/). Keep in sync with /index.html. -->
     <base href="../" />
     <title>Work snapshots · XR & Creative Portfolio</title>
@@ -18,8 +21,8 @@
       5: Project tile – "Educational Installation with AR features"
       6: Project tile – "Digital Archive of Insect/Arthropod in VR/MR"
       7: Project tile – "Learn about Mars in VR"
-      8: Project tile – "VR Chapel"
-      9: Project tile – "Workshops and Lectures"
+      8: Project tile – "MonetChapel in VR"
+      9: Project tile – "Design Engineer HUD on Unreal Engine"
       10: Wide tile – "An interactive archive for XR design patterns"
       11: Contact tile – "Contact & Info"
       12: Wide tile – "Process and Insights"
@@ -120,22 +123,26 @@
         <!-- Tile 7: Project (Card 8) -->
         <a href="#" class="tile tile-sm" id="card-8">
           <div class="thumb thumb-4"></div>
-          <h3>VR Chapel</h3>
-          <p>An intimate virtual space for reflection, ambient rituals, and quiet gatherings.</p>
+          <h3>MonetChapel in VR</h3>
+          <p>
+            A thematic chapel, inspired by beautiful painting by Monet. A demo on how such concept
+            could be visualized and interacted with VR with a quick prototype.
+          </p>
           <span class="pill-row">
-            <span class="pill subtle">MR</span>
-            <span class="pill subtle">Performance</span>
+            <span class="pill subtle">VR</span>
+            <span class="pill subtle">Hand Interaction</span>
           </span>
         </a>
 
-        <!-- Tile 8: Workshop / Teaching (Card 9) -->
+        <!-- Tile 8: Project (Card 9) -->
         <a href="#" class="tile tile-sm" id="card-9">
           <div class="thumb thumb-2"></div>
-          <h3>Workshops and Lectures</h3>
-          <p>Sharing XR practice through talks, studio visits, and hands-on sessions.</p>
+          <h3>Design Engineer HUD on Unreal Engine</h3>
+          <p>Revamping the on boarding UI for a Car Simulator Application.</p>
           <span class="pill-row">
-            <span class="pill subtle">Teaching</span>
-            <span class="pill subtle">XR</span>
+            <span class="pill subtle">HUD</span>
+            <span class="pill subtle">UI-UX</span>
+            <span class="pill subtle">Unreal Development</span>
           </span>
         </a>
 
@@ -287,6 +294,13 @@
         }
 
         migrateLegacyEniQuery();
+
+        if (window.location.protocol === "file:") {
+          console.warn(
+            "[Portfolio] This page is opened as file:// — index_content.json will not load in most browsers. " +
+              "From the project folder run: python -m http.server 8080  then open http://localhost:8080/"
+          );
+        }
 
         const heroCard = document.getElementById("hero-card");
         const socialModal = document.getElementById("social-modal");
@@ -1100,9 +1114,11 @@
                       const target = entry.target;
                       if (target.dataset.src) {
                         const src = target.dataset.src;
+                        const busted =
+                          src + (src.includes("?") ? "&v=" : "?v=") + slideMediaBust;
                         const img = new Image();
                         img.onload = () => {
-                          target.style.backgroundImage = "url('" + src + "')";
+                          target.style.backgroundImage = "url('" + busted + "')";
                           target.style.backgroundSize = "cover";
                           target.style.backgroundPosition = "center";
                           target.classList.remove("is-loading");
@@ -1112,7 +1128,7 @@
                           target.classList.remove("is-loading");
                           thumbObserver.unobserve(target);
                         };
-                        img.src = src;
+                        img.src = busted;
                       }
                     });
                   },
@@ -1123,8 +1139,12 @@
                 });
               }
             })
-            .catch(() => {
-              // silently fail if JSON can't be loaded
+            .catch((err) => {
+              console.warn(
+                "[Portfolio] Could not load index_content.json — tiles show static HTML only.",
+                err && err.message ? err.message : err,
+                jsonUrl.href
+              );
             });
         }
 

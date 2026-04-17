@@ -5,10 +5,7 @@
     "eyebrow": "XR / Creative Immersive Technology",
     "title": "Hej, this is Tan",
     "subtitle": "Designing for over a decade and developing since 2023 | Now a happy creator of immersive worlds across extended reality and interactive media.",
-    "tags": [
-      "hero",
-      "background"
-    ],
+    "tags": ["hero", "background"],
     "socialLinks": [
       {
         "id": "instagram",
@@ -43,43 +40,21 @@
     "src": "index images/XRAir/XRAir1.png",
     "title": "Hero circle texture",
     "subtitle": "Visual for card 2",
-    "tags": [
-      "hero",
-      "circle"
-    ]
+    "tags": ["hero", "circle"]
   },
   {
     "card": 3,
     "src": "index images/ThumbnailImages/card3.png",
     "slides": [
-      {
-        "src": "index images/XRAir/1.png",
-        "caption": "XR Air · A Real-time Air Quality Reading App"
-      },
-      {
-        "src": "index images/XRAir/2.png",
-        "caption": "XR Air"
-      },
-      {
-        "src": "index images/XRAir/3.png",
-        "caption": "XR Air · A tool needed for a city like Dhaka."
-      },
-      {
-        "src": "index images/XRAir/4.png",
-        "caption": "XR Air · A personal note."
-      },
-      {
-        "src": "index images/XRAir/5.png",
-        "caption": "XR Air · AQI Reader widget in Mixed Reality"
-      }
+      { "src": "index images/XRAir/1.png", "caption": "XR Air · A Real-time Air Quality Reading App" },
+      { "src": "index images/XRAir/2.png", "caption": "XR Air" },
+      { "src": "index images/XRAir/3.png", "caption": "XR Air · A tool needed for a city like Dhaka." },
+      { "src": "index images/XRAir/4.png", "caption": "XR Air · A personal note." },
+      { "src": "index images/XRAir/5.png", "caption": "XR Air · AQI Reader widget in Mixed Reality" }
     ],
     "title": "Mixed Reality App to Read Air Quality",
     "subtitle": "A spatial companion that reveals the invisible data on air quality in real time and in precise locations.",
-    "tags": [
-      "WebXR",
-      "Environmental Data",
-      "three.js"
-    ],
+    "tags": ["WebXR", "Environmental Data", "three.js"],
     "year": 2025,
     "role": "Developer, Designer, Conceptualizer",
     "tools": "WebXR, Cursor, Three.js, Meta Quest 3, Google API, Location API"
@@ -88,66 +63,31 @@
     "card": 4,
     "src": "index images/C4.VVVV/thumbnail-card4.png",
     "slides": [
-      {
-        "src": "index images/C4.VVVV/1.jpg",
-        "caption": "Opening the possibility to mix visuals with MIDI controller input."
-      },
-      {
-        "src": "index images/C4.VVVV/2.jpg",
-        "caption": "Generated visuals, all stemmed from an array of cubes and a simple particle system."
-      },
-      {
-        "src": "index images/C4.VVVV/3.jpg",
-        "caption": "Nodal C# programming in VVVV, where the interface mirrors the MIDI setup for ease of use."
-      },
-      {
-        "src": "index images/C4.VVVV/4.jpg",
-        "caption": "Taking interaction work from software to hardware and back again."
-      }
+      { "src": "index images/C4.VVVV/1.jpg", "caption": "Opening the possibility to mix visuals with MIDI controller input." },
+      { "src": "index images/C4.VVVV/2.jpg", "caption": "Generated visualsö all stemmed from an array of cubes and a simple particle system" },
+      { "src": "index images/C4.VVVV/3.jpg", "caption": "Nodal C# programming on VVVV, where the interface mimics the MIDI setup for the ease to use." },
+      { "src": "index images/C4.VVVV/4.jpg", "caption": "Taking interaction work from software to hardware and vice versa." }
     ],
-    "title": "Generative audio visual artwork in VVVV",
-    "subtitle": "An immersive generative piece combining real-time visuals, procedural motion, and reactive audio composition.",
-    "tags": [
-      "Generative",
-      "VVVV",
-      "Audio-Visual"
-    ],
+    "title": "Generative audio visual artwork in VVVV, driven by MIDI controller",
+    "subtitle": "A generative piece combining real-time visuals, procedural motion, and reactive audio compositionö all driven by MIDI.",
+    "tags": ["GenerativeaRT", "VVVV", "Audio-Visual", "MIDI"],
     "year": 2025,
-    "role": "Concept, Visual Programming, Sound Design",
-    "tools": "VVVV, custom shaders, real-time audio"
+    "role": "Technical Artist, Creative Coder",
+    "tools": "VVVV, c#, MIDI, Cursor"
   },
   {
     "card": 5,
     "src": "index images/ThumbnailImages/card5.png",
     "slides": [
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 3.png",
-        "caption": "Project Bloom City · Chunks of history anchored in physical space"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 4.png",
-        "caption": "Project Bloom City · Unique AR markers generated from a design system"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 5.png",
-        "caption": "Project Bloom City · Tan and her work"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 6.png",
-        "caption": "Project Bloom City · Merch with AR features"
-      },
-      {
-        "src": "index images/bloomcity/Slide 16_9 - 7.png",
-        "caption": "Project Bloom City · Screenshots of the generated print made on logics that connected to the concept"
-      }
+      { "src": "index images/bloomcity/Slide 16_9 - 3.png", "caption": "Project Bloom City · Chunks of history anchored in physical space" },
+      { "src": "index images/bloomcity/Slide 16_9 - 4.png", "caption": "Project Bloom City · Unique AR markers generated from a design system" },
+      { "src": "index images/bloomcity/Slide 16_9 - 5.png", "caption": "Project Bloom City · Tan and her work" },
+      { "src": "index images/bloomcity/Slide 16_9 - 6.png", "caption": "Project Bloom City · Merch with AR features" },
+      { "src": "index images/bloomcity/Slide 16_9 - 7.png", "caption": "Project Bloom City · Screenshots of the generated print made on logics that connected to the concept" }
     ],
     "title": "Educational Installation with AR features",
     "subtitle": "An AR timeline that lets you interact both digitally and with real hands, as history is chunked down to blocks, literally!",
-    "tags": [
-      "AR",
-      "Generative Patterns",
-      "Installation"
-    ],
+    "tags": ["AR", "Generative Patterns", "Installation"],
     "year": 2017,
     "role": "Design, Interaction, System",
     "tools": "Illustrator, Unity"
@@ -156,34 +96,15 @@
     "card": 6,
     "src": "index images/ThumbnailImages/card6.png",
     "slides": [
-      {
-        "src": "index images/InsectInventory/1.png",
-        "caption": "Insect Archive · A scope to inspect specimen in real life scale"
-      },
-      {
-        "src": "index images/InsectInventory/2.png",
-        "caption": "Insect Archive · WIP | Unity screenshots"
-      },
-      {
-        "src": "index images/InsectInventory/3.png",
-        "caption": "Insect Archive · The core advantage of having VR for studying insects"
-      },
-      {
-        "src": "index images/InsectInventory/4.png",
-        "caption": "Insect Archive · Working UI in mixed reality"
-      },
-      {
-        "src": "index images/InsectInventory/5.png",
-        "caption": "Insect Archive · WIP | Unity screenshots"
-      }
+      { "src": "index images/InsectInventory/1.png", "caption": "Insect Archive · A scope to inspect specimen in real life scale" },
+      { "src": "index images/InsectInventory/2.png", "caption": "Insect Archive · WIP | Unity screenshots" },
+      { "src": "index images/InsectInventory/3.png", "caption": "Insect Archive · The core advantage of having VR for studying insects" },
+      { "src": "index images/InsectInventory/4.png", "caption": "Insect Archive · Working UI in mixed reality" },
+      { "src": "index images/InsectInventory/5.png", "caption": "Insect Archive · WIP | Unity screenshots" }
     ],
     "title": "Digital Archive of Insect/Arthropod in VR/MR",
     "subtitle": "A MVP of a living catalogue of insects you can inspect, scale, and study in mixed reality.",
-    "tags": [
-      "Mixed Reality",
-      "Prototyping",
-      "XRUI"
-    ],
+    "tags": ["Mixed Reality", "Prototyping", "XRUI"],
     "year": 2024,
     "role": "Interaction Designer, Developer, 3D UI Artist, Technical Artist",
     "tools": "Unity, Spline, Figma"
@@ -192,33 +113,15 @@
     "card": 7,
     "src": "index images/ThumbnailImages/card7.png",
     "slides": [
-      {
-        "src": "index images/Mars/mars-vr-01.png",
-        "caption": "Mars · orbital overview"
-      },
-      {
-        "src": "index images/Mars/mars-vr-02.png",
-        "caption": "Mars · surface perspective"
-      },
-      {
-        "src": "index images/Mars/mars-vr-03.png",
-        "caption": "Mars · elevation and terrain"
-      },
-      {
-        "src": "index images/Mars/mars-vr-04.png",
-        "caption": "Mars · wayfinding markers"
-      },
-      {
-        "src": "index images/Mars/mars-vr-05.png",
-        "caption": "Mars · narrative moment"
-      }
+      { "src": "index images/Mars/mars-vr-01.png", "caption": "Mars · orbital overview" },
+      { "src": "index images/Mars/mars-vr-02.png", "caption": "Mars · surface perspective" },
+      { "src": "index images/Mars/mars-vr-03.png", "caption": "Mars · elevation and terrain" },
+      { "src": "index images/Mars/mars-vr-04.png", "caption": "Mars · wayfinding markers" },
+      { "src": "index images/Mars/mars-vr-05.png", "caption": "Mars · narrative moment" }
     ],
     "title": "Learn about Mars in VR",
     "subtitle": "Guided journeys across Martian terrain, mixing scientific data with speculative futures.",
-    "tags": [
-      "VR",
-      "Narrative"
-    ],
+    "tags": ["VR", "Narrative"],
     "year": 2023,
     "role": "Creative Direction, Story Design",
     "tools": "Unreal Engine, world-building tools"
@@ -227,103 +130,48 @@
     "card": 8,
     "src": "index images/Chapel/chapel-vr-01.png",
     "slides": [
-      {
-        "src": "index images/Chapel/chapel-vr-01.png",
-        "caption": "VR Chapel · entrance view"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-02.png",
-        "caption": "VR Chapel · ambient lighting"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-03.png",
-        "caption": "VR Chapel · seating layout"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-04.png",
-        "caption": "VR Chapel · ritual interaction"
-      },
-      {
-        "src": "index images/Chapel/chapel-vr-05.png",
-        "caption": "VR Chapel · performance moment"
-      }
+      { "src": "index images/Chapel/chapel-vr-01.png", "caption": "MonetChapel · WIP Screenshot" },
+      { "src": "index images/Chapel/chapel-vr-02.png", "caption": "MonetChapel · Setting up natural lighting with the provided 3D chapel structure" },
+      { "src": "index images/Chapel/chapel-vr-03.png", "caption": "MonetChapel · Creating textured windows that could pass light into the chapel in VR" },
+      { "src": "index images/Chapel/chapel-vr-04.png", "caption": "MonetChapel · Unity screenshot of the aerial view of the chapel" },
+      { "src": "index images/Chapel/chapel-vr-05.png", "caption": "MonetChapel · Dim light vs. bright indoor lighting test." }
     ],
-    "title": "VR Chapel",
-    "subtitle": "An intimate virtual space for reflection, ambient rituals, and quiet gatherings.",
-    "tags": [
-      "MR",
-      "Performance"
-    ],
-    "year": 2022,
-    "role": "Concept, Spatial Design",
-    "tools": "Unity, volumetric lighting"
+    "title": "MonetChapel in VR",
+    "subtitle": "A thematic chapel, inspired by beautiful painting by Monet. A demo on how such concept could be visualized and interacted with VR with a quick prototype.",
+    "tags": ["VR", "Hand Interaction"],
+    "year": 2023,
+    "role": "Concept, Interaction Design and Development, Tech Artist",
+    "tools": "Unity"
   },
   {
     "card": 9,
     "src": "index images/ThumbnailImages/card9.png",
     "slides": [
-      {
-        "src": "index images/FellowBot/fellowbot-01.png",
-        "caption": "Workshops · group session"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-02.png",
-        "caption": "Workshops · live demo"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-03.png",
-        "caption": "Workshops · participant testing"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-04.png",
-        "caption": "Workshops · whiteboard mapping"
-      },
-      {
-        "src": "index images/FellowBot/fellowbot-05.png",
-        "caption": "Workshops · Q&A and discussion"
-      }
+      { "src": "index images/FellowBot/fellowbot-01.png", "caption": "FellowBot · Redesigning and developing HUD UI design for Fellowbot´s Car Simulator Application" },
+      { "src": "index images/FellowBot/fellowbot-02.png", "caption": "FellowBot · Key pointers of the work process  " },
+      { "src": "index images/FellowBot/fellowbot-03.png", "caption": "FellowBot · The visual evolution of the project" },
+      { "src": "index images/FellowBot/fellowbot-04.png", "caption": "FellowBot · Versions of the work" }
     ],
-    "title": "Workshops and Lectures",
-    "subtitle": "Sharing XR practice through talks, studio visits, and hands-on sessions.",
-    "tags": [
-      "Teaching",
-      "XR"
-    ],
-    "year": 2021,
-    "role": "Facilitator, Speaker",
-    "tools": "Slides, live demos, custom tooling"
+    "title": "Design Engineer HUD on Unreal Engine",
+    "subtitle": "Revamping the on boarding UI for a Car Simulator Application.",
+    "tags": ["HUD", "UI-UX", "Unreal Development"],
+    "year": 2024,
+    "role": "Design Engineer, Design Director",
+    "tools": "Figma, Unreal Engine"
   },
   {
     "card": 10,
     "src": "index images/XRAir/XRAir1-1.png",
     "slides": [
-      {
-        "src": "index images/XRAir/XRAir1-1.png",
-        "caption": "Pattern library · grid of interactions"
-      },
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Pattern library · detail card"
-      },
-      {
-        "src": "index images/XRAir/XRAir1-1.png",
-        "caption": "Pattern library · navigation state"
-      },
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Pattern library · filter and search"
-      },
-      {
-        "src": "index images/XRAir/XRAir1-1.png",
-        "caption": "Pattern library · pattern in context"
-      }
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Revamping HUD UI design for Fellowbot´s Car Simulator Application" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · detail card" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · navigation state" },
+      { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · filter and search" },
+      { "src": "index images/XRAir/XRAir1-1.png", "caption": "Pattern library · pattern in context" }
     ],
     "title": "An interactive archive for XR design patterns",
     "subtitle": "Reusable interaction patterns and spatial UI experiments, organised as a living library.",
-    "tags": [
-      "XR",
-      "Design patterns"
-    ],
+    "tags": ["XR", "Design patterns"],
     "year": 2022,
     "role": "Research, Systems Design",
     "tools": "Figma, Unity prototypes, documentation",
@@ -339,18 +187,9 @@
     "card": 12,
     "src": "index images/XRAir/XRAir1.png",
     "slides": [
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Process · sketches and early tests"
-      },
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Process · diagrams and iteration"
-      },
-      {
-        "src": "index images/XRAir/XRAir1.png",
-        "caption": "Process · notes and in-progress ideas"
-      }
+      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · sketches and early tests" },
+      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · diagrams and iteration" },
+      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · notes and in-progress ideas" }
     ],
     "title": "Process and Insights",
     "subtitle": "A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that reveal how the work comes together.",
