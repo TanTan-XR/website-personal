@@ -113,6 +113,10 @@
         <a href="#" class="tile tile-wide" id="card-10">
           <div class="thumb thumb-large"></div>
           <div class="tile-text">
+            <span class="pill-row">
+              <span class="pill subtle">XR</span>
+              <span class="pill subtle">Design patterns</span>
+            </span>
             <h3>An interactive archive for XR design patterns</h3>
             <p>Reusable interaction patterns and spatial UI experiments, organised as a living library.</p>
           </div>
@@ -1096,10 +1100,12 @@
                   tile.href = item.link;
                   tile.target = "_blank";
                   tile.rel = "noreferrer";
-                  tile.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    openLinkConfirmModal(tile.href);
-                  });
+                  if (item.card !== 10) {
+                    tile.addEventListener("click", function (e) {
+                      e.preventDefault();
+                      openLinkConfirmModal(tile.href);
+                    });
+                  }
                 }
               });
 
