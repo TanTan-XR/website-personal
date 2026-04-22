@@ -127,7 +127,8 @@ body {
   cursor: pointer;
 }
 
-.hero-visual:hover {
+.hero-visual:hover,
+.hero-visual.is-auto-hover {
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.9), 0 0 28px rgba(0, 255, 140, 0.85);
   border-color: rgba(0, 255, 140, 0.9);
   background:
@@ -1578,6 +1579,41 @@ a.eni-modal-back-home:hover {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+#card-12 .tile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card12-meta {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card12-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.card12-meta-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.card12-meta-value {
+  font-size: 0.78rem;
+  color: var(--text-main);
 }
 
 .case-header {

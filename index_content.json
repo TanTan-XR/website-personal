@@ -186,10 +186,10 @@
   {
     "card": 11,
     "title": "Contact & Info",
-    "subtitle": "Available for collaborations, commissions, and residencies.",
+    "subtitle": "Available for work, collaborations, and residencies.",
     "tags": [],
     "contactList": [
-      "Email · yourname@studio.xyz",
+      "Email · tanni91929@gmail.com",
       "CV / Resume",
       "Instagram / X / Are.na"
     ]
@@ -197,17 +197,10 @@
   {
     "card": 12,
     "src": "index images/XRAir/XRAir1.png",
-    "slides": [
-      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · sketches and early tests" },
-      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · diagrams and iteration" },
-      { "src": "index images/XRAir/XRAir1.png", "caption": "Process · notes and in-progress ideas" }
-    ],
-    "title": "Process and Insights",
-    "subtitle": "A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that reveal how the work comes together.",
+    "title": "Workshop and Facilitations",
+    "subtitle": "A collection of recent activties around XR, Team Development Sessions, Idea sessiona and Mentoship experiences.",
     "tags": [],
-    "year": 2025,
-    "role": "Documentation, Research, Practice",
-    "tools": "Notebook, Figma, prototypes, photography",
-    "link": "process.html"
+    "year": "2020-2025",
+    "Locations": "Hyper Island, Nackademin, Dhaka"
   }
 ]

@@ -168,6 +168,16 @@
               A behind-the-scenes sketchbook of tests, notes, diagrams, and in-progress ideas that
               reveal how the work comes together.
             </p>
+            <div class="card12-meta" aria-label="Workshop details">
+              <span class="card12-meta-item">
+                <span class="card12-meta-label">Year</span>
+                <span class="card12-meta-value" data-card12-year>2020-2025</span>
+              </span>
+              <span class="card12-meta-item">
+                <span class="card12-meta-label">Locations</span>
+                <span class="card12-meta-value" data-card12-locations>Hyper Island, Nackademin</span>
+              </span>
+            </div>
           </div>
         </a>
       </main>
@@ -338,6 +348,9 @@
         const ENI_LAZY_PLACEHOLDER =
           "data:image/svg+xml," +
           encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="260" height="160"/>');
+        setTimeout(() => {
+          heroCircle.classList.add("is-auto-hover");
+        }, 2000);
         /** Root folder for snapshot image files (matches folder name on disk). */
         const SNAPSHOT_MEDIA_ROOT = "Project by Project";
         /** Lists subfolders under SNAPSHOT_MEDIA_ROOT (maintain when you add date folders on disk). */
@@ -1074,6 +1087,8 @@
                 const thumbEl = tile.querySelector(".thumb, .thumb-large");
                 const pillRow = tile.querySelector(".pill-row");
                 const contactListEl = tile.querySelector(".contact-list");
+                const card12YearEl = tile.querySelector("[data-card12-year]");
+                const card12LocationsEl = tile.querySelector("[data-card12-locations]");
 
                 if (thumbEl && item.src) {
                   const src = encodeURI(item.src);
@@ -1105,6 +1120,16 @@
                     li.textContent = line;
                     contactListEl.appendChild(li);
                   });
+                }
+
+                if (item.card === 12) {
+                  if (card12YearEl && typeof item.year !== "undefined") {
+                    card12YearEl.textContent = String(item.year);
+                  }
+                  const locationsValue = item.Locations || item.locations;
+                  if (card12LocationsEl && typeof locationsValue !== "undefined") {
+                    card12LocationsEl.textContent = String(locationsValue);
+                  }
                 }
                 if (item.link) {
                   tile.href = item.link;
