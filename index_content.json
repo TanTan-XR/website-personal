@@ -161,7 +161,7 @@
   },
   {
     "card": 10,
-    "src": "index images/XRAir/XRAir1-1.png",
+    "src": "index images/SpatialPattern/Rectangle 55.jpg",
     "slides": [
       { "src": "index images/XRAir/XRAir1-1.png", "caption": "Revamping HUD UI design for Fellowbot´s Car Simulator Application" },
       { "src": "index images/XRAir/XRAir1.png",   "caption": "Pattern library · detail card" },
