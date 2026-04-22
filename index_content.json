@@ -184,6 +184,17 @@
     ]
   },
   {
+    "card": 11,
+    "title": "Contact & Info",
+    "subtitle": "Available for collaborations, commissions, and residencies.",
+    "tags": [],
+    "contactList": [
+      "Email · yourname@studio.xyz",
+      "CV / Resume",
+      "Instagram / X / Are.na"
+    ]
+  },
+  {
     "card": 12,
     "src": "index images/XRAir/XRAir1.png",
     "slides": [

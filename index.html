@@ -1065,7 +1065,7 @@
                   return;
                 }
 
-                // Cards 4–10, 12 – project tiles (same JSON shape as card 3: slides + meta)
+                // Cards 4–12 – project/contact tiles (same JSON shape as card 3 + optional fields)
                 const tile = document.getElementById("card-" + item.card);
                 if (!tile) return;
 
@@ -1073,6 +1073,7 @@
                 const bodyEl = tile.querySelector("p");
                 const thumbEl = tile.querySelector(".thumb, .thumb-large");
                 const pillRow = tile.querySelector(".pill-row");
+                const contactListEl = tile.querySelector(".contact-list");
 
                 if (thumbEl && item.src) {
                   const src = encodeURI(item.src);
@@ -1094,6 +1095,15 @@
                     span.className = "pill subtle";
                     span.textContent = tag;
                     pillRow.appendChild(span);
+                  });
+                }
+
+                if (contactListEl && Array.isArray(item.contactList)) {
+                  contactListEl.innerHTML = "";
+                  item.contactList.forEach((line) => {
+                    const li = document.createElement("li");
+                    li.textContent = line;
+                    contactListEl.appendChild(li);
                   });
                 }
                 if (item.link) {
