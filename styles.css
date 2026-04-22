@@ -1370,6 +1370,10 @@ a.eni-modal-back-home:hover {
   font-size: 1rem;
 }
 
+.tile p {
+  color: var(--text-muted);
+}
+
 .tile h2 {
   font-size: 1.3rem;
 }
