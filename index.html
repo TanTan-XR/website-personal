@@ -253,6 +253,23 @@
         </div>
       </div>
 
+      <div class="card12-modal-overlay" id="card12-modal">
+        <div class="card12-modal" role="dialog" aria-modal="true" aria-label="Process and insights">
+          <button class="card12-modal-close" type="button" aria-label="Close process and insights modal">
+            ✕
+          </button>
+          <div class="card12-modal-header">
+            <p class="card12-modal-eyebrow">Process and Insights</p>
+            <h2 id="card12-modal-title">Workshop and Facilitations</h2>
+            <p id="card12-modal-subtitle">
+              A collection of recent activities around XR, team development sessions, idea sessions,
+              and mentorship experiences.
+            </p>
+          </div>
+          <div class="card12-modal-scroll" id="card12-modal-scroll"></div>
+        </div>
+      </div>
+
       <div class="link-confirm-overlay" id="link-confirm-modal">
         <div class="link-confirm-modal">
           <button class="link-confirm-close" type="button" aria-label="Close">✕</button>
@@ -330,6 +347,8 @@
         const card9Tile = document.getElementById("card-9");
         const card10Tile = document.getElementById("card-10");
         const card11Tile = document.getElementById("card-11");
+        const card12Tile = document.getElementById("card-12");
+        const card12Modal = document.getElementById("card12-modal");
         if (!heroCard || !socialModal || !heroCircle || !eniModal || !card3Modal)
           return;
 
@@ -369,6 +388,10 @@
         const card3RoleEl = document.getElementById("card3-role");
         const card3ToolsEl = document.getElementById("card3-tools");
         const card3CaptionEl = document.getElementById("card3-slide-caption");
+        const card12CloseBtn = card12Modal && card12Modal.querySelector(".card12-modal-close");
+        const card12ModalTitleEl = document.getElementById("card12-modal-title");
+        const card12ModalSubtitleEl = document.getElementById("card12-modal-subtitle");
+        const card12ModalScrollEl = document.getElementById("card12-modal-scroll");
         const linkConfirmModal = document.getElementById("link-confirm-modal");
         const linkConfirmCloseBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-close");
         const linkConfirmCancelBtn = linkConfirmModal && linkConfirmModal.querySelector(".link-confirm-cancel");
@@ -460,6 +483,89 @@
 
         function closeCard3Modal() {
           card3Modal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        function buildCard12ModalCards(cardData) {
+          if (!card12ModalScrollEl) return;
+          card12ModalScrollEl.innerHTML = "";
+          const modalCards = Array.isArray(cardData && cardData.modalCards)
+            ? cardData.modalCards
+            : [
+                {
+                  title: "XR Workshop Sprint",
+                  subtitle: "Hands-on prototyping session focused on rapid XR concept validation.",
+                  tags: ["Workshop", "XR", "Rapid Prototype"]
+                },
+                {
+                  title: "Spatial UI Crit Session",
+                  subtitle: "Peer feedback forum exploring interaction readability and comfort.",
+                  tags: ["Critique", "Spatial UI", "Mentoring"]
+                },
+                {
+                  title: "Immersive Storyboarding Lab",
+                  subtitle: "Narrative-focused ideation using embodied scenes and mixed media boards.",
+                  tags: ["Narrative", "Ideation", "Facilitation"]
+                },
+                {
+                  title: "Cross-team Design Jam",
+                  subtitle: "A collaborative jam connecting design, engineering, and production roles.",
+                  tags: ["Collaboration", "Design Ops", "Team Development"]
+                },
+                {
+                  title: "Tooling Deep-dive",
+                  subtitle: "Working session covering practical workflows in Unity and XR authoring tools.",
+                  tags: ["Unity", "Workflow", "Learning"]
+                },
+                {
+                  title: "Mentorship Circle",
+                  subtitle: "Recurring support sessions for early-career creators in immersive media.",
+                  tags: ["Mentorship", "Career", "Community"]
+                }
+              ];
+
+          modalCards.forEach((entry) => {
+            const cardEl = document.createElement("article");
+            cardEl.className = "card12-modal-card";
+            const title = entry && entry.title ? String(entry.title) : "Untitled session";
+            const subtitle = entry && entry.subtitle ? String(entry.subtitle) : "";
+            const tags = entry && Array.isArray(entry.tags) ? entry.tags : [];
+            const tagsHtml = tags
+              .map((tag) => `<span class="pill subtle">${String(tag)}</span>`)
+              .join("");
+            cardEl.innerHTML = `
+              <div class="card12-modal-card-main">
+                <div class="card12-modal-card-copy">
+                  <h3>${title}</h3>
+                  <p>${subtitle}</p>
+                  <div class="card12-modal-card-tags">${tagsHtml}</div>
+                </div>
+                <div class="card12-modal-card-thumb" aria-hidden="true"></div>
+              </div>
+            `;
+            card12ModalScrollEl.appendChild(cardEl);
+          });
+        }
+
+        function openCard12Modal(event) {
+          if (event) event.preventDefault();
+          const cardData = Array.isArray(indexImagesCache)
+            ? indexImagesCache.find((item) => item && item.card === 12)
+            : null;
+          if (card12ModalTitleEl && cardData && cardData.title) {
+            card12ModalTitleEl.textContent = cardData.title;
+          }
+          if (card12ModalSubtitleEl && cardData && cardData.subtitle) {
+            card12ModalSubtitleEl.textContent = cardData.subtitle;
+          }
+          buildCard12ModalCards(cardData);
+          card12Modal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeCard12Modal() {
+          if (!card12Modal) return;
+          card12Modal.classList.remove("is-open");
           document.body.style.overflow = "";
         }
 
@@ -575,6 +681,9 @@
             openSocialModal();
           });
         }
+        if (card12Tile) {
+          card12Tile.addEventListener("click", openCard12Modal);
+        }
 
         socialModal.addEventListener("click", (event) => {
           if (event.target === socialModal) {
@@ -593,6 +702,13 @@
             closeCard3Modal();
           }
         });
+        if (card12Modal) {
+          card12Modal.addEventListener("click", (event) => {
+            if (event.target === card12Modal) {
+              closeCard12Modal();
+            }
+          });
+        }
 
         if (socialCloseBtn) {
           socialCloseBtn.addEventListener("click", closeSocialModal);
@@ -615,6 +731,9 @@
 
         if (card3CloseBtn) {
           card3CloseBtn.addEventListener("click", closeCard3Modal);
+        }
+        if (card12CloseBtn) {
+          card12CloseBtn.addEventListener("click", closeCard12Modal);
         }
 
         if (card3PrevBtn) {
@@ -645,6 +764,9 @@
           }
           if (card3Modal.classList.contains("is-open")) {
             closeCard3Modal();
+          }
+          if (card12Modal && card12Modal.classList.contains("is-open")) {
+            closeCard12Modal();
           }
           if (linkConfirmModal && linkConfirmModal.classList.contains("is-open")) {
             closeLinkConfirmModal();
