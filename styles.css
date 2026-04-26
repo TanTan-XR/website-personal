@@ -1066,6 +1066,16 @@ a.eni-modal-back-home:hover {
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(226, 232, 240, 0.16);
+  overflow: hidden;
+}
+
+.card12-modal-card-thumb-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  cursor: zoom-in;
 }
 
 .card3-tag-row {

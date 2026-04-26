@@ -524,15 +524,19 @@
                 }
               ];
 
-          modalCards.forEach((entry) => {
+          modalCards.forEach((entry, index) => {
             const cardEl = document.createElement("article");
             cardEl.className = "card12-modal-card";
-            const title = entry && entry.title ? String(entry.title) : "Untitled session";
+            const title = entry && entry.title ? String(entry.title) : `Session ${index + 1}`;
             const subtitle = entry && entry.subtitle ? String(entry.subtitle) : "";
             const tags = entry && Array.isArray(entry.tags) ? entry.tags : [];
+            const thumb = entry && entry.thumb ? String(entry.thumb) : "";
             const tagsHtml = tags
               .map((tag) => `<span class="pill subtle">${String(tag)}</span>`)
               .join("");
+            const thumbHtml = thumb
+              ? `<img class="card12-modal-card-thumb-img" src="${thumb}" alt="${title}" data-lightbox-src="${thumb}" loading="lazy" decoding="async" />`
+              : "";
             cardEl.innerHTML = `
               <div class="card12-modal-card-main">
                 <div class="card12-modal-card-copy">
@@ -540,7 +544,7 @@
                   <p>${subtitle}</p>
                   <div class="card12-modal-card-tags">${tagsHtml}</div>
                 </div>
-                <div class="card12-modal-card-thumb" aria-hidden="true"></div>
+                <div class="card12-modal-card-thumb">${thumbHtml}</div>
               </div>
             `;
             card12ModalScrollEl.appendChild(cardEl);
@@ -707,6 +711,17 @@
             if (event.target === card12Modal) {
               closeCard12Modal();
             }
+          });
+        }
+        if (card12ModalScrollEl) {
+          card12ModalScrollEl.addEventListener("click", (event) => {
+            const target = event.target;
+            if (!(target instanceof Element)) return;
+            const img = target.closest("img[data-lightbox-src]");
+            if (!img) return;
+            const src = img.getAttribute("data-lightbox-src");
+            const title = img.getAttribute("alt") || "Workshop image";
+            if (src) openEniLightbox(src, title);
           });
         }
 

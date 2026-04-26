@@ -196,11 +196,55 @@
   },
   {
     "card": 12,
-    "src": "index images/XRAir/XRAir1.png",
+    "src": "index images/Workshops/Thumbnail 1.jpg",
     "title": "Workshop and Facilitations",
     "subtitle": "A collection of recent activities around XR, team development sessions, idea sessions, and mentorship experiences.",
     "tags": [],
     "year": "2020-2025",
-    "Locations": "Hyper Island, Nackademin, Dhaka"
+    "Locations": "Hyper Island, Nackademin, Dhaka",
+    "modalCards": [
+      {
+        "title": "Workshop Session 1",
+        "subtitle": "Kickoff session aligning goals, constraints, and expected learning outcomes.",
+        "tags": ["Workshop Design", "Facilitation", "Team Alignment"],
+        "thumb": "index images/Workshops/1.jpg"
+      },
+      {
+        "title": "Workshop Session 2",
+        "subtitle": "Hands-on ideation with rapid concept sketching and participant feedback rounds.",
+        "tags": ["Ideation", "Co-creation", "Rapid Feedback"],
+        "thumb": "index images/Workshops/2.jpg"
+      },
+      {
+        "title": "Workshop Session 3",
+        "subtitle": "XR prototyping sprint translating concepts into testable interaction flows.",
+        "tags": ["XR", "Prototype Sprint", "Interaction Design"],
+        "thumb": "index images/Workshops/3.png"
+      },
+      {
+        "title": "Workshop Session 4",
+        "subtitle": "Structured critique session to evaluate usability, comfort, and clarity.",
+        "tags": ["Critique", "Usability", "Mentorship"],
+        "thumb": "index images/Workshops/4.jpg"
+      },
+      {
+        "title": "Workshop Session 5",
+        "subtitle": "Collaborative design jam across disciplines to align on implementation paths.",
+        "tags": ["Design Jam", "Cross-functional", "Collaboration"],
+        "thumb": "index images/Workshops/5.jpg"
+      },
+      {
+        "title": "Workshop Session 6",
+        "subtitle": "Tooling walkthrough focused on practical workflows for immersive production.",
+        "tags": ["Tooling", "Workflow", "Learning Session"],
+        "thumb": "index images/Workshops/6.jpg"
+      },
+      {
+        "title": "Workshop Session 7",
+        "subtitle": "Mentorship circle on career growth, portfolio clarity, and next-step planning.",
+        "tags": ["Mentorship", "Career Development", "Community"],
+        "thumb": "index images/Workshops/7.jpg"
+      }
+    ]
   }
 ]
