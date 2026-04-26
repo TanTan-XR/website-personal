@@ -1047,7 +1047,15 @@ a.eni-modal-back-home:hover {
   font-size: 1rem;
 }
 
-.card12-modal-card p {
+.card12-modal-card-eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(229, 231, 235, 0.86);
+}
+
+.card12-modal-card-subtitle {
   margin: 0;
   font-size: 0.88rem;
   color: var(--text-muted);
@@ -1060,13 +1068,30 @@ a.eni-modal-back-home:hover {
   gap: 6px;
 }
 
+.card12-modal-card-meta {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  color: rgba(229, 231, 235, 0.86);
+}
+
+.card12-modal-card-meta-sep {
+  opacity: 0.65;
+}
+
+.card12-modal-card-meta a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .card12-modal-card-thumb {
-  width: 100%;
-  aspect-ratio: 4 / 3;
+  width: 220px;
+  height: 165px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(226, 232, 240, 0.16);
   overflow: hidden;
+  justify-self: end;
 }
 
 .card12-modal-card-thumb-img {
@@ -2013,6 +2038,11 @@ a.eni-modal-back-home:hover {
     grid-template-columns: minmax(0, 1fr) 180px;
     gap: 14px;
   }
+
+  .card12-modal-card-thumb {
+    width: 180px;
+    height: 135px;
+  }
 }
 
 @media (max-width: 620px) {
@@ -2021,7 +2051,11 @@ a.eni-modal-back-home:hover {
   }
 
   .card12-modal-card-thumb {
-    max-width: 220px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    justify-self: start;
   }
 }
 

@@ -259,7 +259,6 @@
             ✕
           </button>
           <div class="card12-modal-header">
-            <p class="card12-modal-eyebrow">Process and Insights</p>
             <h2 id="card12-modal-title">Workshop and Facilitations</h2>
             <p id="card12-modal-subtitle">
               A collection of recent activities around XR, team development sessions, idea sessions,
@@ -489,40 +488,76 @@
         function buildCard12ModalCards(cardData) {
           if (!card12ModalScrollEl) return;
           card12ModalScrollEl.innerHTML = "";
-          const modalCards = Array.isArray(cardData && cardData.modalCards)
-            ? cardData.modalCards
-            : [
-                {
-                  title: "XR Workshop Sprint",
-                  subtitle: "Hands-on prototyping session focused on rapid XR concept validation.",
-                  tags: ["Workshop", "XR", "Rapid Prototype"]
-                },
-                {
-                  title: "Spatial UI Crit Session",
-                  subtitle: "Peer feedback forum exploring interaction readability and comfort.",
-                  tags: ["Critique", "Spatial UI", "Mentoring"]
-                },
-                {
-                  title: "Immersive Storyboarding Lab",
-                  subtitle: "Narrative-focused ideation using embodied scenes and mixed media boards.",
-                  tags: ["Narrative", "Ideation", "Facilitation"]
-                },
-                {
-                  title: "Cross-team Design Jam",
-                  subtitle: "A collaborative jam connecting design, engineering, and production roles.",
-                  tags: ["Collaboration", "Design Ops", "Team Development"]
-                },
-                {
-                  title: "Tooling Deep-dive",
-                  subtitle: "Working session covering practical workflows in Unity and XR authoring tools.",
-                  tags: ["Unity", "Workflow", "Learning"]
-                },
-                {
-                  title: "Mentorship Circle",
-                  subtitle: "Recurring support sessions for early-career creators in immersive media.",
-                  tags: ["Mentorship", "Career", "Community"]
-                }
-              ];
+          const modalCards = [
+            {
+              eyebrow: "2024",
+              title: "Piggy Court - Team Development Facilitation",
+              subtitle: "Kickoff session aligning goals, constraints, and expected learning outcomes.",
+              tags: ["Workshop Design", "Facilitation", "Team Alignment"],
+              location: "Stockholm, Sweden",
+              company: "TDS Project, Hyper Island",
+              thumb: "index images/Workshops/1.jpg"
+            },
+            {
+              eyebrow: "2024",
+              title: "Co-facilitation at Hyper's 'Way Week' - 2024",
+              subtitle: "Hands-on ideation with rapid concept sketching and participant feedback rounds.",
+              tags: ["Ideation", "Co-creation", "Rapid Feedback"],
+              location: "Stockholm, Sweden",
+              company: "Hyper Island",
+              companyUrl: "https://www.hyperisland.com/",
+              thumb: "index images/Workshops/2.jpg"
+            },
+            {
+              eyebrow: "2024",
+              title: "Hackathon Mentorship - Immersive XR Design Challenge by Immersive Insiders - 2024",
+              subtitle: "XR prototyping sprint translating concepts into testable interaction flows.",
+              tags: ["XR", "Prototype Sprint", "Interaction Design"],
+              location: "Global Hackathon",
+              company: "Immersive Insiders",
+              companyUrl: "https://immersive-insiders.com/",
+              thumb: "index images/Workshops/3.png"
+            },
+            {
+              eyebrow: "2024",
+              title: "Data-Visualization Workshop (Unreal and TouchDesigner) at Nackademin",
+              subtitle: "Structured critique session to evaluate usability, comfort, and clarity.",
+              tags: ["Critique", "Usability", "Mentorship"],
+              location: "Stockholm, Sweden",
+              company: "Nackademin",
+              companyUrl: "https://nackademin.se/",
+              thumb: "index images/Workshops/4.jpg"
+            },
+            {
+              eyebrow: "2024",
+              title: "Design Sprints at Hulo Studio",
+              subtitle: "Collaborative design jam across disciplines to align on implementation paths.",
+              tags: ["Design Jam", "Cross-functional", "Collaboration"],
+              location: "Dhaka, Bangladesh",
+              company: "Hulo Studio",
+              thumb: "index images/Workshops/5.jpg"
+            },
+            {
+              eyebrow: "2024",
+              title: "TouchDesigner Workshop at Hyper Island",
+              subtitle: "Tooling walkthrough focused on practical workflows for immersive production.",
+              tags: ["Tooling", "Workflow", "Learning Session"],
+              location: "Stockholm, Sweden",
+              company: "Hyper Island",
+              companyUrl: "https://www.hyperisland.com/",
+              thumb: "index images/Workshops/6.jpg"
+            },
+            {
+              eyebrow: "2024",
+              title: "Design Talk at Pathao HQ",
+              subtitle: "Mentorship circle on career growth, portfolio clarity, and next-step planning.",
+              tags: ["Mentorship", "Career Development", "Community"],
+              location: "Dhaka, Bangladesh",
+              company: "Pathao",
+              companyUrl: "https://pathao.com/",
+              thumb: "index images/Workshops/7.jpg"
+            }
+          ];
 
           modalCards.forEach((entry, index) => {
             const cardEl = document.createElement("article");
@@ -531,18 +566,60 @@
             const subtitle = entry && entry.subtitle ? String(entry.subtitle) : "";
             const tags = entry && Array.isArray(entry.tags) ? entry.tags : [];
             const thumb = entry && entry.thumb ? String(entry.thumb) : "";
+            const eyebrowValue =
+              entry && typeof entry.eyebrow !== "undefined"
+                ? entry.eyebrow
+                : entry && typeof entry.year !== "undefined"
+                  ? entry.year
+                  : "";
+            const locationValue =
+              entry && typeof entry.location !== "undefined"
+                ? entry.location
+                : entry && typeof entry.locations !== "undefined"
+                  ? entry.locations
+                  : entry && typeof entry.Location !== "undefined"
+                    ? entry.Location
+                    : "";
+            const eyebrowText =
+              eyebrowValue == null || eyebrowValue === "" ? "" : String(eyebrowValue);
+            const locationText =
+              locationValue == null || locationValue === "" ? "" : String(locationValue);
+            const companyText =
+              entry && entry.company != null && entry.company !== "" ? String(entry.company) : "";
+            const companyUrl =
+              entry && entry.companyUrl != null && entry.companyUrl !== ""
+                ? String(entry.companyUrl)
+                : "";
             const tagsHtml = tags
               .map((tag) => `<span class="pill subtle">${String(tag)}</span>`)
               .join("");
             const thumbHtml = thumb
               ? `<img class="card12-modal-card-thumb-img" src="${thumb}" alt="${title}" data-lightbox-src="${thumb}" loading="lazy" decoding="async" />`
               : "";
+            const eyebrowHtml = eyebrowText
+              ? `<p class="card12-modal-card-eyebrow">${eyebrowText}</p>`
+              : "";
+            const companyHtml = companyText
+              ? companyUrl
+                ? `<a href="${companyUrl}" target="_blank" rel="noreferrer">${companyText}</a>`
+                : `<span>${companyText}</span>`
+              : "";
+            const metaParts = [];
+            if (locationText) metaParts.push(`<span>${locationText}</span>`);
+            if (companyHtml) metaParts.push(companyHtml);
+            const metaHtml = metaParts.length
+              ? `<p class="card12-modal-card-meta">${metaParts.join(
+                  `<span class="card12-modal-card-meta-sep" aria-hidden="true"> • </span>`
+                )}</p>`
+              : "";
             cardEl.innerHTML = `
               <div class="card12-modal-card-main">
                 <div class="card12-modal-card-copy">
+                  ${eyebrowHtml}
                   <h3>${title}</h3>
-                  <p>${subtitle}</p>
+                  <p class="card12-modal-card-subtitle">${subtitle}</p>
                   <div class="card12-modal-card-tags">${tagsHtml}</div>
+                  ${metaHtml}
                 </div>
                 <div class="card12-modal-card-thumb">${thumbHtml}</div>
               </div>
@@ -551,8 +628,9 @@
           });
         }
 
-        function openCard12Modal(event) {
+        async function openCard12Modal(event) {
           if (event) event.preventDefault();
+          await loadIndexImages(true);
           const cardData = Array.isArray(indexImagesCache)
             ? indexImagesCache.find((item) => item && item.card === 12)
             : null;
@@ -1316,6 +1394,7 @@
               }
             })
             .catch((err) => {
+              indexImagesCache = null;
               console.warn(
                 "[Portfolio] Could not load index_content.json — tiles show static HTML only.",
                 err && err.message ? err.message : err,
